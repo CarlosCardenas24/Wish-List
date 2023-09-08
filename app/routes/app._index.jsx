@@ -5,6 +5,7 @@ import {
   useLoaderData,
   useNavigation,
   useSubmit,
+  useNavigate
 } from "@remix-run/react";
 import {
   Page,
@@ -95,11 +96,16 @@ export default function Index() {
 
   const generateProduct = () => submit({}, { replace: true, method: "POST" });
 
+  const navigate = useNavigate()
+
   return (
     <Page>
       <ui-title-bar title="Remix app template">
         <button variant="primary" onClick={generateProduct}>
           Generate a product
+        </button>
+        <button onClick={() => navigate("/app/config")}>
+          Wish list Config
         </button>
       </ui-title-bar>
       <VerticalStack gap="5">
