@@ -30,18 +30,17 @@ export const loader = async ({ request }) => {
 
 
 export default function Index() {
-    const nav = useNavigation();
+    //const [enabled, setEnabled] = useState(false)
 
-    const [enabled, setEnabled] = useState(() => {
-        const enableSetting = localStorage.getItem('enableSetting');
-        return enableSetting !== null ? JSON.parse(enableSetting) : false
-    })
+    const [enabled, setEnabled] = useState(false)
 
-    useEffect(() => {
-        localStorage.setItem('enableSetting', JSON.stringify(enabled))
-    }, [enabled])
-
-    const handleToggle = useCallback(() => setEnabled((on) => !on), [])
+    const handleToggle = () => {
+        if (!enabled) {
+            setEnabled(true)
+        } else if (enabled) {
+            setEnabled(false)
+        }
+    }
 
     const status = enabled ? 'Turn off' : 'Turn on'
 
