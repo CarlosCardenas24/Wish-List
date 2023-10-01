@@ -1,0 +1,29 @@
+{% assign wish_counter = block.settings.product.metafields.custom.wish_counter.value %}
+
+<script>  
+ let wish_counter = '{{wish_counter}}'
+ console.log(wish_counter)
+</script>
+
+<span>
+  <center>
+    <button name="addToWishList" class="button button--half-width button--secondary" >
+      <span>
+        Add to wish List 
+      </span>
+    </button>
+  </center>
+</span>
+
+{% schema %}
+{
+  "name": "addToWishList",
+  "target": "section",
+  "enabled_on": {
+      "templates": ["product"]
+    },
+  "settings": [
+    { "type": "product", "id": "product", "label": "product", "autofill": true }
+  ]
+}
+{% endschema %}
