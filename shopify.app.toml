@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://elephant-hungry-starts-represents.trycloudflare.com"
+application_url = "https://departure-craft-kinda-cove.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://elephant-hungry-starts-represents.trycloudflare.com/auth/callback",
-  "https://elephant-hungry-starts-represents.trycloudflare.com/auth/shopify/callback",
-  "https://elephant-hungry-starts-represents.trycloudflare.com/api/auth/callback"
+  "https://departure-craft-kinda-cove.trycloudflare.com/auth/callback",
+  "https://departure-craft-kinda-cove.trycloudflare.com/auth/shopify/callback",
+  "https://departure-craft-kinda-cove.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
