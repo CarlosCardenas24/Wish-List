@@ -1,1 +1,0 @@
-{% assign wish_counter = block.settings.product.metafields.custom.wish_counter.value %}

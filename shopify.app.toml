@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://departure-craft-kinda-cove.trycloudflare.com"
+application_url = "https://deck-literally-called-numeric.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://departure-craft-kinda-cove.trycloudflare.com/auth/callback",
-  "https://departure-craft-kinda-cove.trycloudflare.com/auth/shopify/callback",
-  "https://departure-craft-kinda-cove.trycloudflare.com/api/auth/callback"
+  "https://deck-literally-called-numeric.trycloudflare.com/auth/callback",
+  "https://deck-literally-called-numeric.trycloudflare.com/auth/shopify/callback",
+  "https://deck-literally-called-numeric.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
