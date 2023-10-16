@@ -25,7 +25,18 @@ assign productTitle = product.title
     console.log(wish_counter)
   }
 
-  document.getElementById("addToWishList").addEventListener("click", counter)
+  async function fetchPost () {
+    const response = await fetch (`/api/wishlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
+    console.log(data)
+  };
+  
+  document.getElementById("addToWishList").addEventListener("click", fetchPost)
 
 </script>
 

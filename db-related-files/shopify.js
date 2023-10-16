@@ -13,9 +13,9 @@ import { join } from "path";
 
 const database = new sqlite3.Database(join(process.cwd(), "database.sqlite"));
 // Initialize SQLite DB
-wishListDB.db = database;
+//wishListDB.db = database;
 //wishListDB.init();
-const shopify = shopifyApp({
+const shopifyV = shopifyApp({
   api: {
     apiVersion: LATEST_API_VERSION,
     restResources
@@ -30,4 +30,4 @@ const shopify = shopifyApp({
   sessionStorage: new SQLiteSessionStorage(database),
 });
 
-export default shopify;
+export default shopifyV;
