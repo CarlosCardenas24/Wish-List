@@ -6,6 +6,7 @@ assign productTitle = product.title
 
 <span>
   <center>
+    <a href="https://juno-merchants.myshopify.com/admin/apps/wish-list-fido-1/app/config">TEST LINK</a>
     <button id="addToWishList" name="addToWishList" class="button button--half-width button--secondary">
       <span>
         Add to wish List
@@ -26,7 +27,7 @@ assign productTitle = product.title
   }
 
   async function fetchPost () {
-    const response = await fetch (`/api/wishlist`, {
+    const response = await fetch (`/app/config`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

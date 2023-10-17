@@ -12,3 +12,6 @@ database.sqlite
 .env
 package-lock.json
 yarn.lock
+.env.wish-list-fido
+.ruby-version
+shopify.app.wish-list-fido.toml
