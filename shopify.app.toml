@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://salad-compete-pull-slovak.trycloudflare.com"
+application_url = "https://excuse-glory-removed-workshops.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://salad-compete-pull-slovak.trycloudflare.com/auth/callback",
-  "https://salad-compete-pull-slovak.trycloudflare.com/auth/shopify/callback",
-  "https://salad-compete-pull-slovak.trycloudflare.com/api/auth/callback"
+  "https://excuse-glory-removed-workshops.trycloudflare.com/auth/callback",
+  "https://excuse-glory-removed-workshops.trycloudflare.com/auth/shopify/callback",
+  "https://excuse-glory-removed-workshops.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
