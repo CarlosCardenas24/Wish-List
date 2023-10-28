@@ -1,8 +1,8 @@
-{% liquid
+{% comment %} {% liquid
 assign wish_counter = block.settings.product.metafields.custom.wish_counter.value
 assign productID = product.id
 assign productTitle = product.title
-%}  
+%}  {% endcomment %} 
 
 <span>
   <center>
@@ -15,7 +15,7 @@ assign productTitle = product.title
   </center>
 </span>
 
-<script>  
+{% comment %} <script>  
   let wish_counter = '{{wish_counter}}'
   let productID = '{{productID}}'
   let productTitle = '{{productTitle}}'
@@ -26,20 +26,12 @@ assign productTitle = product.title
     console.log(wish_counter)
   }
 
-  async function fetchPost () {
-    const response = await fetch (`/app/config`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const data = await response.json()
-    console.log(data)
-  };
+  
   
   document.getElementById("addToWishList").addEventListener("click", fetchPost)
+  "javascript": "add-to-wish-list.js"
 
-</script>
+</script> {% endcomment %}
 
 {% schema %}
 {
@@ -48,6 +40,7 @@ assign productTitle = product.title
   "enabled_on": {
       "templates": ["product"]
     },
+  "javascript": "add-to-wish-list.js",
   "settings": [
     { "type": "product", "id": "product", "label": "product", "autofill": true }
   ]
