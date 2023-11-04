@@ -1,14 +1,5 @@
-(function() {
-    function selectElement(selector, node) {
-        return (node || document).querySelector(selector);
-      }
+var javaScript = document.getElementById('myScript')
 
-    function find({target}) {
-        const rootblock = target.closest(".prapp-blocj[data-product-id]")
-        const {productId} = rootblock.dataset
-        console.log(productId)
-    }
-
-})
-
-
+let wish_counter = javaScript.getAttribute('wish_counter')
+let productID = javaScript.getAttribute('productID')
+let productTitle = javaScript.getAttribute('productTitle')

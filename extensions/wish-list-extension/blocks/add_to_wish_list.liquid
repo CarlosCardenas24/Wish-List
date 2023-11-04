@@ -1,19 +1,19 @@
-{% comment %} {% liquid
+{% liquid
 assign wish_counter = block.settings.product.metafields.custom.wish_counter.value
 assign productID = product.id
 assign productTitle = product.title
-%}  {% endcomment %} 
+%}
 
 <span>
   <center>
-    <a href="https://juno-merchants.myshopify.com/admin/apps/wish-list-fido-1/app/config">TEST LINK</a>
-    <button id="addToWishList" name="addToWishList" class="button button--half-width button--secondary">
+    <button id="addToWishListButton" name="addToWishList" class="button button--half-width button--secondary">
       <span>
         Add to wish List
       </span>
     </button>
   </center>
 </span>
+<div id='root'></div>
 
 {% comment %} <script>  
   let wish_counter = '{{wish_counter}}'
@@ -32,6 +32,7 @@ assign productTitle = product.title
   "javascript": "add-to-wish-list.js"
 
 </script> {% endcomment %}
+<script id='myScript' src="{{ 'add-to-wish-list.js' | asset_url }}" wish_counter = {{wish_counter}} productID = {{productID}} productTitle = {{productTitle}} defer></script>
 
 {% schema %}
 {
@@ -40,7 +41,6 @@ assign productTitle = product.title
   "enabled_on": {
       "templates": ["product"]
     },
-  "javascript": "add-to-wish-list.js",
   "settings": [
     { "type": "product", "id": "product", "label": "product", "autofill": true }
   ]
