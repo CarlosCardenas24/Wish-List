@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://hewlett-mercury-opt-discount.trycloudflare.com"
+application_url = "https://full-governments-sheet-highland.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://hewlett-mercury-opt-discount.trycloudflare.com/auth/callback",
-  "https://hewlett-mercury-opt-discount.trycloudflare.com/auth/shopify/callback",
-  "https://hewlett-mercury-opt-discount.trycloudflare.com/api/auth/callback"
+  "https://full-governments-sheet-highland.trycloudflare.com/auth/callback",
+  "https://full-governments-sheet-highland.trycloudflare.com/auth/shopify/callback",
+  "https://full-governments-sheet-highland.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

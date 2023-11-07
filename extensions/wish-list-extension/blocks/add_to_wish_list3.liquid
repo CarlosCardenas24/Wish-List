@@ -1,0 +1,35 @@
+{% liquid
+assign wish_counter = block.settings.product.metafields.custom.wish_counter.value
+assign productID = product.id
+assign productTitle = product.title
+%}
+
+<span>
+  <center>
+      <button type="submit" id="addToWishListButton" name="addToWishList" class="button button--half-width button--secondary">
+        <span>
+          Add to wish List
+        </span>
+      </button>
+  </center>
+</span>
+<div id='root'></div>
+
+<script id='myScript' type="module" src="{{ 'add-to-wish-list.js' | asset_url }}"
+  wish_counter = {{wish_counter}} 
+  productID = {{productID}} 
+  productTitle = {{productTitle}} defer>
+</script>
+
+{% schema %}
+{
+  "name": "addToWishList",
+  "target": "section",
+  "enabled_on": {
+      "templates": ["product"]
+    },
+  "settings": [
+    { "type": "product", "id": "product", "label": "product", "autofill": true }
+  ]
+}
+{% endschema %}
