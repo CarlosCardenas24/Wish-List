@@ -25,7 +25,11 @@ import { authenticate } from "../shopify.server";
 export const loader = async ({ request }) => {
     const { session } = await authenticate.admin(request);
 
-    return json({ shop: session.shop.replace(".myshopify.com", "") });
+    const url = new URL(request.url)
+    /* const title = url.searchParams.get('title') */ 
+    console.log(url)
+  
+    return json({ shop: session.shop.replace(".myshopify.com", "")});
 };
 
 

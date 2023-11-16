@@ -24,7 +24,7 @@ var javaScript = document.getElementById('myScript')
 let productTitle = javaScript.getAttribute('productTitle')
 
 function redirectToExample() {
-  window.location.href = `https://admin.shopify.com/store/wish-list-alpha/apps/wish-list-18/app/config/${productTitle}`;
+  window.location.href = `https://admin.shopify.com/store/wish-list-alpha/apps/wish-list-18/app?title=${productTitle}`;
 }
 
 document.getElementById("addToWishListButton").addEventListener("click", redirectToExample)
