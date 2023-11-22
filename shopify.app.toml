@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://corporations-ana-thriller-saves.trycloudflare.com"
+application_url = "https://beta-deviation-cingular-reviews.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://corporations-ana-thriller-saves.trycloudflare.com/auth/callback",
-  "https://corporations-ana-thriller-saves.trycloudflare.com/auth/shopify/callback",
-  "https://corporations-ana-thriller-saves.trycloudflare.com/api/auth/callback"
+  "https://beta-deviation-cingular-reviews.trycloudflare.com/auth/callback",
+  "https://beta-deviation-cingular-reviews.trycloudflare.com/auth/shopify/callback",
+  "https://beta-deviation-cingular-reviews.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
