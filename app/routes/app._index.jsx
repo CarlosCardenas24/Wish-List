@@ -32,21 +32,20 @@ export const loader = async ({ request }) => {
         const title = hasTitle
         return title
     } else if (!hasTitle) {
-        return null
+        const title = null
+        return title
     } else {
         throw json("Something went wrong", { status: 404 });
     }
     
     return json({ title })
-    //return json({ shop: session.shop.replace(".myshopify.com", "")});
 };
 
 
 export default function Index() {
     const data = useLoaderData()
-    if (data !== null) {
-        console.log(data)
-    }
+
+    
 
 
     return (
