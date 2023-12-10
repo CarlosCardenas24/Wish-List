@@ -19,12 +19,12 @@ const action = async ({request}) => {
     return null
 }
 
-document.getElementById("addToWishListButton").addEventListener("click", action) */
+document.getElementById("addToWishListButton").addEventListener("click", action) title=${productTitle}& */
 var javaScript = document.getElementById('myScript')
-let productTitle = javaScript.getAttribute('productTitle')
+let productID = javaScript.getAttribute('productID')
 
 function redirectToExample() {
-  window.location.href = `https://admin.shopify.com/store/wish-list-alpha/apps/wish-list-18/app?title=${productTitle}`;
+  window.location.href = `https://admin.shopify.com/store/wish-list-alpha/apps/wish-list-18/app?id=${productID}`;
 }
 
 document.getElementById("addToWishListButton").addEventListener("click", redirectToExample)

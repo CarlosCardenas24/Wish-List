@@ -26,27 +26,25 @@ export const loader = async ({ request }) => {
     //const { session } = await authenticate.admin(request);
 
     const url = new URL(request.url)
-    const hasTitle = url.searchParams.get('title')
+    const hasId = url.searchParams.get('id')
 
-    if(hasTitle){
-        const title = hasTitle
-        return title
-    } else if (!hasTitle) {
-        const title = null
-        return title
+    if(hasId){
+        const id = hasId
+        return id
+    } else if (!hasId) {
+        return id = null
     } else {
         throw json("Something went wrong", { status: 404 });
     }
     
-    return json({ title })
+    return json({ id })
 };
+
+
 
 
 export default function Index() {
     const data = useLoaderData()
-
-    
-
 
     return (
     <Page>

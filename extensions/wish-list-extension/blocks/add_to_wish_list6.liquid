@@ -1,7 +1,5 @@
 {% liquid
-assign wish_counter = block.settings.product.metafields.custom.wish_counter.value
 assign productID = product.id
-assign productTitle = product.title
 %}
 
 <span>
@@ -15,10 +13,8 @@ assign productTitle = product.title
 </span>
 <div id='root'></div>
 
-<script id='myScript' type="module" src="{{ 'add-to-wish-list.js' | asset_url }}"
-  wish_counter = {{wish_counter}} 
-  productID = {{productID}} 
-  productTitle = {{productTitle}} defer>
+<script id='myScript' type="module" src="{{ 'add-to-wish-list.js' | asset_url }}" 
+  productID = {{productID}} defer>
 </script>
 
 {% schema %}

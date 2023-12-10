@@ -10,7 +10,3 @@ async function seed() {
 }
 
 seed()
-
-function() {
-
-}
