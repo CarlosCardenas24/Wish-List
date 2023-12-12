@@ -1,30 +1,33 @@
-import { useEffect, useState, useCallback } from "react";
-import { json } from "@remix-run/node";
+import { useState } from "react";
+import { json, redirect } from "@remix-run/node";
 import {
+  useActionData,
   useLoaderData,
   useNavigation,
+  useSubmit,
+  useNavigate,
 } from "@remix-run/react";
 import {
-  Page,
-  Layout,
-  Text,
-  VerticalStack,
-  Card,
-  Button,
-  HorizontalStack,
-  Box,
-  Divider,
-  List,
-  Link,
-  Badge,
-} from "@shopify/polaris";
-import {CircleInformationMajor} from '@shopify/polaris-icons';
-
+    Page,
+    Layout,
+    Text,
+    VerticalStack,
+    Card,
+    Button,
+    HorizontalStack,
+    Box,
+    Divider,
+    List,
+    Link,
+    Badge,
+  } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 
-export const loader = async ({ request }) => {
-    const { admin, session } = await authenticate.admin(request)
+import { getWishList } from "../wishList.server";
 
+export async function loader({ request, params }) {
+    const { admin } = await authenticate.admin(request);
+  
     const url = new URL(request.url)
     const hasId = url.searchParams.get('id')
 
@@ -36,16 +39,16 @@ export const loader = async ({ request }) => {
     } else {
         throw json("Something went wrong", { status: 404 });
     }
-    
-    return json({ id })
-};
+  
+}
 
 
 
-
-export default function Index() {
+  export default function Index() {
     const data = useLoaderData()
 
+    const products = await window.shopify.resourcePicker
+    console.log( products)
     return (
     <Page>
         <Layout>
