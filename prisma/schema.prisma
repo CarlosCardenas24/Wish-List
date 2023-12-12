@@ -24,8 +24,8 @@ model Session {
 model WishList {
   id          String   @id
   shop        String
+  productId   String
   userId      BigInt?
-  title       String
   count       String
   createdAt   DateTime @default(now())
 }
