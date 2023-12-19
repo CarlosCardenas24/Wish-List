@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://rating-demonstration-sacramento-visited.trycloudflare.com"
+application_url = "https://sewing-chi-wallpaper-fifth.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://rating-demonstration-sacramento-visited.trycloudflare.com/auth/callback",
-  "https://rating-demonstration-sacramento-visited.trycloudflare.com/auth/shopify/callback",
-  "https://rating-demonstration-sacramento-visited.trycloudflare.com/api/auth/callback"
+  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/auth/callback",
+  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/auth/shopify/callback",
+  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

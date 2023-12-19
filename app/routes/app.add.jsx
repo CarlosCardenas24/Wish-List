@@ -23,32 +23,43 @@ import {
   } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 
-import { getWishList } from "../wishList.server";
+import { getWishList, postWishList } from "../wishList.server";
 
 export async function loader({ request, params }) {
-    const { admin } = await authenticate.admin(request);
+    const { admin, session } = await authenticate.admin(request);
   
     const url = new URL(request.url)
-    const hasId = url.searchParams.get('id')
+    const productId = url.searchParams.get('id')
 
-    if(hasId){
-        const id = hasId
-        return id
-    } else if (!hasId) {
-        return id = null
-    } else {
-        throw json("Something went wrong", { status: 404 });
-    }
+    const product = await admin.rest.resources.Product.all({
+        session: session,
+    })
+
+    const productData = [product.data]
+    return {productData, productId}
+
   
 }
-
+ 
 
 
   export default function Index() {
-    const data = useLoaderData()
+    const {productData} = useLoaderData()
+    const {productId} = useLoaderData()
 
-    const products = await window.shopify.resourcePicker
-    console.log( products)
+    postWishList(productId)
+    /* function sameProductFunction (productData, productId) {
+        for (let i = 0; i < productData.length; i++) {
+            let newId = productId
+            console.log(productData[0])
+            if (productData[i].id === newId) {
+                return [product.id, product.title]
+            }
+        }
+    }
+
+    const sameProduct = sameProductFunction(productData, productId) */
+
     return (
     <Page>
         <Layout>
@@ -57,7 +68,7 @@ export async function loader({ request, params }) {
                     <VerticalStack gap={{xs: '4', sm: '5'}}>
                         <Box width="100%">
                             <VerticalStack gap={{xs: '2', sm: '4'}}>
-                                { data ? data : 'Nothing'}
+                                { productId ? productId : 'Nothing'}
                             </VerticalStack>
                         </Box>
                     </VerticalStack>
