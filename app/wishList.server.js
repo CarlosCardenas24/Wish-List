@@ -1,37 +1,47 @@
 import prisma from "./db.server";
+import express from 'express'
 
-export async function getWishList (id, graphql) {
-    const wishList = await prisma.WishList.findFirst({ where: { id }})
+const app = express()
 
-    if (!wishList) {
-      return json("Something went wrong", { status: 404 }); 
+app.use(express.json)
+
+app.post('/api/post', async (req, res) => {
+  const {productId, title} = req.body
+  const result = await prisma.post.create({
+    data: {
+      productId,
+      title
+    }
+  })
+  res.status(201).json(result)
+})
+
+/* export async function getWishList (id, graphql) {
+    const wishList = await prisma.WishList.findMany({ 
+      where: { shop },
+      orderBy: { id: 'desc' }
+    })
+
+    if (wishList.length === 0) {
+      return []
     }
 
-    return supplementWishList(wishList, graphql)
+    return Promise.all(
+      wishList.map((wishList) => supplementWishList(wishList, graphql))
+    )
 }
 
 // postWishList, export and import into app.add.jsx
-export async function postWishList (productId) {
-  const id = productId
+export async function postWishList (id, graphql) {
   const wishList = await prisma.WishList.create({
     data: {
+      shop,
       id
     }
   })
-}
 
-export async function getWishLists(shop, graphql) {
-    const wishLists = await prisma.WishList.findMany({
-      where: { shop },
-      orderBy: { id: "desc" },
-    });
-  
-    if (wishLists.length === 0) return [];
-  
-    return Promise.all(
-      wishLists.map((wishList) => supplementWishList(wishList, graphql))
-    );
-  }
+  return supplementWishList(wishList, graphql)
+}
 
   async function supplementWishList(wishList, graphql) {
     const response = await graphql(
@@ -57,4 +67,4 @@ export async function getWishLists(shop, graphql) {
       productDeleted: !product?.title,
       productTitle: product?.title,
     };
-  }
+  } */

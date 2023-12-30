@@ -13,17 +13,12 @@ import {
     Text,
     VerticalStack,
     Card,
-    Button,
     HorizontalStack,
     Box,
-    Divider,
-    List,
-    Link,
-    Badge,
   } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
-
-import { getWishList, postWishList } from "../wishList.server";
+/* 
+import { getWishList, postWishList } from "../wishList.server"; */
 
 export async function loader({ request, params }) {
     const { admin, session } = await authenticate.admin(request);
@@ -41,24 +36,24 @@ export async function loader({ request, params }) {
   
 }
  
-
+// wrap loader method inside another function, call the function on initial function (use effect, [])
 
   export default function Index() {
     const {productData} = useLoaderData()
     const {productId} = useLoaderData()
 
-    postWishList(productId)
-    /* function sameProductFunction (productData, productId) {
-        for (let i = 0; i < productData.length; i++) {
-            let newId = productId
-            console.log(productData[0])
-            if (productData[i].id === newId) {
-                return [product.id, product.title]
-            }
-        }
-    }
+    const sameProduct = productData.map((item) => {
 
-    const sameProduct = sameProductFunction(productData, productId) */
+        for (let i = 0; i < item.length; i++) {
+            let newId = item[i].id
+            let newTitle = item[i].title
+            if(newId == productId) {
+                return [newId, newTitle]
+            }
+         }
+    })
+
+    console.log(sameProduct)
 
     return (
     <Page>

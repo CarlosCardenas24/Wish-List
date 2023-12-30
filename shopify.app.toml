@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://sewing-chi-wallpaper-fifth.trycloudflare.com"
+application_url = "https://oils-luggage-integrity-namibia.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/auth/callback",
-  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/auth/shopify/callback",
-  "https://sewing-chi-wallpaper-fifth.trycloudflare.com/api/auth/callback"
+  "https://oils-luggage-integrity-namibia.trycloudflare.com/auth/callback",
+  "https://oils-luggage-integrity-namibia.trycloudflare.com/auth/shopify/callback",
+  "https://oils-luggage-integrity-namibia.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
