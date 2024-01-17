@@ -52,18 +52,19 @@ export default function Index() {
         }
     })
 
-    // Save function 
-
+    let title = sameProduct.map( product => product.productTitle)
+    let id = sameProduct.map( product => product.productId)
+    
+    console.log(title)
+    console.log(id)
     // set up event
-    submitData () => {
+   /*  const handleSubmit (event) => {
         const submit = useSubmit()
         return (
-            <Form onChange={(event) => {
-                submit(event.currentTarget)
-            }}
+            
             />
         )
-    }
+    } */
 
     return (
     <Page>
@@ -73,9 +74,13 @@ export default function Index() {
                     <VerticalStack gap={{xs: '4', sm: '5'}}>
                         <Box width="100%">
                             <VerticalStack gap={{xs: '2', sm: '4'}}>
-                                { productId ? productId : 'Nothing'}
+                                 { title } has been added to your wish list!
                             </VerticalStack>
                         </Box>
+{/* 
+                        <Form  method="post" onSubmit={handleSubmit}>
+                            <input type='text' name='title' value={title}/>
+                        </Form> */}
                     </VerticalStack>
                 </Card>
             </Layout.Section>
