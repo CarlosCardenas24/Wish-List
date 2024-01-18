@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { json, redirect } from "@remix-run/node";
 import {
   useActionData,
@@ -17,6 +17,7 @@ import {
     Box,
   } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
+import prisma from '../db.server.js'
 /* 
 import { getWishList, postWishList } from "../wishList.server"; */
 
@@ -36,11 +37,23 @@ export async function loader({ request, params }) {
    
 }
 
+export const action = async ({request}) => {
+    const form = await request.formData()
+    const productTitle = form.get('productTitle')
+    const productId = form.get('productId')
+    console.log(productTitle)
+    const fields = {productTitle, productId}
 
+    //const post = await prisma.WishList.create({data: {...fields}})
+    return []
+}
 
 export default function Index() {
     const {productData} = useLoaderData()
     const {productId} = useLoaderData()
+    //const formRef = useRef<HtmlFormElement>(null)
+    const submit = useSubmit()
+    const formData = new FormData()
 
     const sameProduct = productData.map((item) => {
         for (let i = 0; i < item.length; i++) {
@@ -55,16 +68,22 @@ export default function Index() {
     let title = sameProduct.map( product => product.productTitle)
     let id = sameProduct.map( product => product.productId)
     
-    console.log(title)
-    console.log(id)
+    formData.append({productId: id}, {productTitle: title})
+
+    useEffect(() => {
+        submit(formData, { method: "post"})
+    }, [])
     // set up event
-   /*  const handleSubmit (event) => {
-        const submit = useSubmit()
-        return (
-            
-            />
-        )
-    } */
+   /*  let submit = useSubmit()
+    const handleSubmit = (event) => {
+        const formData = new FormData(formRef.current)
+        formData.set(productid: id, productTitle: title)
+
+        useSubmit(formData, {method: 'post', action: '/app/routes/'} )
+    }
+ */
+
+
 
     return (
     <Page>
@@ -77,10 +96,18 @@ export default function Index() {
                                  { title } has been added to your wish list!
                             </VerticalStack>
                         </Box>
-{/* 
-                        <Form  method="post" onSubmit={handleSubmit}>
-                            <input type='text' name='title' value={title}/>
-                        </Form> */}
+
+                        <form
+                            onChange={(evemt) => {
+                                submit(event?.currentTarget)
+                            }}
+                        />
+ 
+                        {/* <Form ref={formRef}  method="post" onSubmit={handleSubmit}>
+                            <input type='text' name='title' value={title} disabled readOnly/>
+                            <input type='text' name='id' value={id} disabled readOnly/>
+
+                        </Form>  */}
                     </VerticalStack>
                 </Card>
             </Layout.Section>
