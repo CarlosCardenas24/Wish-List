@@ -1,0 +1,23 @@
+<head>
+  <script async src={{ "script.js" | asset_url }}></script>
+</head>
+
+{% comment %}
+  1. read the product id from the JavaScript file
+  2. use the product id to make a request to your Application
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Wish List Embed",
+  "target": "body",
+  "settings": [
+    {
+      "id" : "product_id",
+      "type": "text",
+      "label": "Product ID",
+      "default": "0"
+    }
+  ]
+}
+{% endschema %}

@@ -13,5 +13,8 @@ database.sqlite
 package-lock.json
 yarn.lock
 .env.wish-list-fido
+.env.excellence-777-app
 .ruby-version
 shopify.app.wish-list-fido.toml
+shopify.app.excellence-777-app.toml
+shopify.app.toml

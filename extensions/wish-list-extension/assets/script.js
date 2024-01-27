@@ -1,0 +1,1 @@
+console.log('Wish List Extension Script');
