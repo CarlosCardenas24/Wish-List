@@ -1,11 +1,18 @@
 <head>
   <script async src={{ "script.js" | asset_url }}></script>
 </head>
+{% assign product_id = block.settings.product_id %}
 
 {% comment %}
-  1. read the product id from the JavaScript file
+  1. read the product id from the JavaScript file, type coersion with product_id?
   2. use the product id to make a request to your Application
 {% endcomment %}
+
+<div class="wish-list-container">
+  <button id="{{ product_id }}" class="add-to-list-button">
+    Add To Wish List
+  </button>
+</div>
 
 {% schema %}
 {
@@ -16,7 +23,8 @@
       "id" : "product_id",
       "type": "text",
       "label": "Product ID",
-      "default": "0"
+      "default": "123456789",
+      "info": "Add the product ID you want to add to the wish list."
     }
   ]
 }
