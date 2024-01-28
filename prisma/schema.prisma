@@ -20,3 +20,13 @@ model Session {
   accessToken String
   userId      BigInt?
 }
+
+model WishList {
+  id          String   @id
+  shop        String
+  productId   String
+  productTitle String
+  //userId      BigInt?
+  //count       String
+  //createdAt   DateTime @default(now())
+}
