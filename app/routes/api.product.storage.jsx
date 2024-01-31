@@ -44,7 +44,7 @@ export async function action({ request }) {
         const { productId } = body;
         let id = productId;
 
-        //simulate database storage
+        //@Note: simulate database storage hook up actual prisma ORM here
         await fs.writeFile(path, JSON.stringify(structure(id)));
 
         return json(successMessage, { headers });
