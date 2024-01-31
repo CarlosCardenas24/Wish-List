@@ -8,7 +8,9 @@ if(!button) {
 button?.addEventListener('click', () => {
     productId = button.getAttribute('id');
 
-    fetch('http://localhost:53234/api/product/storage', {
+    const PORT = 52433;
+
+    fetch(`http://localhost:${PORT}/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
