@@ -1,5 +1,9 @@
+import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
-import fs from 'fs/promises'
+import fs from 'fs/promises';
+
+const prisma = new PrismaClient();
+prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
 
 export async function loader({ request }) {
     try {
@@ -27,8 +31,8 @@ export async function action({ request }) {
     };
 
     const successMessage = {
-        message: "Success!",
-        method: 'action()'
+        message: "Success! Product Added to Database",
+        method: 'action()',
     };
 
     const structure = id => {
@@ -42,12 +46,22 @@ export async function action({ request }) {
         let headers = new Headers(accessOptions);
         let body = await request.json();
         const { productId } = body;
-        let id = productId;
 
-        //@Note: simulate database storage hook up actual prisma ORM here
-        await fs.writeFile(path, JSON.stringify(structure(id)));
+        await prisma.product.create({
+            data: {
+                id: productId,
+                title: "Test Product",
+            }
+        });
 
-        return json(successMessage, { headers });
+        // const products = await prisma.product.findMany();
+        // console.log("products", products)
+
+        const products = await prisma.product.findMany();
+
+        console.log("products", products)
+
+        return json({ headers });
 
     } catch (error) {
         console.log(error);
