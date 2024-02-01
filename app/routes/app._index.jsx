@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
+import { useEffect } from "react";
+
 import {
   useActionData,
   useLoaderData,
@@ -25,8 +27,10 @@ import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
   const { session } = await authenticate.admin(request);
-
-  return json({ shop: session.shop.replace(".myshopify.com", "") });
+  const prisma = new PrismaClient();
+  prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
+  const products = await prisma.product.findMany();
+  return json({ shop: session.shop.replace(".myshopify.com", ""), products });
 };
 
 export async function action({ request }) {
@@ -76,9 +80,18 @@ export async function action({ request }) {
 
 export default function Index() {
   const nav = useNavigation();
-  const { shop } = useLoaderData();
+  const { shop, products } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
+
+  const renderProducts = () => {
+    if (!products) return null;
+    return products.map((product) => (
+      <li key={product.id}>
+        {product.title} - {product.id}
+      </li>
+    ));
+  }
 
   const isLoading =
     ["loading", "submitting"].includes(nav.state) && nav.formMethod === "POST";
@@ -119,6 +132,7 @@ export default function Index() {
                   </Text>
                   <Text variant="bodyMd" as="p">
                     This embedded app template uses{" "}
+                    {renderProducts()}
                     <Link
                       url="https://shopify.dev/docs/apps/tools/app-bridge"
                       target="_blank"
