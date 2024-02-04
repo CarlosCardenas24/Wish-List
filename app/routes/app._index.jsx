@@ -27,9 +27,11 @@ import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
   const { session } = await authenticate.admin(request);
+
   const prisma = new PrismaClient();
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
+  
   return json({ shop: session.shop.replace(".myshopify.com", ""), products });
 };
 
