@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,12 +18,10 @@ model Session {
   userId      BigInt?
 }
 
-model WishList {
-  id          String   @id
-  shop        String
-  productId   String
-  productTitle String
-  //userId      BigInt?
-  //count       String
-  //createdAt   DateTime @default(now())
+model Product {
+  id        String    @id
+  title     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 }
