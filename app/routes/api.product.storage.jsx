@@ -41,12 +41,23 @@ export async function action({ request }) {
 
         if (recordExists) {
             //add quantity of existing record by 1
+            await prisma.product.update({
+                where: {
+                    id: productId,
+                },
+                data: {
+                    quantity: {
+                        increment: 1
+                    }
+                }
+            });
             return json({ message: "Product already exists in database" }, { headers });
         } else {
             await prisma.product.create({
                 data: {
                     id: productId,
                     title: "Test Product",
+                    quantity: 1
                 }
             });
 

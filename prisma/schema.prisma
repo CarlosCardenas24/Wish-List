@@ -21,6 +21,7 @@ model Session {
 model Product {
   id        String    @id
   title     String
+  quantity  BigInt    
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
