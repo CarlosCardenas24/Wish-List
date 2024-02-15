@@ -40,18 +40,17 @@ export async function action({ request }) {
         });
 
         if (recordExists) {
-            //add quantity of existing record by 1
+            const { quantity } = recordExists;
+
             await prisma.product.update({
                 where: {
-                    id: productId,
+                    id: productId
                 },
                 data: {
-                    quantity: {
-                        increment: 1
-                    }
-                }
-            });
-            return json({ message: "Product already exists in database" }, { headers });
+                    quantity: quantity + 1
+                },
+            }) 
+
         } else {
             await prisma.product.create({
                 data: {
@@ -61,9 +60,14 @@ export async function action({ request }) {
                 }
             });
 
-            return json({ successMessage }, { headers });
         }
+
+        return json({ successMessage }, { headers });
+
     } catch (error) {
         console.log(error);
     }
+
+    return json({ successMessage });
+    
 }
