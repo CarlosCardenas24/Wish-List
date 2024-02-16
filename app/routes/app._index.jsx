@@ -90,7 +90,7 @@ export default function Index() {
     if (!products) return null;
     return products.map((product) => (
       <li key={product.id}>
-        {product.title} - {product.id}
+        {product.id} - {product.name} has {product.quantity}
       </li>
     ));
   }
