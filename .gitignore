@@ -7,6 +7,8 @@ node_modules
 /app/public/build
 /prisma/dev.sqlite
 /prisma/dev.sqlite-journal
+/prisma/migrations/*
+*.sql
 database.sqlite
 
 .env
@@ -18,3 +20,4 @@ yarn.lock
 shopify.app.wish-list-fido.toml
 shopify.app.excellence-777-app.toml
 shopify.app.toml
+*.toml
