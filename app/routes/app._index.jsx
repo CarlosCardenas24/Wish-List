@@ -3,11 +3,8 @@ import { json } from "@remix-run/node";
 import { useEffect } from "react";
 
 import {
-  useActionData,
   useLoaderData,
   useNavigation,
-  useSubmit,
-  useNavigate
 } from "@remix-run/react";
 import {
   Page,
@@ -21,7 +18,9 @@ import {
   Divider,
   List,
   Link,
+  Badge,
 } from "@shopify/polaris";
+import {CircleInformationMajor} from '@shopify/polaris-icons';
 
 import { authenticate } from "../shopify.server";
 
@@ -115,15 +114,6 @@ export default function Index() {
 
   return (
     <Page>
-      <ui-title-bar title="Remix app template">
-        <button variant="primary" onClick={generateProduct}>
-          Generate a product
-        </button>
-        <button onClick={() => navigate("/app/config")}>
-          Wish list Config
-        </button>
-      </ui-title-bar>
-      <VerticalStack gap="5">
         <Layout>
           <Layout.Section>
             <Card>
@@ -293,7 +283,6 @@ export default function Index() {
             </VerticalStack>
           </Layout.Section>
         </Layout>
-      </VerticalStack>
     </Page>
   );
 }
