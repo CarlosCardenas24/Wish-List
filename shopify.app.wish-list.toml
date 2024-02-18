@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "wish-list"
+client_id = "72b609e7a65a6c4da6e1f67bdc153f30"
+application_url = "https://ward-gothic-speed-summer.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://ward-gothic-speed-summer.trycloudflare.com/auth/callback",
+  "https://ward-gothic-speed-summer.trycloudflare.com/auth/shopify/callback",
+  "https://ward-gothic-speed-summer.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "testingwishlist.myshopify.com"
