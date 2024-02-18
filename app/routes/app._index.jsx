@@ -117,24 +117,32 @@ export default function Index() {
 
   return (
     <Page>
-        <Layout>
-          <Layout.Section>
-            <Card>
-              <VerticalStack gap="5">
-                <VerticalStack gap="2">
-                  <Text as="h2" variant="headingMd">
-                    Total amount of items in wish lists
-                    <br />
-                    ID - Title - Total
-                  </Text>
-                  <Text variant="bodyMd" as="p">
-                    {renderProducts()}
-                  </Text>
-                </VerticalStack>
+      <ui-title-bar title="Remix app template">
+        <button variant="primary" onClick={generateProduct}>
+          Generate a product
+        </button>
+        <button onClick={() => navigate("/app/config")}>
+          Wish list Config
+        </button>
+      </ui-title-bar>
+      <Layout>
+        <Layout.Section>
+          <Card>
+            <VerticalStack gap="5">
+              <VerticalStack gap="2">
+                <Text as="h2" variant="headingMd">
+                  Total amount of items in wish lists
+                  <br />
+                  ID - Title - Total
+                </Text>
+                <Text variant="bodyMd" as="p">
+                  {renderProducts()}
+                </Text>
               </VerticalStack>
-            </Card>
-          </Layout.Section>
-        </Layout>
+            </VerticalStack>
+          </Card>
+        </Layout.Section>
+      </Layout>
     </Page>
   );
 }
