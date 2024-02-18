@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "9ad892ecbfedb83066ecadf4409301cc"
-application_url = "https://mem-island-dallas-portal.trycloudflare.com"
+application_url = "https://volunteer-ozone-its-conversion.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://mem-island-dallas-portal.trycloudflare.com/auth/callback",
-  "https://mem-island-dallas-portal.trycloudflare.com/auth/shopify/callback",
-  "https://mem-island-dallas-portal.trycloudflare.com/api/auth/callback"
+  "https://volunteer-ozone-its-conversion.trycloudflare.com/auth/callback",
+  "https://volunteer-ozone-its-conversion.trycloudflare.com/auth/shopify/callback",
+  "https://volunteer-ozone-its-conversion.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
