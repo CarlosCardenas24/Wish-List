@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://dig-logos-soon-asking.trycloudflare.com"
+application_url = "https://r-lc-similar-conjunction.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://dig-logos-soon-asking.trycloudflare.com/auth/callback",
-  "https://dig-logos-soon-asking.trycloudflare.com/auth/shopify/callback",
-  "https://dig-logos-soon-asking.trycloudflare.com/api/auth/callback"
+  "https://r-lc-similar-conjunction.trycloudflare.com/auth/callback",
+  "https://r-lc-similar-conjunction.trycloudflare.com/auth/shopify/callback",
+  "https://r-lc-similar-conjunction.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
