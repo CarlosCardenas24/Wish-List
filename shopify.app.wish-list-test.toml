@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://volleyball-ddr-classroom-officials.trycloudflare.com"
+application_url = "https://pennsylvania-jay-combinations-state.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://volleyball-ddr-classroom-officials.trycloudflare.com/auth/callback",
-  "https://volleyball-ddr-classroom-officials.trycloudflare.com/auth/shopify/callback",
-  "https://volleyball-ddr-classroom-officials.trycloudflare.com/api/auth/callback"
+  "https://pennsylvania-jay-combinations-state.trycloudflare.com/auth/callback",
+  "https://pennsylvania-jay-combinations-state.trycloudflare.com/auth/shopify/callback",
+  "https://pennsylvania-jay-combinations-state.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
