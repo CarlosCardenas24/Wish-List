@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://cubic-opposed-brutal-witch.trycloudflare.com"
+application_url = "https://trans-bidder-schedules-ws.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://cubic-opposed-brutal-witch.trycloudflare.com/auth/callback",
-  "https://cubic-opposed-brutal-witch.trycloudflare.com/auth/shopify/callback",
-  "https://cubic-opposed-brutal-witch.trycloudflare.com/api/auth/callback"
+  "https://trans-bidder-schedules-ws.trycloudflare.com/auth/callback",
+  "https://trans-bidder-schedules-ws.trycloudflare.com/auth/shopify/callback",
+  "https://trans-bidder-schedules-ws.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

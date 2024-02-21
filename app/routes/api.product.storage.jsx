@@ -31,7 +31,7 @@ export async function action({ request }) {
     try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
-        const { productId } = body;
+        const { productId, shopId } = body;
 
         const recordExists = await prisma.product.findUnique({
             where: {
@@ -55,6 +55,7 @@ export async function action({ request }) {
             await prisma.product.create({
                 data: {
                     id: productId,
+                    shopId: shopId,
                     name: "Product Name",
                     quantity: 1,
                 }

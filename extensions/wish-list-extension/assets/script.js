@@ -23,7 +23,7 @@ button?.addEventListener('click', () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId })
+        body: JSON.stringify({ productId, shopId })
     })
     .then(response => response.json())
     .then(data => { console.log(data)})

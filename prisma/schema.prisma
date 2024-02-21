@@ -20,6 +20,7 @@ model Session {
 
 model Product {
   id        String    @id
+  shopId    String
   name      String
   quantity  Int
   createdAt DateTime  @default(now())
