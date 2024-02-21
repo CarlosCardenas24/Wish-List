@@ -1,4 +1,5 @@
 {% assign product_id = product.id %}
+{% assign shop_id = shop.id %}
 
 {% comment %}
   1. read the product id from the JavaScript file, type coersion with product_id?
@@ -11,7 +12,7 @@
   </button>
 </div>
 
-<script async src={{ "script.js" | asset_url }} product_id = {{ product_id }}></script>
+<script async id='myScript' src={{ "script.js" | asset_url }} shopId={{ shop_id }}></script>
 
 {% schema %}
 {

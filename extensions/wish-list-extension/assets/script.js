@@ -1,9 +1,17 @@
 const button = document.querySelector('.add-to-list-button');
 let productId = null;
+// needed for shop id
+var javaScript = document.getElementById('myScript')
+let shopId = javaScript.getAttribute('shopId')
 
 if(!button) {
     console.error('Button not found: ' + button);
 }
+if(!shopId) {
+    console.error('Shop Id not found: ' + shop_Id);
+}
+
+console.log(shopId)
 
 button?.addEventListener('click', () => {
     productId = button.getAttribute('id');
