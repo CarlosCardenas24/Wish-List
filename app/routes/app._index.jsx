@@ -1,13 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 
 import {
   useActionData,
   useLoaderData,
   useNavigation,
   useSubmit,
-  useNavigate
+  useNavigate,
+  useRevalidator,
 } from "@remix-run/react";
 import {
   Page,
@@ -87,6 +89,31 @@ export default function Index() {
   const { shop, products } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
+
+  const [bool, setbool] = useState(false)
+
+  const revalidator = useRevalidator()
+  /* const interval = setInterval(() => {
+    if (bool === false) {
+      setbool(true)
+    }
+    if (bool === true) {
+      setbool(false)
+    }
+  }, 10000)
+  
+  useEffect(() => {
+
+      return () => clearInterval(interval)
+  }, [interval, revalidator]) */
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      revalidator.revalidate();
+    }, 300000)
+
+    return () => clearInterval(interval)
+  }, [revalidator])
 
   const renderProducts = () => {
     if (!products) return null;
