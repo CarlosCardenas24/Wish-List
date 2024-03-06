@@ -24,14 +24,13 @@ export async function loader({ request }) {
     } catch (error) {
         console.log(error);
     }
-
 }
 
 export async function action({ request }) {
     try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
-        const { productId, shopId } = body;
+        const { productId, shopId, price, title } = body;
 
         const recordExists = await prisma.product.findUnique({
             where: {
@@ -56,17 +55,19 @@ export async function action({ request }) {
                 data: {
                     id: productId,
                     shopId: shopId,
-                    name: "Product Name",
+                    productId: productId,
+                    price: price,
+                    name: title,
                     quantity: 1,
                 }
             });
-
         }
 
         return json({ successMessage }, { headers });
 
-        } catch (error) {
-            console.log(error);
-        }
-    return json({ successMessage });
+    } catch (error) {
+        console.log(error);
+        return json({ message: "hello!" });
+    }
+
 }
