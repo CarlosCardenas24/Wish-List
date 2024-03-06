@@ -3,15 +3,10 @@ const button = document.querySelector('.add-to-list-button');
 button?.addEventListener('click', () => {
     const PORT = 3000;
 
-    const titleInput = document.querySelector('.title');
-    const priceInput = document.querySelector('.price');
-    const shopInput = document.querySelector('.shop-id');
-    const productInput = document.querySelector('.product-id');
-    
-    const title = titleInput?.value;
-    const price = priceInput?.value;
-    const shopId = shopInput?.value;
-    const productId = productInput?.value;
+    const title = document.querySelector('.title');
+    const price = document.querySelector('.price');
+    const shopId = document.querySelector('.shop-id');
+    const productId = document.querySelector('.product-id');
 
     const values = [title, price, shopId, productId];
 

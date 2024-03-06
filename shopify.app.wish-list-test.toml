@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://rocket-whats-dis-advisory.trycloudflare.com"
+application_url = "https://deer-meters-island-quoted.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://rocket-whats-dis-advisory.trycloudflare.com/auth/callback",
-  "https://rocket-whats-dis-advisory.trycloudflare.com/auth/shopify/callback",
-  "https://rocket-whats-dis-advisory.trycloudflare.com/api/auth/callback"
+  "https://deer-meters-island-quoted.trycloudflare.com/auth/callback",
+  "https://deer-meters-island-quoted.trycloudflare.com/auth/shopify/callback",
+  "https://deer-meters-island-quoted.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
