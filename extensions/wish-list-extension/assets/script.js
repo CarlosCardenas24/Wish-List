@@ -1,16 +1,17 @@
-const titleInput = document.querySelector('.title');
-const priceInput = document.querySelector('.price');
-const shopInput = document.querySelector('.shop-id');
-const productInput = document.querySelector('.product-id');
 const button = document.querySelector('.add-to-list-button');
-
-const title = titleInput?.value;
-const price = priceInput?.value;
-const shopId = shopInput?.value;
-const productId = productInput?.value;
 
 button?.addEventListener('click', () => {
     const PORT = 3000;
+
+    const titleInput = document.querySelector('.title');
+    const priceInput = document.querySelector('.price');
+    const shopInput = document.querySelector('.shop-id');
+    const productInput = document.querySelector('.product-id');
+    
+    const title = titleInput?.value;
+    const price = priceInput?.value;
+    const shopId = shopInput?.value;
+    const productId = productInput?.value;
 
     const values = [title, price, shopId, productId];
 
