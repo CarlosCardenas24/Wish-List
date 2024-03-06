@@ -19,10 +19,12 @@ model Session {
 }
 
 model Product {
-  id        String    @id
+  id        String   @id
   shopId    String
+  productId String
+  price     String
   name      String
   quantity  Int
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

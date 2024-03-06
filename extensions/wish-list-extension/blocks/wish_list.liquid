@@ -1,18 +1,14 @@
-{% assign product_id = product.id %}
-{% assign shop_id = shop.id %}
-
-{% comment %}
-  1. read the product id from the JavaScript file, type coersion with product_id?
-  2. use the product id to make a request to your Application
-{% endcomment %}
-
 <div class="wish-list-container">
-  <button id="{{ product_id }}" class="add-to-list-button">
+  <input type="hidden" class="product-id" value="{{ product.id }}">
+  <input type="hidden" class="price" value="{{ product.price }}">
+  <input type="hidden" class="title" value="{{ product.title }}">
+  <input type="hidden" class="shop-id" value="{{ shop.id }}">
+  <button class="add-to-list-button">
     Add To Wish List
   </button>
 </div>
 
-<script async id='myScript' src={{ "script.js" | asset_url }} shopId={{ shop_id }}></script>
+<script async id='myScript' src={{ "script.js" | asset_url }}></script>
 
 {% schema %}
 {
