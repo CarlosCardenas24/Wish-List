@@ -1,14 +1,19 @@
+{% assign price = product.selected_or_first_available_variant.price | money_without_currency %}
+
+
 <div class="wish-list-container">
   <input type="hidden" class="product-id" value="{{ product.id }}">
-  <input type="hidden" class="price" value="{{ product.price }}">
   <input type="hidden" class="title" value="{{ product.title }}">
   <input type="hidden" class="shop-id" value="{{ shop.id }}">
+  <input type="hidden" class="variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" class="variant-title" value="{{ product.selected_or_first_available_variant.title }}">
+  <input type="hidden" id="price" value="{{ price }}">
   <button class="add-to-list-button">
     Add To Wish List
   </button>
 </div>
 
-<script async id='myScript' src={{ "script.js" | asset_url }}></script>
+<script async id='myScript' src={{ "script.js" | asset_url }} defer></script>
 
 {% schema %}
 {

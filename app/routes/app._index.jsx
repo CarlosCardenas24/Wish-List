@@ -30,13 +30,18 @@ import {CircleInformationMajor} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
-  const { session } = await authenticate.admin(request);
+  const { session, admin } = await authenticate.admin(request);
 
   const prisma = new PrismaClient();
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
+
+  const productInfo = await admin.rest.resources.Product.all({
+    session: session,
+    fields: "variants,image"
+})
   
-  return json({ shop: session.shop.replace(".myshopify.com", ""), products });
+  return json({ shop: session.shop.replace(".myshopify.com", ""), products, productInfo });
 };
 
 export async function action({ request }) {
@@ -86,10 +91,11 @@ export async function action({ request }) {
 
 export default function Index() {
   const nav = useNavigation();
-  const { shop, products } = useLoaderData();
+  const { shop, products, productInfo } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
+  console.log(productInfo)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -103,7 +109,7 @@ export default function Index() {
     if (!products) return null;
     return products.map((product) => (
       <li key={product.id}>
-        {product.id} - {product.name} has {product.quantity}          {product.price}
+        {product.id} - {product.name} has {product.quantity} {product.price}
       </li>
     ));
   }
