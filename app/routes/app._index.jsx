@@ -36,12 +36,12 @@ export const loader = async ({ request }) => {
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
 
-  const productInfo = await admin.rest.resources.Product.all({
+  /* const productInfo = await admin.rest.resources.Product.all({
     session: session,
     fields: "variants,image"
-})
+}) */
   
-  return json({ shop: session.shop.replace(".myshopify.com", ""), products, productInfo });
+  return json({ shop: session.shop.replace(".myshopify.com", ""), products });
 };
 
 export async function action({ request }) {
@@ -95,7 +95,7 @@ export default function Index() {
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
-  console.log(productInfo)
+  //console.log(productInfo)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,9 +107,15 @@ export default function Index() {
 
   const renderProducts = () => {
     if (!products) return null;
+
+    /* return products.map((product) => (
+      <li key={product.id}>
+        {product.variantName}: Quantity: {product.quantity} Unit Price: {product.price} Total Price: {product.quantity*product.price}
+      </li>
+    )); */
     return products.map((product) => (
       <li key={product.id}>
-        {product.id} - {product.name} has {product.quantity} {product.price}
+        {product.variantName}: Quantity: {product.quantity} Unit Price: {product.price} Total Price: {product.quantity*product.price}
       </li>
     ));
   }

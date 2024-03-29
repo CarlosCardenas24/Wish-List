@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://screenshot-xl-nepal-silent.trycloudflare.com"
+application_url = "https://investment-applicant-tunnel-staffing.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://screenshot-xl-nepal-silent.trycloudflare.com/auth/callback",
-  "https://screenshot-xl-nepal-silent.trycloudflare.com/auth/shopify/callback",
-  "https://screenshot-xl-nepal-silent.trycloudflare.com/api/auth/callback"
+  "https://investment-applicant-tunnel-staffing.trycloudflare.com/auth/callback",
+  "https://investment-applicant-tunnel-staffing.trycloudflare.com/auth/shopify/callback",
+  "https://investment-applicant-tunnel-staffing.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

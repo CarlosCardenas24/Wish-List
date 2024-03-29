@@ -1,4 +1,5 @@
 const button = document.querySelector('.add-to-list-button');
+
 function variant_change_listener(callback){
     const selector = 'input[name="id"]';
     const emitting_element = document.querySelector(selector);
@@ -17,28 +18,25 @@ button?.addEventListener('click', () => {
     const shopId = document.querySelector('.shop-id').value;
     const variantId = document.querySelector('.variant-id').value;
     const variantTitle = document.querySelector('.variant-title').value;
-    const price = document.getElementById('price').value;
+    const priceString = document.getElementById('price').value;
+    const price = parseInt(priceString, 10)
 
-    console.log(variantTitle)
-    console.log(price)
-    console.log(variantId)
-
-    const values = [title, price, shopId, productId];
+    const values = [productId, title, shopId, variantId, variantTitle, price];
 
     if(values.some(value => !value)){
         console.log('Please fill out all fields');
         return null;
     }
 
-    /* fetch(`http://localhost:${PORT}/api/product/storage`, {
+    fetch(`http://localhost:${PORT}/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId, shopId, price, title })
+        body: JSON.stringify({ productId, title, shopId, variantId, variantTitle, price})
     })
     .then(response => response.json())
     .then(data => { console.log(data)})
-    .catch(error => console.error(error)); */
+    .catch(error => console.error(error));
 
 });

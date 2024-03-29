@@ -30,11 +30,11 @@ export async function action({ request }) {
     try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
-        const { productId, shopId, price, title } = body;
+        const { productId, title, shopId, variantId, variantTitle, price } = body;
 
         const recordExists = await prisma.product.findUnique({
             where: {
-                id: productId
+                variantId: variantId
             }
         });
 
@@ -43,7 +43,7 @@ export async function action({ request }) {
 
             await prisma.product.update({
                 where: {
-                    id: productId
+                    variantId: variantId
                 },
                 data: {
                     quantity: quantity + 1
@@ -54,10 +54,11 @@ export async function action({ request }) {
             await prisma.product.create({
                 data: {
                     id: productId,
-                    shopId: shopId,
-                    productId: productId,
-                    price: price,
                     name: title,
+                    shopId: shopId,
+                    variantId: variantId,
+                    variantName: variantTitle,
+                    price: price,
                     quantity: 1,
                 }
             });
