@@ -25,6 +25,7 @@ model Product {
   variantId   String   @id
   variantName String
   price       Int
+  image       String
   quantity    Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

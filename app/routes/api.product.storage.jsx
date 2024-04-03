@@ -30,7 +30,7 @@ export async function action({ request }) {
     try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
-        const { productId, title, shopId, variantId, variantTitle, price } = body;
+        const { productId, title, shopId, variantId, variantTitle, price, image } = body;
 
         const recordExists = await prisma.product.findUnique({
             where: {
@@ -59,6 +59,7 @@ export async function action({ request }) {
                     variantId: variantId,
                     variantName: variantTitle,
                     price: price,
+                    image: image,
                     quantity: 1,
                 }
             });

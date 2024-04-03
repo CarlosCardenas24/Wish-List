@@ -1,4 +1,5 @@
 {% assign price = product.selected_or_first_available_variant.price | money_without_currency %}
+{% assign variantImage = product.selected_or_first_available_variant | image_url %}
 
 
 <div class="wish-list-container">
@@ -8,6 +9,7 @@
   <input type="hidden" class="variant-id" value="{{ product.selected_or_first_available_variant.id }}">
   <input type="hidden" class="variant-title" value="{{ product.selected_or_first_available_variant.title }}">
   <input type="hidden" id="price" value="{{ price }}">
+  <input type="hidden" class="image" value="{{ variantImage }}">
   <button class="add-to-list-button">
     Add To Wish List
   </button>

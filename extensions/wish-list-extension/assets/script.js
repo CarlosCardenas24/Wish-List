@@ -20,12 +20,13 @@ button?.addEventListener('click', () => {
     let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
     const price = parseInt(priceString, 10)
+    const image = document.querySelector('.image').value;
 
     if(variantTitle === 'Default Title') {
         variantTitle = title
     }
     
-    const values = [productId, title, shopId, variantId, variantTitle, price];
+    const values = [productId, title, shopId, variantId, variantTitle, price, image];
 
     if(values.some(value => !value)){
         console.log('Please fill out all fields');
@@ -37,7 +38,7 @@ button?.addEventListener('click', () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId, title, shopId, variantId, variantTitle, price})
+        body: JSON.stringify({ productId, title, shopId, variantId, variantTitle, price, image})
     })
     .then(response => response.json())
     .then(data => { console.log(data)})
