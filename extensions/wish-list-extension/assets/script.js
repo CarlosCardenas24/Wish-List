@@ -17,10 +17,14 @@ button?.addEventListener('click', () => {
     const title = document.querySelector('.title').value;
     const shopId = document.querySelector('.shop-id').value;
     const variantId = document.querySelector('.variant-id').value;
-    const variantTitle = document.querySelector('.variant-title').value;
+    let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
     const price = parseInt(priceString, 10)
 
+    if(variantTitle === 'Default Title') {
+        variantTitle = title
+    }
+    
     const values = [productId, title, shopId, variantId, variantTitle, price];
 
     if(values.some(value => !value)){
