@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://terrorism-enormous-reserve-demand.trycloudflare.com"
+application_url = "https://lace-counters-memphis-jun.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://terrorism-enormous-reserve-demand.trycloudflare.com/auth/callback",
-  "https://terrorism-enormous-reserve-demand.trycloudflare.com/auth/shopify/callback",
-  "https://terrorism-enormous-reserve-demand.trycloudflare.com/api/auth/callback"
+  "https://lace-counters-memphis-jun.trycloudflare.com/auth/callback",
+  "https://lace-counters-memphis-jun.trycloudflare.com/auth/shopify/callback",
+  "https://lace-counters-memphis-jun.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

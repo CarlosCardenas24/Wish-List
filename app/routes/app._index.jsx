@@ -21,9 +21,7 @@ import {
   HorizontalStack,
   Box,
   Divider,
-  List,
-  Link,
-  Badge,
+  Thumbnail
 } from "@shopify/polaris";
 import {CircleInformationMajor} from '@shopify/polaris-icons';
 
@@ -103,10 +101,8 @@ export default function Index() {
     if (!products) return null;
 
     return products.map((product) => (
-      
-
       <li key={product.id}>
-        <img src={product.image} class="Polaris-Thumbnail Polaris-Thumbnail--sizeSmall"/> {product.variantName}: Quantity: {product.quantity} Unit Price: {product.price} Total Price: {product.quantity*product.price}
+        <Thumbnail source={product.image} size="small"/> {product.variantName}: Quantity: {product.quantity} Unit Price: {product.price} Total Price: {product.quantity*product.price} <Divider />
       </li>
     ));
   };
