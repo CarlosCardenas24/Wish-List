@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://lace-counters-memphis-jun.trycloudflare.com"
+application_url = "https://martial-magnet-ff-landscape.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://lace-counters-memphis-jun.trycloudflare.com/auth/callback",
-  "https://lace-counters-memphis-jun.trycloudflare.com/auth/shopify/callback",
-  "https://lace-counters-memphis-jun.trycloudflare.com/api/auth/callback"
+  "https://martial-magnet-ff-landscape.trycloudflare.com/auth/callback",
+  "https://martial-magnet-ff-landscape.trycloudflare.com/auth/shopify/callback",
+  "https://martial-magnet-ff-landscape.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

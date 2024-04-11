@@ -21,7 +21,10 @@ import {
   HorizontalStack,
   Box,
   Divider,
-  Thumbnail
+  Thumbnail,
+  IndexTable,
+  LegacyCard,
+  useBreakpoints,
 } from "@shopify/polaris";
 import {CircleInformationMajor} from '@shopify/polaris-icons';
 
@@ -97,7 +100,7 @@ export default function Index() {
     return () => clearInterval(interval)
   }, [revalidator])
 
-  const renderProducts = () => {
+  /* const renderProducts = () => {
     if (!products) return null;
 
     return products.map((product) => (
@@ -105,7 +108,7 @@ export default function Index() {
         <Thumbnail source={product.image} size="small"/> {product.variantName}: Quantity: {product.quantity} Unit Price: {product.price} Total Price: {product.quantity*product.price} <Divider />
       </li>
     ));
-  };
+  }; */
 
   const isLoading =
     ["loading", "submitting"].includes(nav.state) && nav.formMethod === "POST";
@@ -125,6 +128,37 @@ export default function Index() {
 
   const navigate = useNavigate()
 
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const rowMarkup = products.map(
+    (
+      {variantId, image, variantName, name, quantity, price},
+      index,
+    ) => (
+      <IndexTable.Row id={variantId} key={variantId} position={index}>
+        <IndexTable.Cell>
+          <Thumbnail source={image} size="small"/>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{name}</IndexTable.Cell>
+        <IndexTable.Cell>{variantName}</IndexTable.Cell>
+        <IndexTable.Cell>{quantity}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {price}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {price * quantity}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
   return (
     <Page>
       <ui-title-bar title="Wish List">
@@ -135,7 +169,27 @@ export default function Index() {
           Wish list Config
         </button>
       </ui-title-bar>
-      <Layout>
+
+      <LegacyCard>
+        <IndexTable
+          condensed={useBreakpoints().smDown}
+          resourceName={resourceName}
+          itemCount={products.length}
+          headings={[
+            {title: 'Image'},
+            {title: 'Product Name'},
+            {title: 'Variant Name'},
+            {title: 'Quantity'},
+            {title: 'Unit Price', alignment: 'end'},
+            {title: 'Total Price'},
+          ]}
+          selectable={false}
+        >
+          {rowMarkup}
+        </IndexTable> 
+      </LegacyCard>
+
+      {/* <Layout>
         <Layout.Section>
           <Card>
             <VerticalStack gap="5">
@@ -152,7 +206,7 @@ export default function Index() {
             </VerticalStack>
           </Card>
         </Layout.Section>
-      </Layout>
+      </Layout> */}
     </Page>
   );
 }
