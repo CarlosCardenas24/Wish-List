@@ -19,7 +19,7 @@ button?.addEventListener('click', () => {
     const variantId = document.querySelector('.variant-id').value;
     let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
-    const price = parseInt(priceString, 10)
+    const price = parseFloat(priceString)
     const image = document.querySelector('.image').value;
 
     if(variantTitle === 'Default Title') {

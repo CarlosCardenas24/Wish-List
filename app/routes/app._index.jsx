@@ -25,6 +25,7 @@ import {
   IndexTable,
   LegacyCard,
   useBreakpoints,
+  EmptySearchResult,
 } from "@shopify/polaris";
 import {CircleInformationMajor} from '@shopify/polaris-icons';
 
@@ -40,7 +41,7 @@ export const loader = async ({ request }) => {
   return json({ shop: session.shop.replace(".myshopify.com", ""), products });
 };
 
-export async function action({ request }) {
+/* export async function action({ request }) {
   const { admin } = await authenticate.admin(request);
 
   const color = ["Red", "Orange", "Yellow", "Green"][
@@ -83,7 +84,7 @@ export async function action({ request }) {
   return json({
     product: responseJson.data.productCreate.product,
   });
-}
+} */
 
 export default function Index() {
   const nav = useNavigation();
@@ -124,14 +125,19 @@ export default function Index() {
     }
   }, [productId]);
 
-  const generateProduct = () => submit({}, { replace: true, method: "POST" });
-
   const navigate = useNavigate()
 
   const resourceName = {
     singular: 'order',
     plural: 'orders',
   };
+
+  const emptyStateMarkup = (
+    <EmptySearchResult
+      title={'No additions to the Wish List'}
+      withIllustration
+    />
+  )
 
   const rowMarkup = products.map(
     (
@@ -160,14 +166,11 @@ export default function Index() {
   );
 
   return (
-    <Page>
+    <Page fullWidth>
       <ui-title-bar title="Wish List">
-        <button variant="primary" onClick={generateProduct}>
+        {/* <button variant="primary" onClick={generateProduct}>
           Generate a product
-        </button>
-        <button onClick={() => navigate("/app/config")}>
-          Wish list Config
-        </button>
+        </button> */}
       </ui-title-bar>
 
       <LegacyCard>
@@ -175,13 +178,14 @@ export default function Index() {
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}
           itemCount={products.length}
+          emptyState={emptyStateMarkup}
           headings={[
             {title: 'Image'},
             {title: 'Product Name'},
             {title: 'Variant Name'},
             {title: 'Quantity'},
             {title: 'Unit Price', alignment: 'end'},
-            {title: 'Total Price'},
+            {title: 'Total Price', alignment: 'end'},
           ]}
           selectable={false}
         >
