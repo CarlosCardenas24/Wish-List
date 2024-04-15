@@ -23,16 +23,30 @@ button?.addEventListener('click', () => {
     const image = document.querySelector('.image').value;
 
     if(variantTitle === 'Default Title') {
-        variantTitle = title
+        variantTitle = ''
+
+        const values = [productId, title, shopId, variantId, price, image];
+
+        if(values.some(value => !value)){
+            console.log('Please fill out all fields');
+            return null;
+        }
+    } else {
+        const values = [productId, title, shopId, variantId, variantTitle, price, image];
+
+        if(values.some(value => !value)){
+            console.log('Please fill out all fields');
+            return null;
+        }
     }
     
-    const values = [productId, title, shopId, variantId, variantTitle, price, image];
+    /* const values = [productId, title, shopId, variantId, variantTitle, price, image];
 
     if(values.some(value => !value)){
         console.log('Please fill out all fields');
         return null;
     }
-
+ */
     fetch(`http://localhost:${PORT}/api/product/storage`, {
         method: 'POST',
         headers: {

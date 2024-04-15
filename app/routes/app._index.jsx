@@ -9,6 +9,7 @@ import {
   useSubmit,
   useNavigate,
   useRevalidator,
+  useState,
 } from "@remix-run/react";
 import {
   Page,
@@ -18,7 +19,9 @@ import {
   LegacyCard,
   useBreakpoints,
   EmptySearchResult,
+  IndexFilters,
 } from "@shopify/polaris";
+import type {IndexFiltersProps} from '@shopify/polaris'
 import {CircleInformationMajor} from '@shopify/polaris-icons';
 
 import { authenticate } from "../shopify.server";
@@ -74,7 +77,7 @@ export default function Index() {
       title={'No additions to the Wish List'}
       withIllustration
     />
-  )
+  );
 
   const rowMarkup = products.map(
     (
@@ -102,12 +105,25 @@ export default function Index() {
     ),
   );
 
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
+    {label: 'Product', value: 'product asc', directionLabel: 'A-Z'},
+    {label: 'Product', value: 'product desc', directionLabel: 'Z-A'},
+    {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
+    {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
+  ];
+  const [sortSelected, setSortSelected] = useState(['order asc']);
+
   return (
     <Page fullWidth>
       <ui-title-bar title="Wish List">
       </ui-title-bar>
 
       <LegacyCard>
+        <IndexFilters
+        sortOptions={sortOptions}
+        sortSelected={sortSelected}
+        onSort={setSortSelected}
+        />
         <IndexTable
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}
