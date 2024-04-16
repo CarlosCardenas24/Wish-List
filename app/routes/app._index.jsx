@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
   useActionData,
@@ -9,7 +9,6 @@ import {
   useSubmit,
   useNavigate,
   useRevalidator,
-  useState,
 } from "@remix-run/react";
 import {
   Page,
@@ -21,9 +20,8 @@ import {
   EmptySearchResult,
   IndexFilters,
 } from "@shopify/polaris";
-import type {IndexFiltersProps} from '@shopify/polaris'
 import {CircleInformationMajor} from '@shopify/polaris-icons';
-
+import type {IndexFiltersProps} from '@shopify/polaris'
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
@@ -111,7 +109,13 @@ export default function Index() {
     {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
     {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
   ];
-  const [sortSelected, setSortSelected] = useState(['order asc']);
+  /* const sortOptions = [
+    {label: 'Product', value: 'product asc', directionLabel: 'A-Z'},
+    {label: 'Product', value: 'product desc', directionLabel: 'Z-A'},
+    {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
+    {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
+  ]; */
+  const [sortSelected, setSortSelected] = useState(['product asc']);
 
   return (
     <Page fullWidth>
@@ -119,11 +123,11 @@ export default function Index() {
       </ui-title-bar>
 
       <LegacyCard>
-        <IndexFilters
+        {/*<IndexFilters
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         onSort={setSortSelected}
-        />
+        />*/}
         <IndexTable
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}

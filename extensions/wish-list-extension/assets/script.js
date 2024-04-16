@@ -40,13 +40,6 @@ button?.addEventListener('click', () => {
         }
     }
     
-    /* const values = [productId, title, shopId, variantId, variantTitle, price, image];
-
-    if(values.some(value => !value)){
-        console.log('Please fill out all fields');
-        return null;
-    }
- */
     fetch(`http://localhost:${PORT}/api/product/storage`, {
         method: 'POST',
         headers: {

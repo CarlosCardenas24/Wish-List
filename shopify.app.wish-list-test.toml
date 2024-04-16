@@ -2,7 +2,7 @@
 
 name = "wish-list"
 client_id = "de8957f5fec848a1995a9e50f177ced2"
-application_url = "https://parties-metallica-she-recruiting.trycloudflare.com"
+application_url = "https://intranet-ca-assessing-incomplete.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://parties-metallica-she-recruiting.trycloudflare.com/auth/callback",
-  "https://parties-metallica-she-recruiting.trycloudflare.com/auth/shopify/callback",
-  "https://parties-metallica-she-recruiting.trycloudflare.com/api/auth/callback"
+  "https://intranet-ca-assessing-incomplete.trycloudflare.com/auth/callback",
+  "https://intranet-ca-assessing-incomplete.trycloudflare.com/auth/shopify/callback",
+  "https://intranet-ca-assessing-incomplete.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
