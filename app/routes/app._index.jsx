@@ -19,9 +19,9 @@ import {
   useBreakpoints,
   EmptySearchResult,
   IndexFilters,
-} from "@shopify/polaris";
+  useSetIndexFiltersMode,
+} from "@shopify/polaris"; 
 import {CircleInformationMajor} from '@shopify/polaris-icons';
-import type {IndexFiltersProps} from '@shopify/polaris'
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
@@ -77,6 +77,23 @@ export default function Index() {
     />
   );
 
+  const [itemStrings, setItemStrings] = useState(["All"]);
+
+  const tabs = itemStrings.map((item, index) => ({
+    content: item,
+    index,
+  }));
+
+  const sortOptions = [
+    {label: 'Product Name', value: 'product asc', directionLabel: 'A-Z'},
+    {label: 'Product Name', value: 'product desc', directionLabel: 'Z-A'},
+    {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
+    {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
+  ];
+
+  const [sortSelected, setSortSelected] = useState(['product asc']);
+  const { mode, setMode } = useSetIndexFiltersMode();
+
   const rowMarkup = products.map(
     (
       {variantId, image, variantName, name, quantity, price},
@@ -103,31 +120,23 @@ export default function Index() {
     ),
   );
 
-  const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'Product', value: 'product asc', directionLabel: 'A-Z'},
-    {label: 'Product', value: 'product desc', directionLabel: 'Z-A'},
-    {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
-    {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
-  ];
-  /* const sortOptions = [
-    {label: 'Product', value: 'product asc', directionLabel: 'A-Z'},
-    {label: 'Product', value: 'product desc', directionLabel: 'Z-A'},
-    {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
-    {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
-  ]; */
-  const [sortSelected, setSortSelected] = useState(['product asc']);
-
   return (
     <Page fullWidth>
       <ui-title-bar title="Wish List">
       </ui-title-bar>
 
       <LegacyCard>
-        {/*<IndexFilters
-        sortOptions={sortOptions}
-        sortSelected={sortSelected}
-        onSort={setSortSelected}
-        />*/}
+        <IndexFilters
+          sortOptions={sortOptions}
+          sortSelected={sortSelected}
+          onSort={setSortSelected}
+          tabs={tabs}
+          mode={mode}
+          setMode={setMode}
+          hideFilters
+          hideQueryField
+          canCreateNewView={false}
+        />
         <IndexTable
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}

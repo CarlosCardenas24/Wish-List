@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+/* import { useEffect } from "react";
 import { json, redirect } from "@remix-run/node";
 import {
   useActionData,
@@ -18,8 +18,6 @@ import {
   } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 import prisma from '../db.server.js'
-/* 
-import { getWishList, postWishList } from "../wishList.server"; */
 
 export async function loader({ request, params }) {
     const { admin, session } = await authenticate.admin(request);
@@ -44,14 +42,13 @@ export const action = async ({request}) => {
     console.log(productTitle)
     const fields = {productTitle, productId}
 
-    //const post = await prisma.WishList.create({data: {...fields}})
+    
     return []
 }
 
 export default function Index() {
     const {productData} = useLoaderData()
     const {productId} = useLoaderData()
-    //const formRef = useRef<HtmlFormElement>(null)
     const submit = useSubmit()
     const formData = new FormData()
 
@@ -73,15 +70,6 @@ export default function Index() {
     useEffect(() => {
         submit(formData, { method: "post"})
     }, [])
-    // set up event
-   /*  let submit = useSubmit()
-    const handleSubmit = (event) => {
-        const formData = new FormData(formRef.current)
-        formData.set(productid: id, productTitle: title)
-
-        useSubmit(formData, {method: 'post', action: '/app/routes/'} )
-    }
- */
 
 
 
@@ -103,15 +91,11 @@ export default function Index() {
                             }}
                         />
  
-                        {/* <Form ref={formRef}  method="post" onSubmit={handleSubmit}>
-                            <input type='text' name='title' value={title} disabled readOnly/>
-                            <input type='text' name='id' value={id} disabled readOnly/>
-
-                        </Form>  */}
+                
                     </VerticalStack>
                 </Card>
             </Layout.Section>
         </Layout>
     </Page>
   );
-}
+} */

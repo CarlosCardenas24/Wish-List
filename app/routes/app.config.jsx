@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+/* import { useEffect, useState, useCallback } from "react";
 import { json } from "@remix-run/node";
 import {
   useLoaderData,
@@ -120,3 +120,4 @@ export default function Index() {
     </Page>
   );
 }
+ */
