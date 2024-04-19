@@ -90,24 +90,23 @@ export default function Index() {
     index,
   }));
 
-  /* const sortOptions = [
-    {label: 'Product Name', value: 'product asc', directionLabel: 'A-Z'},
-    {label: 'Product Name', value: 'product desc', directionLabel: 'Z-A'},
+  const sortOptions = [
+    {label: 'Product', value: 'product asc', directionLabel: 'A-Z'},
+    {label: 'Product', value: 'product desc', directionLabel: 'Z-A'},
     {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
     {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
-  ]; */
-  const sortOptions = [
+  ];
+  /* const sortOptions = [
     {label: 'Product (A-Z)', value: 'product asc'},
     {label: 'Product (Z-A)', value: 'product desc'},
-    {label: 'Quantity (High to Low)', value: 'quantity desc'},
     {label: 'Quantity (Low to High)', value: 'quantity asc'},
-  ];
+    {label: 'Quantity (High to Low)', value: 'quantity desc'},
+  ]; */
 
-  const [sortSelected, setSortSelected] = useState('product asc');
+  const [sortSelected, setSortSelected] = useState('quantity desc');
   const { mode, setMode } = useSetIndexFiltersMode();
 
   // Create a sorting function
-
   function sortProducts(products, sortOption) {
     // Convert sortOption to string to ensure it can be split
     const sortOptionString = String(sortOption);
