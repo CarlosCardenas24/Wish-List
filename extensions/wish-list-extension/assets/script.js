@@ -19,20 +19,23 @@ button?.addEventListener('click', () => {
     const variantId = document.querySelector('.variant-id').value;
     let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
-    const price = parseFloat(priceString)
-    const image = document.querySelector('.image').value;
+    const price = parseFloat(priceString);
+    let image = document.querySelector('.image').value;
+    if (!image) {
+        image = ''
+    }
 
     if(variantTitle === 'Default Title') {
         variantTitle = ''
 
-        const values = [productId, title, shopId, variantId, price, image];
+        const values = [productId, title, shopId, variantId, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
             return null;
         }
     } else {
-        const values = [productId, title, shopId, variantId, variantTitle, price, image];
+        const values = [productId, title, shopId, variantId, variantTitle, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');

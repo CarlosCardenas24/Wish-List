@@ -20,7 +20,7 @@ import {
   IndexFilters,
   useSetIndexFiltersMode,
 } from "@shopify/polaris"; 
-import {CircleInformationMajor} from '@shopify/polaris-icons';
+import {NoteIcon} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
@@ -154,7 +154,7 @@ const rowMarkup = sortProducts(initialProducts, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
       <IndexTable.Cell>
-        <Thumbnail source={image} size="small"/>
+        <Thumbnail source={image} alt="No Image" size="small"/>
       </IndexTable.Cell>
       <IndexTable.Cell>{name}</IndexTable.Cell>
       <IndexTable.Cell>{variantName}</IndexTable.Cell>
