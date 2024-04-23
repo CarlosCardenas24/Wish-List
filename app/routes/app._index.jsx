@@ -96,12 +96,6 @@ export default function Index() {
     {label: 'Quantity', value: 'quantity asc', directionLabel: 'Ascending'},
     {label: 'Quantity', value: 'quantity desc', directionLabel: 'Descending'},
   ];
-  /* const sortOptions = [
-    {label: 'Product (A-Z)', value: 'product asc'},
-    {label: 'Product (Z-A)', value: 'product desc'},
-    {label: 'Quantity (Low to High)', value: 'quantity asc'},
-    {label: 'Quantity (High to Low)', value: 'quantity desc'},
-  ]; */
 
   const [sortSelected, setSortSelected] = useState('quantity desc');
   const { mode, setMode } = useSetIndexFiltersMode();
@@ -171,33 +165,6 @@ const rowMarkup = sortProducts(initialProducts, sortSelected).map(
     </IndexTable.Row>
   )
 );
-
-  /* const rowMarkup = sortedProducts.map(
-    (
-      {variantId, image, variantName, name, quantity, price},
-      index,
-    ) => (
-      <IndexTable.Row id={variantId} key={variantId} position={index}>
-        <IndexTable.Cell>
-          <Thumbnail source={image} size="small"/>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{name}</IndexTable.Cell>
-        <IndexTable.Cell>{variantName}</IndexTable.Cell>
-        <IndexTable.Cell>{quantity}</IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {price}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {price * quantity}
-          </Text>
-        </IndexTable.Cell>
-      </IndexTable.Row>
-    ),
-  ); */
-
 
   return (
     <Page fullWidth>
