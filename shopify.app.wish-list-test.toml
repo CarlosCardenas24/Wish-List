@@ -2,7 +2,7 @@
 
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
-application_url = "https://identifies-jessica-lake-bunny.trycloudflare.com"
+application_url = "https://cow-especially-capture-supposed.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://identifies-jessica-lake-bunny.trycloudflare.com/auth/callback",
-  "https://identifies-jessica-lake-bunny.trycloudflare.com/auth/shopify/callback",
-  "https://identifies-jessica-lake-bunny.trycloudflare.com/api/auth/callback"
+  "https://cow-especially-capture-supposed.trycloudflare.com/auth/callback",
+  "https://cow-especially-capture-supposed.trycloudflare.com/auth/shopify/callback",
+  "https://cow-especially-capture-supposed.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
