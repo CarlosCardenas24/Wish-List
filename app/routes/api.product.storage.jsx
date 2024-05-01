@@ -30,13 +30,19 @@ export async function action({ request }) {
     try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
-        const { productId, title, shopId, variantId, variantTitle, price, image } = body;
+        const { userId, productId, title, shopId, variantId, variantTitle, price, image } = body;
 
         const recordExists = await prisma.product.findUnique({
             where: {
                 variantId: variantId
             }
         });
+
+        const userExists = await prisma.user.findUnique({
+            where: {
+                userId_variantId: { userId, variantId }
+            }
+        })
 
         if(recordExists){
             const { quantity } = recordExists;
@@ -60,6 +66,27 @@ export async function action({ request }) {
                     variantName: variantTitle,
                     price: price,
                     image: image,
+                    quantity: 1,
+                }
+            });
+        }
+        if(userExists){
+            const { quantity } = userExists;
+
+            await prisma.user.update({
+                where: {
+                    variantId: variantId
+                },
+                data: {
+                    quantity: quantity + 1
+                },
+            })
+
+        } else {
+            await prisma.user.create({
+                data: {
+                    userId: userId,
+                    variantId: variantId,
                     quantity: 1,
                 }
             });

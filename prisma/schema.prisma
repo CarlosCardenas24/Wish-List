@@ -30,3 +30,18 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+
+model User {
+  userId    String   
+  variantId String @id
+  quantity  Int
+
+  @@unique([userId, variantId])
+}
+
+//entry
+//{
+//  userId: "user123",
+//  wishlist: "[ {quantity: 1, variantId: 12323} , (quantity: 5, variantId: 1231123), (quantity: 5, variantId: 123098) ]" // variantId
+//}
