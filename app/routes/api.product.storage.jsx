@@ -86,8 +86,9 @@ export async function action({ request }) {
             await prisma.user.create({
                 data: {
                     userId: userId,
-                    variantId: variantId,
-                    quantity: 1,
+                    /* variantId: variantId,
+                    quantity: 1, */
+                    whishList: JSON.stringify([{quantity: 1, variantId}])
                 }
             });
         }

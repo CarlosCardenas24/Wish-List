@@ -33,11 +33,15 @@ model Product {
 
 
 model User {
-  userId    String @id
-  variantId String 
-  quantity  Int
+  userId    Int @id
+  wishList  WishList[]
+}
 
-  @@unique([userId, variantId])
+model WishList {
+  id          Int @id
+  quantity    Int
+  variantName String
+  user        User  @relation(fields: [id], references: [userId])
 }
 
 //entry
