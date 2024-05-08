@@ -40,7 +40,7 @@ export async function action({ request }) {
 
         const userExists = await prisma.user.findUnique({
             where: {
-                userId_variantId: { userId, variantId }
+                userId: userId
             }
         })
 
@@ -86,9 +86,12 @@ export async function action({ request }) {
             await prisma.user.create({
                 data: {
                     userId: userId,
-                    /* variantId: variantId,
-                    quantity: 1, */
-                    whishList: JSON.stringify([{quantity: 1, variantId}])
+                    wishList: {
+                        create: {
+                            quantity: 1,
+                            variantId: variantId,
+                        }
+                    },
                 }
             });
         }

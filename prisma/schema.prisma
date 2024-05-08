@@ -33,15 +33,15 @@ model Product {
 
 
 model User {
-  userId    Int @id
+  userId    String @id
   wishList  WishList[]
 }
 
 model WishList {
-  id          Int @id
+  uId         String @id
   quantity    Int
-  variantName String
-  user        User  @relation(fields: [id], references: [userId])
+  variantId   String
+  user        User  @relation(fields: [uId], references: [userId])
 }
 
 //entry
