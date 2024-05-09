@@ -44,7 +44,7 @@ export async function action({ request }) {
             }
         })
 
-        if(recordExists){
+        if (recordExists) {
             const { quantity } = recordExists;
 
             await prisma.product.update({
@@ -70,18 +70,32 @@ export async function action({ request }) {
                 }
             });
         }
-        if(userExists){
-            const { quantity } = userExists;
-
+        if (userExists) {
             await prisma.user.update({
                 where: {
-                    variantId: variantId
+                    userId: userId
                 },
                 data: {
-                    quantity: quantity + 1
+                    wishList: {
+                        upsert: {
+                            create: {
+                                quantity: 1,
+                                variantId: variantId,
+                            },
+                            update: {
+                                quantity: { increment: 1 },
+                            },
+                            where: {
+                                variantId: variantId,
+                            }
+                        },
+                        
+                    }
+                },
+                include: {
+                    wishList: true,
                 },
             })
-
         } else {
             await prisma.user.create({
                 data: {
