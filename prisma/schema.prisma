@@ -38,10 +38,13 @@ model User {
 }
 
 model WishList {
-  uId         String @id
+  id          Int    @id @default(autoincrement())
   quantity    Int
-  variantId   String @unique
+  variantId   String 
+  uId         String
   user        User  @relation(fields: [uId], references: [userId])
+
+  @@unique([variantId, uId])
 }
 
 //entry

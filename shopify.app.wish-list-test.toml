@@ -2,7 +2,7 @@
 
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
-application_url = "https://complete-dangerous-utilization-medical.trycloudflare.com"
+application_url = "https://toy-might-forest-bare.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://complete-dangerous-utilization-medical.trycloudflare.com/auth/callback",
-  "https://complete-dangerous-utilization-medical.trycloudflare.com/auth/shopify/callback",
-  "https://complete-dangerous-utilization-medical.trycloudflare.com/api/auth/callback"
+  "https://toy-might-forest-bare.trycloudflare.com/auth/callback",
+  "https://toy-might-forest-bare.trycloudflare.com/auth/shopify/callback",
+  "https://toy-might-forest-bare.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

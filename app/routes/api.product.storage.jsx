@@ -86,7 +86,7 @@ export async function action({ request }) {
                                 quantity: { increment: 1 },
                             },
                             where: {
-                                variantId: variantId,
+                                variantId_uId: {variantId: variantId, uId: userId}
                             }
                         },
                         
