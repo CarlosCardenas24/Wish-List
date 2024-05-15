@@ -42,7 +42,7 @@ model WishList {
   quantity    Int
   variantId   String 
   uId         String
-  user        User  @relation(fields: [uId], references: [userId])
+  user        User  @relation(fields: [uId], references: [userId], onDelete: Cascade)
 
   @@unique([variantId, uId])
 }
