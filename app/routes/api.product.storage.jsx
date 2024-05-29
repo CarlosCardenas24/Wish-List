@@ -1,4 +1,5 @@
 //@Documentation -> https://www.prisma.io/docs/orm/prisma-client/queries/crud
+// wish list proxy https://customer-wishlist.com/wish_list
 import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
 
