@@ -1,5 +1,4 @@
-import {ActionFunction} from '@remix-run/node'
-import { authenticate } from '~/shopify.server'
+import { authenticate } from '../shopify.server'
 import { Page } from '@shopify/polaris'
 
 export async function action({request}) { 
