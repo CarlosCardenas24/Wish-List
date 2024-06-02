@@ -1,6 +1,6 @@
 function testProxy() {
     return new Promise((resolve, reject) => {
-        fetch("https://testingwishlist.myshopify.com/apps/proxy"), {
+        fetch("https://testingwishlist.myshopify.com/apps/proxytest"), {
             method: 'POST',
             redirect: 'manual',
             headers: {

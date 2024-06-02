@@ -1,7 +1,17 @@
 import { authenticate } from '../shopify.server'
 import { Page } from '@shopify/polaris'
 
-export async function action({request}) { 
+/* export async function action({request}) { 
+    console.log('---hit app proxy----')
+
+    const {session} = await authenticate.public.appProxy(request)
+    if(session){
+        console.log(session)
+    }
+    return null
+} */
+
+export const loader = async ({request}) => {
     console.log('---hit app proxy----')
 
     const {session} = await authenticate.public.appProxy(request)
