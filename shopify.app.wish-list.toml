@@ -1,27 +1,34 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
+client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
-client_id = "72b609e7a65a6c4da6e1f67bdc153f30"
-application_url = "https://ward-gothic-speed-summer.trycloudflare.com"
+handle = "wish-list-26"
+application_url = "https://lunch-acquired-psi-affair.trycloudflare.com"
 embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "testingwishlist.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products , read_products"
+scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://ward-gothic-speed-summer.trycloudflare.com/auth/callback",
-  "https://ward-gothic-speed-summer.trycloudflare.com/auth/shopify/callback",
-  "https://ward-gothic-speed-summer.trycloudflare.com/api/auth/callback"
+  "https://lunch-acquired-psi-affair.trycloudflare.com/auth/callback",
+  "https://lunch-acquired-psi-affair.trycloudflare.com/auth/shopify/callback",
+  "https://lunch-acquired-psi-affair.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
+[app_proxy]
+url = "https://lunch-acquired-psi-affair.trycloudflare.com/app/proxy"
+subpath = "proxytest"
+prefix = "apps"
+
 [pos]
 embedded = false
-
-[build]
-automatically_update_urls_on_dev = true
-dev_store_url = "testingwishlist.myshopify.com"

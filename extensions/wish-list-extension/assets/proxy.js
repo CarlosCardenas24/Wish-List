@@ -4,12 +4,12 @@ function testProxy() {
             method: 'POST',
             redirect: 'manual',
             headers: {
-                'Content_Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
             }
         }
     }).then((response) => {
-        console.log(response, 'reponse');
+        console.log(response, 'response');
     }).then((data) => {
         resolve(data)
     }).catch((error) => {
