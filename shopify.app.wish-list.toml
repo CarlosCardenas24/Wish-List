@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://lunch-acquired-psi-affair.trycloudflare.com"
+application_url = "https://legitimate-civilization-laboratory-sight.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://lunch-acquired-psi-affair.trycloudflare.com/auth/callback",
-  "https://lunch-acquired-psi-affair.trycloudflare.com/auth/shopify/callback",
-  "https://lunch-acquired-psi-affair.trycloudflare.com/api/auth/callback"
+  "https://legitimate-civilization-laboratory-sight.trycloudflare.com/auth/callback",
+  "https://legitimate-civilization-laboratory-sight.trycloudflare.com/auth/shopify/callback",
+  "https://legitimate-civilization-laboratory-sight.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://lunch-acquired-psi-affair.trycloudflare.com/app/proxy"
+url = "https://legitimate-civilization-laboratory-sight.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
