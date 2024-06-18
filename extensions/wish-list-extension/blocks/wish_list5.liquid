@@ -1,6 +1,6 @@
-{% assign price = product.selected_or_first_available_variant.price | money_without_currency %}
+{% comment %} {% assign price = product.selected_or_first_available_variant.price | money_without_currency %}
 {% assign variantImage = product.selected_or_first_available_variant | image_url %}
-{% assign productImage = product | image_url %}
+{% assign productImage = product | image_url %} {% endcomment %}
 
 {% comment %} {% if customer %} {% endcomment %}
 <div class="wish-list-container" style="position: fixed; bottom: 0; right: 0">
@@ -16,7 +16,7 @@
   {% else %}
   <input type="hidden" class="image" value="{{ productImage }}">
   {% endunless %} {% endcomment %}
-  <button class="add-to-list-button" style="padding: 10px 20px; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+  <button class="wish-list-button" style="padding: 10px 20px; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
     Wish List
   </button>
   <div id="insert"></div>
@@ -36,7 +36,7 @@
       "id" : "product",
       "type": "product",
       "label": "Product ID",
-      "info": "Add the product ID you want to add to the wish list."
+      "info": "View Wish List"
     }
   ]
 }

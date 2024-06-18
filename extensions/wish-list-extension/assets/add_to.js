@@ -1,4 +1,5 @@
 let button = document.querySelector('.add-to-list-button');
+let insert = document.getElementById('insert');
 
 function variant_change_listener(callback){
     const selector = 'input[name="id"]';
@@ -52,6 +53,17 @@ button?.addEventListener('click', () => {
         body: JSON.stringify({ userId, productId, title, shopId, variantId, variantTitle, price, image})
     })
     .then(response => response.json())
-    .then(data => { console.log(data)})
+    .then(data => { 
+        if(data.successMessage.resource.wishList){
+            const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;';
+            /* const h1Style = 'background-color:  '  */
+            const textStyle = 'font-size: 18px; color: #333; text-align: center;';
+            insert.innerHTML = `
+                <div style="${containerStyle}">
+                    <p style="${textStyle}">You have added ${title} to you Wish List!</p>
+                </div>
+            `
+        }
+    })
     .catch(error => console.error(error));
 });

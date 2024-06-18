@@ -1,4 +1,4 @@
-let button = document.querySelector('.add-to-list-button');
+let button = document.querySelector('.wish-list-button');
 let insert = document.getElementById('insert');
 
 console.log(insert);    
