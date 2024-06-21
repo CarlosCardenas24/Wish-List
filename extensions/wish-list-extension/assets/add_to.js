@@ -1,5 +1,4 @@
 let button = document.querySelector('.add-to-list-button');
-let insert = document.getElementById('insert');
 
 function variant_change_listener(callback){
     const selector = 'input[name="id"]';
@@ -26,6 +25,7 @@ button?.addEventListener('click', () => {
     if (!image) {
         image = ''
     }
+    let productImage = image;
 
     if(variantTitle === 'Default Title') {
         variantTitle = ''
@@ -55,14 +55,22 @@ button?.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => { 
         if(data.successMessage.resource.wishList){
-            const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;';
-            /* const h1Style = 'background-color:  '  */
+            /* const containerStyle = 'padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;';
+            const h1Style = 'background-color: #f8f9fa '  
             const textStyle = 'font-size: 18px; color: #333; text-align: center;';
             insert.innerHTML = `
                 <div style="${containerStyle}">
-                    <p style="${textStyle}">You have added ${title} to you Wish List!</p>
+                    <h1 style="${h1Style}"> P </h1>
+                    <p style="${textStyle}">${title} has been added to your wish list</p>
+                    <img src="${productImage}" alt="${title}" width="63" height="150">
                 </div>
-            `
+            ` */
+
+            let successPopup = document.getElementById('popup-container-success');
+            successPopup.style.display = "block";
+        } else {
+            let errorPopup = document.getElementById('popup-container-error');
+            errorPopup.style.display = "block";
         }
     })
     .catch(error => console.error(error));

@@ -1,0 +1,28 @@
+<div id="popup-container-success" class="popup" style="position: fixed; bottom: 0; left: 0; display: none;">
+    <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;">
+      <p style="font-size: 18px; color: #333; text-align: center;">Testing</p>
+    </div>
+</div>
+<div id="popup-container-error" class="popup" style="position: fixed; bottom: 0; left: 0; display: none;">
+  <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;">
+    <p style="font-size: 18px; color: #333; text-align: center;">Error Testing</p>
+  </div>
+</div>
+
+<script async id='myScript' src={{ "add_to.js" | asset_url }} defer></script>
+
+
+{% schema %}
+{
+  "name": "Popup Message Embedded",
+  "target": "body",
+  "settings": [
+    {
+      "id" : "product",
+      "type": "product",
+      "label": "Product ID",
+      "info": "View Wish List"
+    }
+  ]
+}
+{% endschema %}

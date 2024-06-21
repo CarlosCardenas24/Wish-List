@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://wb-andrew-cream-niger.trycloudflare.com"
+application_url = "https://physics-richmond-defend-punk.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://wb-andrew-cream-niger.trycloudflare.com/auth/callback",
-  "https://wb-andrew-cream-niger.trycloudflare.com/auth/shopify/callback",
-  "https://wb-andrew-cream-niger.trycloudflare.com/api/auth/callback"
+  "https://physics-richmond-defend-punk.trycloudflare.com/auth/callback",
+  "https://physics-richmond-defend-punk.trycloudflare.com/auth/shopify/callback",
+  "https://physics-richmond-defend-punk.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://wb-andrew-cream-niger.trycloudflare.com/app/proxy"
+url = "https://physics-richmond-defend-punk.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
