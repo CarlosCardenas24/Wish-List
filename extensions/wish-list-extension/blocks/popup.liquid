@@ -3,16 +3,30 @@
     <div class="close-popup">
       <button>&times</button>
     </div>
-    {% comment %} <div>
-      <p style="font-size: 18px; color: #333; text-align: center;">Testing</p>
-    </div> {% endcomment %}
+    <div class="text-popup">
+      <p>1 item has been added to your Wish List
+        <br/>
+        {% if product.has_only_default_variant %}
+        {{ product.title }} 
+        {% else %}
+        {{ product.selected_or_first_available_variant.title }} {{ product.title }}
+        {% endif %}
+        <br/>
+        ${{ product.selected_or_first_available_variant.price | money_without_currency }}
+      </p>
+    </div>
+    <div class="view-with-list button button--full-width button--secondary">
+      <button>View Your List </button>
+    </div>
   </div>
 </div>
 <div id="popup-container-error" class="popup">
   <div class="flex-container">
-    <div class="close-popup">&times</div>
-    <div>
-      <p style="font-size: 18px; color: #333; text-align: center;">Error Testing</p>
+    <div class="close-popup">
+      <button>&times</button>
+    </div>
+    <div class="text-popup">
+      <p>Error Testing</p>
     </div>
   </div>
 </div>
@@ -31,12 +45,17 @@
 
   .flex-container {
     display: flex;
+    flex-wrap: wrap;
     background-color: #ffffff;
     width: 350px;
-    height: 300px;
+    height: 450px;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid #ccc;
+  }
+
+  .flex-container div {
+    position: relative;
   }
 
   .close-popup {
@@ -45,6 +64,7 @@
     background-color: #BEBEBE;
     padding: 0;
     text-align: right;
+    flex: 1 0 100%;
   }
 
   .close-popup button {
@@ -58,7 +78,26 @@
     font-weight: bold;
   }
 
+  .text-popup {
+    height: 260px;
+    width: 100%;
+    margin-top: 20px;
+  }
 
+  .text-popup p {
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    text-align: left;
+    color: #333;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  .view-wish-list {
+    margin: 10px 25px;
+    width: 300px
+  }
 </style>
 
 {% schema %}
