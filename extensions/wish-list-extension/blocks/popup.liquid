@@ -1,11 +1,11 @@
 <div id="popup-container-success" class="popup">
   <div class="flex-container">
     <div class="close-popup">
-      <p>&times</p>
+      <button>&times</button>
     </div>
-    <div>
+    {% comment %} <div>
       <p style="font-size: 18px; color: #333; text-align: center;">Testing</p>
-    </div>
+    </div> {% endcomment %}
   </div>
 </div>
 <div id="popup-container-error" class="popup">
@@ -33,7 +33,7 @@
     display: flex;
     background-color: #ffffff;
     width: 350px;
-    height: 200px;
+    height: 300px;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -41,14 +41,21 @@
 
   .close-popup {
     width: 350px;
-    height: 20px;
+    height: 40px;
     background-color: #BEBEBE;
     padding: 0;
     text-align: right;
   }
 
-  .close-popup p {
-    font-size: 18px;
+  .close-popup button {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 40px;
+    font-weight: bold;
   }
 
 
