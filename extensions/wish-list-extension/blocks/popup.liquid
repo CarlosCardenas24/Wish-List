@@ -1,16 +1,58 @@
-<div id="popup-container-success" class="popup" style="position: fixed; bottom: 0; left: 0; display: none;">
-    <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;">
+<div id="popup-container-success" class="popup">
+  <div class="flex-container">
+    <div class="close-popup">
+      <p>&times</p>
+    </div>
+    <div>
       <p style="font-size: 18px; color: #333; text-align: center;">Testing</p>
     </div>
+  </div>
 </div>
-<div id="popup-container-error" class="popup" style="position: fixed; bottom: 0; left: 0; display: none;">
-  <div style="padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;">
-    <p style="font-size: 18px; color: #333; text-align: center;">Error Testing</p>
+<div id="popup-container-error" class="popup">
+  <div class="flex-container">
+    <div class="close-popup">&times</div>
+    <div>
+      <p style="font-size: 18px; color: #333; text-align: center;">Error Testing</p>
+    </div>
   </div>
 </div>
 
 <script async id='myScript' src={{ "add_to.js" | asset_url }} defer></script>
 
+<style>
+  .popup {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    margin: auto;
+    z-index: 2;
+    display: none;
+  }
+
+  .flex-container {
+    display: flex;
+    background-color: #ffffff;
+    width: 350px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .close-popup {
+    width: 350px;
+    height: 20px;
+    background-color: #BEBEBE;
+    padding: 0;
+    text-align: right;
+  }
+
+  .close-popup p {
+    font-size: 18px;
+  }
+
+
+</style>
 
 {% schema %}
 {
