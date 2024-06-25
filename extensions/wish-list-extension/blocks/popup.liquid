@@ -1,7 +1,7 @@
 <div id="popup-container-success" class="popup">
   <div class="flex-container">
     <div class="close-popup">
-      <button>&times</button>
+      <button onclick="closePopup()">&times</button>
     </div>
     <div class="text-popup">
       <p>1 item has been added to your Wish List
@@ -15,8 +15,11 @@
         ${{ product.selected_or_first_available_variant.price | money_without_currency }}
       </p>
     </div>
-    <div class="view-with-list button button--full-width button--secondary">
-      <button>View Your List </button>
+    <div class="view-wish-list">
+      <button class="button button--full-width button--secondary">View Your List </button>
+    </div>
+    <div class="continue-shopping">
+      <button class="button button--full-width button--primary" onclick="closePopup()">Continue Shopping </button>
     </div>
   </div>
 </div>
@@ -26,12 +29,23 @@
       <button>&times</button>
     </div>
     <div class="text-popup">
-      <p>Error Testing</p>
+      <p>There has been an issue with trying to add 
+        {% if product.has_only_default_variant %}
+          {{ product.title }} 
+        {% else %}
+          {{ product.selected_or_first_available_variant.title }} {{ product.title }} 
+        {% endif %}
+        to your list.
+      </p>
+    </div>
+    <div class="continue-shopping">
+      <button class="button button--full-width button--primary" onclick="closePopup()">Continue Shopping </button>
     </div>
   </div>
 </div>
 
 <script async id='myScript' src={{ "add_to.js" | asset_url }} defer></script>
+<script src={{ "popup.js" | asset_url }} defer></script>
 
 <style>
   .popup {
@@ -48,7 +62,7 @@
     flex-wrap: wrap;
     background-color: #ffffff;
     width: 350px;
-    height: 450px;
+    height: 350px;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -79,7 +93,7 @@
   }
 
   .text-popup {
-    height: 260px;
+    height: 160px;
     width: 100%;
     margin-top: 20px;
   }
@@ -96,7 +110,29 @@
 
   .view-wish-list {
     margin: 10px 25px;
-    width: 300px
+    padding: 0;
+    width: 300px;
+    height: 50px;
+  }
+  .view-wish-list button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .continue-shopping {
+    margin: 0 25px 10px;
+    padding: 0;
+    width: 300px;
+    height: 50px;
+  }
+
+  .continue-shopping button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>
 

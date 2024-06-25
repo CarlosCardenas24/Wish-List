@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://inclusive-parenting-big-laden.trycloudflare.com"
+application_url = "https://calcium-latex-free-hunter.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://inclusive-parenting-big-laden.trycloudflare.com/auth/callback",
-  "https://inclusive-parenting-big-laden.trycloudflare.com/auth/shopify/callback",
-  "https://inclusive-parenting-big-laden.trycloudflare.com/api/auth/callback"
+  "https://calcium-latex-free-hunter.trycloudflare.com/auth/callback",
+  "https://calcium-latex-free-hunter.trycloudflare.com/auth/shopify/callback",
+  "https://calcium-latex-free-hunter.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://inclusive-parenting-big-laden.trycloudflare.com/app/proxy"
+url = "https://calcium-latex-free-hunter.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
