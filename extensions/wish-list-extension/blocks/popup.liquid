@@ -3,26 +3,42 @@
     <div class="close-popup">
       <button onclick="closePopup()">&times</button>
     </div>
-    <div class="text-popup">
-      <p>1 item has been added to your Wish List
-        <br/>
+
+    <div class="flex-body-container"> 
+      <div class="image-popup">
         {% if product.has_only_default_variant %}
-        {{ product.title }} 
+          <img src="{{ product | image_url }}" width="180" height="270"/>
         {% else %}
-        {{ product.selected_or_first_available_variant.title }} {{ product.title }}
+          <img src="{{ product.selected_or_first_available_variant | image_url }}" width="180" height="270" />
         {% endif %}
-        <br/>
-        ${{ product.selected_or_first_available_variant.price | money_without_currency }}
-      </p>
-    </div>
-    <div class="view-wish-list">
-      <button class="button button--full-width button--secondary">View Your List </button>
-    </div>
-    <div class="continue-shopping">
-      <button class="button button--full-width button--primary" onclick="closePopup()">Continue Shopping </button>
+      </div>
+
+      <div class="text-button-container"> 
+        <div class="text-popup">
+          <p>1 item has been added to your Wish List
+            <br/>
+            {% if product.has_only_default_variant %}
+            {{ product.title }} 
+            {% else %}
+            {{ product.selected_or_first_available_variant.title }} {{ product.title }}
+            {% endif %}
+            <br/>
+            ${{ product.selected_or_first_available_variant.price | money_without_currency }}
+          </p>
+        </div>
+
+        <div class="view-wish-list">
+          <button class="button button--full-width button--secondary">View Your List </button>
+        </div>
+
+        <div class="continue-shopping">
+          <button class="button button--full-width button--primary" onclick="closePopup()">Continue Shopping </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 <div id="popup-container-error" class="popup">
   <div class="flex-container">
     <div class="close-popup">
@@ -50,7 +66,7 @@
 <style>
   .popup {
     position: fixed;
-    top: 50%;
+    top: 45%;
     width: 100%;
     margin: auto;
     z-index: 2;
@@ -65,7 +81,7 @@
     height: 350px;
     margin: 0 auto;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
   }
 
   .flex-container div {
@@ -90,6 +106,10 @@
     background: none;
     font-size: 40px;
     font-weight: bold;
+  }
+
+  .image-popup {
+    display: none;
   }
 
   .text-popup {
@@ -133,6 +153,31 @@
     padding: 0;
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (min-width: 600px) {
+    .flex-container {
+      width: 550px;
+    }
+
+    .close-popup {
+      width: 550px;
+    }
+
+    .flex-body-container {
+      display: flex;
+      flex-direction: row;
+      width: 550px;
+      height: 310px;
+      
+    }
+
+    .image-popup {
+      display: block;
+      width: 200px;
+      height: 100%;
+      padding: 10px;
+    }
   }
 </style>
 

@@ -1,0 +1,45 @@
+<div class="wish-list-container" >
+  <button class="wish-list-button" >
+    Wish List
+  </button>
+  <div id="insert"></div>
+</div>
+
+<script async id='myScript' src={{ "wish_list.js" | asset_url }} defer></script>
+
+<style>
+.wish-list-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 50px;
+}
+
+.wish-list-button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Wish List Embedded",
+  "target": "body",
+  "settings": [
+    {
+      "id" : "product",
+      "type": "product",
+      "label": "Product ID",
+      "info": "View Wish List"
+    }
+  ]
+}
+{% endschema %}
