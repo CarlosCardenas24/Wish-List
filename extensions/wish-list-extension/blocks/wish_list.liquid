@@ -1,9 +1,9 @@
 <div class="wish-list-container" >
+  <div id="insert" calss="list"></div>
   <input type="hidden" class="customer-id-list" value="{{ customer.id }}">
-  <button class="wish-list-button" >
+  <button id="user-wishList" class="wish-list-button" >
     Wish List
   </button>
-  <div id="insert"></div>
 </div>
 
 <script async id='myScript' src={{ "wish_list.js" | asset_url }} defer></script>
@@ -11,15 +11,18 @@
 <style>
 .wish-list-container {
   position: fixed;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
   bottom: 0;
   right: 0;
-  width: 150px;
-  height: 50px;
+  max-width: 550px;
 }
 
 .wish-list-button {
-  width: 100%;
-  height: 100%;
+  width: 150px;
+  height: 50px;
+  right: 0;
   padding: 10px 20px;
   background-color: #007BFF;
   color: #fff;
@@ -27,6 +30,19 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+}
+
+.list {
+  width: 350px;
+  height: 350px;
+  bottom: 50px;
+  right: 0;
+}
+
+.list p {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
 }
 </style>
 
