@@ -1,16 +1,18 @@
-let button = document.querySelector('.wish-list-button');
+let buttonList = document.querySelector('.wish-list-button');
 let insert = document.getElementById('insert');
 
 
-button?.addEventListener('click', () => {
+buttonList?.addEventListener('click', () => {
     const PORT = 3000;
     
+    const userId = document.querySelector('.customer-id-list').value;
+
     fetch(`http://localhost:${PORT}/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: payload
+        body: JSON.stringify({ userId })
     })
     .then(response => response.json())
     .then(data => {

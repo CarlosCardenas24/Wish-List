@@ -1,4 +1,4 @@
-let button = document.querySelector('.add-to-list-button');
+let buttonAdd = document.querySelector('.add-to-list-button');
 
 function variant_change_listener(callback){
     const selector = 'input[name="id"]';
@@ -10,7 +10,7 @@ function variant_change_listener(callback){
 }
 variant_change_listener();
 
-button?.addEventListener('click', () => {
+buttonAdd?.addEventListener('click', () => {
     const PORT = 3000;
 
     const userId = document.querySelector('.customer-id').value;
@@ -20,7 +20,7 @@ button?.addEventListener('click', () => {
     const variantId = document.querySelector('.variant-id').value;
     let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
-    const price = parseFloat(priceString);
+    const price = parseFloat(priceString); 
     let image = document.querySelector('.image').value;
     if (!image) {
         image = ''

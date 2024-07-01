@@ -3,7 +3,7 @@
 {% assign productImage = product | image_url %}
 
 {% if customer %}
-<div class="add-to-container">
+<div class="add-to-container" style="display: flex; justify-content: center; ">
   <input type="hidden" class="customer-id" value="{{ customer.id }}">
   <input type="hidden" class="product-id" value="{{ product.id }}">
   <input type="hidden" class="title" value="{{ product.title }}">
@@ -16,7 +16,7 @@
   {% else %}
   <input type="hidden" class="image" value="{{ productImage }}">
   {% endunless %}
-  <button class="add-to-list-button button button--full-width button--secondary">
+  <button class="add-to-list-button button button--full-width button--secondary" style="max-width: 300px">
     Add To Wish List
   </button>
 </div>

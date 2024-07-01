@@ -1,5 +1,3 @@
-//@Documentation -> https://www.prisma.io/docs/orm/prisma-client/queries/crud
-// wish list proxy https://customer-wishlist.com/wish_list
 import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
 
@@ -105,7 +103,7 @@ async function createWishList(body) {
 
 export async function loader({ request }) {
     try {
-        console.log("request", request);
+        //console.log("request", request);
         let headers = new Headers(accessOptions);
         return json({ message: "Success!", method: 'loader()' }, { headers });
     } catch (error) {
@@ -114,10 +112,63 @@ export async function loader({ request }) {
 }
 
 export async function action({ request }) {
+    //console.log('request from action(): ', request)
     
-    console.log('request from action(): ', request)
+    let body = await request.json();
+    const { title } = body;
+
+    if (!title){
+        try {
+            let headers = new Headers(accessOptions);
+            const { userId } = body;
+
+            const userExists = await prisma.user.findUnique({
+                where: {userId: userId},
+                include: {wishList: true}
+            })
+            console.log(userExists)
+            userExists ? successMessage.resource = userExists : successMessage.resource = ""
+
+            return json({ successMessage }, { headers });
+
+        }catch (error) {
+        console.log(error);
+        return json({ message: "Hello, the request to the API has failed!" });
+    }
+    } else {
+        try {
+            let headers = new Headers(accessOptions);
+            const { userId, variantId } = body;
     
-    try {
+            //query for a product with matching variantId
+            const _variantId = {
+                where: {
+                    variantId: variantId
+                }
+            }
+            
+            //query for a user with matching userId
+            const _userId = {
+                where: {
+                    userId: userId
+                }
+            }
+    
+            const recordExists = await prisma.product.findUnique(_variantId);
+            const userExists = await prisma.user.findUnique(_userId)
+            const record = recordExists;
+            recordExists ? await updateProduct(record, variantId) : await addProduct(body);
+            userExists ? await updateUserWishList(body) : await createWishList(body);
+    
+            return json({ successMessage }, { headers });
+    
+        } catch (error) {
+            console.log(error);
+            return json({ message: "Hello, the request to the API has failed!" });
+        }
+    }
+    
+    /* try {
         let headers = new Headers(accessOptions);
         let body = await request.json();
         const { userId, variantId } = body;
@@ -147,6 +198,6 @@ export async function action({ request }) {
     } catch (error) {
         console.log(error);
         return json({ message: "Hello, the request to the API has failed!" });
-    }
+    } */
 
 }

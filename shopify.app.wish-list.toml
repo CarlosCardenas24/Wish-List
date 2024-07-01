@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://pocket-replace-emily-uses.trycloudflare.com"
+application_url = "https://depression-fresh-scholar-scholarship.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://pocket-replace-emily-uses.trycloudflare.com/auth/callback",
-  "https://pocket-replace-emily-uses.trycloudflare.com/auth/shopify/callback",
-  "https://pocket-replace-emily-uses.trycloudflare.com/api/auth/callback"
+  "https://depression-fresh-scholar-scholarship.trycloudflare.com/auth/callback",
+  "https://depression-fresh-scholar-scholarship.trycloudflare.com/auth/shopify/callback",
+  "https://depression-fresh-scholar-scholarship.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://pocket-replace-emily-uses.trycloudflare.com/app/proxy"
+url = "https://depression-fresh-scholar-scholarship.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
