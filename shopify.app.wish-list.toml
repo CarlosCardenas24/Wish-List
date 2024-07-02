@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://dinner-castle-photographs-finds.trycloudflare.com"
+application_url = "https://comparable-throat-king-centers.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://dinner-castle-photographs-finds.trycloudflare.com/auth/callback",
-  "https://dinner-castle-photographs-finds.trycloudflare.com/auth/shopify/callback",
-  "https://dinner-castle-photographs-finds.trycloudflare.com/api/auth/callback"
+  "https://comparable-throat-king-centers.trycloudflare.com/auth/callback",
+  "https://comparable-throat-king-centers.trycloudflare.com/auth/shopify/callback",
+  "https://comparable-throat-king-centers.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://dinner-castle-photographs-finds.trycloudflare.com/app/proxy"
+url = "https://comparable-throat-king-centers.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
