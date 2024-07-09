@@ -22,27 +22,25 @@ buttonList?.addEventListener('click', () => {
         
         if(data.successMessage.resource){
             document.getElementById("user-wishList").style.display = "none";
-            let list = document.getElementById("userList")
             wishlist = data.successMessage.resource;
-            
-
-             
             renderedWishlist = wishlist.map(item => {
                 return `
                         <li>${item.name} ${item.variantName} ${item.price}</li> 
                 `
             });
             console.log(renderedWishlist)
-        }
 
-        /* const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
-        const textStyle = 'font-size: 20px; color: #333; text-align: center;'; */
-        insert.innerHTML = `
-            <div>
-                <p>User List Goes Here</p>
-                <ul>${renderedWishlist.join('')}</ul>
-            </div>
-        `
+            /* const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
+            const textStyle = 'font-size: 20px; color: #333; text-align: center;'; */
+            insert.innerHTML = `
+                <div>
+                    <p>User List Goes Here</p>
+                    <ul>${renderedWishlist.join('')}</ul>
+                </div>
+            `;
+            document.getElementById("wish-list-popup").style.display = "block";
+            
+        }
     })
     .catch(error => console.error(error));
 });

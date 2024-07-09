@@ -15,7 +15,8 @@
 
       <div class="text-button-container"> 
         <div class="text-popup">
-          <p>1 item has been added to your Wish List
+          <p>1 item added to your Wish List
+            <br/>
             <br/>
             {% if product.has_only_default_variant %}
             {{ product.title }} 
@@ -113,7 +114,7 @@
   }
 
   .text-popup {
-    height: 160px;
+    height: 140px;
     width: 325px;
     margin-top: 20px;
     margin-left: 25px;
@@ -143,7 +144,7 @@
   }
 
   .continue-shopping {
-    margin: 0 25px 10px;
+    margin: 0 25px 25px;
     padding: 0;
     width: 300px;
     height: 50px;
@@ -179,6 +180,11 @@
       height: 100%;
       padding: 10px;
     }
+
+    .image-popup img {
+      object-fit: contain;
+    }
+
   }
 </style>
 
