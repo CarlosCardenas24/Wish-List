@@ -1,5 +1,5 @@
 <div class="wish-list-container" >
-  <div id="insert" calss="list"></div>
+  <div id="insert" class="list"></div>
   <input type="hidden" class="customer-id-list" value="{{ customer.id }}">
   <button id="user-wishList" class="wish-list-button" >
     Wish List
@@ -35,12 +35,17 @@
 .list {
   width: 350px;
   height: 350px;
+  padding: 20px;
+  margin: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border: 1px solid #ccc;
   bottom: 50px;
   right: 0;
 }
 
 .list p {
-  font-size: 18px;
+  font-size: 20px;
   color: #333;
   text-align: center;
 }

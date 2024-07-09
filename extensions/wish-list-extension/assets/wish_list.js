@@ -16,26 +16,30 @@ buttonList?.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.successMessage.resource.wishList);
+        console.log(data.successMessage.resource);
         let wishlist = null;
         let renderedWishlist = null;
         
-        if(data.successMessage.resource.wishList){
+        if(data.successMessage.resource){
             document.getElementById("user-wishList").style.display = "none";
-            wishlist = data.successMessage.resource.wishList;
+            let list = document.getElementById("userList")
+            wishlist = data.successMessage.resource;
+            
+
+             
             renderedWishlist = wishlist.map(item => {
-                return `<li>${item.id}</li>
-                        <li>${item.quantity}</li>
-                        <li>${item.variantId}</li>
+                return `
+                        <li>${item.name} ${item.variantName} ${item.price}</li> 
                 `
             });
+            console.log(renderedWishlist)
         }
 
-        const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
-        const textStyle = 'font-size: 20px; color: #333; text-align: center;';
+        /* const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
+        const textStyle = 'font-size: 20px; color: #333; text-align: center;'; */
         insert.innerHTML = `
-            <div style="${containerStyle}">
-                <p style"${textStyle}">User List Goes Here</p>
+            <div>
+                <p>User List Goes Here</p>
                 <ul>${renderedWishlist.join('')}</ul>
             </div>
         `

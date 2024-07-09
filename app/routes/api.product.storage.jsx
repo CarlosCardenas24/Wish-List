@@ -13,7 +13,7 @@ const accessOptions = {
 const successMessage = {
     message: "Success! Product Added to Database",
     method: 'action()',
-    resource: {},
+    resource: [],
     status: 200,
 };
 
@@ -126,8 +126,26 @@ export async function action({ request }) {
                 where: {userId: userId},
                 include: {wishList: true}
             })
-            console.log(userExists)
-            userExists ? successMessage.resource = userExists : successMessage.resource = ""
+            
+            /* userExists ? successMessage.resource = userExists : successMessage.resource = "" */
+            if (userExists) {
+                successMessage.resource = []
+                for (let i = 0; i < userExists?.wishList.length; i++) {
+                    const productList = await prisma.product.findUnique({
+                        where: {variantId: userExists?.wishList[i].variantId},
+                        select: {
+                            name: true,
+                            variantName: true,
+                            price: true,
+                            image: true,
+                        }
+                    })
+                    successMessage.resource.push(productList)
+                }
+                console.log(successMessage)
+            } else {
+                successMessage.resource = ""
+            }
 
             return json({ successMessage }, { headers });
 

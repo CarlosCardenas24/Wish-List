@@ -46,9 +46,3 @@ model WishList {
 
   @@unique([variantId, uId])
 }
-
-//entry
-//{
-//  userId: "user123",
-//  wishlist: "[ {quantity: 1, variantId: 12323} , (quantity: 5, variantId: 1231123), (quantity: 5, variantId: 123098) ]" // variantId
-//}
