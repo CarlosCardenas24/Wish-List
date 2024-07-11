@@ -25,18 +25,23 @@ buttonList?.addEventListener('click', () => {
             wishlist = data.successMessage.resource;
             renderedWishlist = wishlist.map(item => {
                 return `
-                        <li>${item.name} ${item.variantName} ${item.price}</li> 
-                `
+                        <li class="list-li"> <img src="${item.image}" width="30" height="25">
+                            <div class="list-flex">
+                                <div class="list-name">
+                                    ${item.name} ${item.variantName} 
+                                </div>
+                                <div class="list-price">
+                                    $${item.price} USD
+                                </div>                                
+                            </div>
+                        </li> `
             });
             console.log(renderedWishlist)
 
             /* const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
             const textStyle = 'font-size: 20px; color: #333; text-align: center;'; */
             insert.innerHTML = `
-                <div>
-                    <p>User List Goes Here</p>
-                    <ul>${renderedWishlist.join('')}</ul>
-                </div>
+                    <ul class="list-ul">${renderedWishlist.join('')}</ul>
             `;
             document.getElementById("wish-list-popup").style.display = "block";
             

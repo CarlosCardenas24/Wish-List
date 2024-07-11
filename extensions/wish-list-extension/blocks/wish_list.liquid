@@ -1,14 +1,16 @@
 <div class="wish-list-container" >
   <div id="wish-list-popup" class="wish-list-popup">
-      <div class="wish-list-flex"> 
         <div class="close-wish-list">
-          <button onclick="closeWishList()">&times</button>
-       </div>
-  
-        <div id="insert" class="list"></div>
-      </div>
-  </div>
+          <div class="close-wish-list-text">
+            <P>Your Wish List</P>
+          </div>
+          <div class="close-wish-list-button"> 
+            <button onclick="closeWishList()">&times</button>
+          </div>
+        </div>
 
+      <div id="insert" class="list"></div>
+  </div>
 
   <input type="hidden" class="customer-id-list" value="{{ customer.id }}">
   <button id="user-wishList" class="wish-list-button button button--full-width button--secondary">
@@ -37,18 +39,39 @@
   background-color: #f8f9fa;
   border-radius: 5px;
   border: 1px solid #ccc;
+  margin-right: 10px;
+  margin-bottom: 25px;
 }
 
 .close-wish-list {
   width: 350px;
   height: 40px;
+  display: flex;
+  flex-direction: row;
   background-color: #EBECED;
   padding: 0;
-  text-align: right;
   flex: 1 0 100%;
 }
 
-.close-wish-list button {
+.close-wish-list-text {
+  width: 50%;
+  font-size: 15px;
+  color: #333;
+  text-align: left;
+}
+.close-wish-list-text p {
+  margin: 0;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.close-wish-list-button {
+  width: 50%;
+  text-align: right;
+}
+
+.close-wish-list-button button{
   height: 40px;
   width: 40px;
   margin: 0;
@@ -62,14 +85,34 @@
 .list {
   width: 100%;
   height: 100%;
-  {% comment %} bottom: 50px;
-  right: 0; {% endcomment %}
+  margin-left: 25px;
+  margin-top: 20px;
 }
 
-.list p {
-  font-size: 20px;
-  color: #333;
-  text-align: center;
+.list-ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.list-li {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.list-li img{
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.list-flex {
+  width: 90px;
+  font-size: 9px;
+  font-weight: bold;
+  flex-direction: column;
 }
 
 .wish-list-button {
