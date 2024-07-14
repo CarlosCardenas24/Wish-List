@@ -85,22 +85,24 @@
 .list {
   width: 100%;
   height: 100%;
-  margin-left: 25px;
-  margin-top: 20px;
+  padding-left: 25px;
+  padding-top: 20px;
 }
 
 .list-ul {
+  height: 315px;
   list-style-type: none;
   margin: 0;
-  margin-top: 15px;
   padding: 0;
+  overflow-y: scroll;
 }
 
 .list-li {
-  height: 30px;
+  height: 45px;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .list-li img{
@@ -109,10 +111,24 @@
 }
 
 .list-flex {
-  width: 90px;
-  font-size: 9px;
+  width: 125px;
+  font-size: 12px;
   font-weight: bold;
   flex-direction: column;
+}
+
+.list-buttons-flex {
+  height: 45px;
+  width: 150px;
+}
+
+.list-form {
+  height: 45px;
+}
+
+.delete-from-list {
+  height: 45px;
+  width: 30px;
 }
 
 .wish-list-button {

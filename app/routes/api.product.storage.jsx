@@ -135,6 +135,7 @@ export async function action({ request }) {
                         where: {variantId: userExists?.wishList[i].variantId},
                         select: {
                             name: true,
+                            variantId: true,
                             variantName: true,
                             price: true,
                             image: true,

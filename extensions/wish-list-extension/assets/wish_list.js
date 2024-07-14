@@ -25,21 +25,33 @@ buttonList?.addEventListener('click', () => {
             wishlist = data.successMessage.resource;
             renderedWishlist = wishlist.map(item => {
                 return `
-                        <li class="list-li"> <img src="${item.image}" width="30" height="25">
+                        <li class="list-li"> 
+                            <img src="${item.image}" width="35" height="45">
+
                             <div class="list-flex">
                                 <div class="list-name">
                                     ${item.name} ${item.variantName} 
                                 </div>
                                 <div class="list-price">
                                     $${item.price} USD
-                                </div>                                
+                                </div>   
                             </div>
+                            
+                            
                         </li> `
             });
+            /* 
+            <div class="list-buttons-flex">
+                                <button class="delete-from-list> X </button>
+                            </div>
+            
+            <form method="post" action="/cart/add" class="list-form>
+                                        <input type="hidden" name="id" value="{{ ${item.variantId} }}" />
+                                        <input type="hidden" id="quantity" name="quantity" value="1"/>
+                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary" />
+                                    </form> */
             console.log(renderedWishlist)
 
-            /* const containerStyle = 'padding: 20px; background-color: #f8f9fa; border-radius: 5px; width: 350px; margin: 10px; border: 1px solid #ccc;';
-            const textStyle = 'font-size: 20px; color: #333; text-align: center;'; */
             insert.innerHTML = `
                     <ul class="list-ul">${renderedWishlist.join('')}</ul>
             `;
