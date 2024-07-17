@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://switzerland-breeds-ran-secretary.trycloudflare.com"
+application_url = "https://genes-mixer-gateway-guidance.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://switzerland-breeds-ran-secretary.trycloudflare.com/auth/callback",
-  "https://switzerland-breeds-ran-secretary.trycloudflare.com/auth/shopify/callback",
-  "https://switzerland-breeds-ran-secretary.trycloudflare.com/api/auth/callback"
+  "https://genes-mixer-gateway-guidance.trycloudflare.com/auth/callback",
+  "https://genes-mixer-gateway-guidance.trycloudflare.com/auth/shopify/callback",
+  "https://genes-mixer-gateway-guidance.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://switzerland-breeds-ran-secretary.trycloudflare.com/app/proxy"
+url = "https://genes-mixer-gateway-guidance.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 
