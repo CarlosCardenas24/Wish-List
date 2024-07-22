@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://mysterious-plane-week-casino.trycloudflare.com"
+application_url = "https://coupled-novels-father-xi.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://mysterious-plane-week-casino.trycloudflare.com/auth/callback",
-  "https://mysterious-plane-week-casino.trycloudflare.com/auth/shopify/callback",
-  "https://mysterious-plane-week-casino.trycloudflare.com/api/auth/callback"
+  "https://coupled-novels-father-xi.trycloudflare.com/auth/callback",
+  "https://coupled-novels-father-xi.trycloudflare.com/auth/shopify/callback",
+  "https://coupled-novels-father-xi.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://mysterious-plane-week-casino.trycloudflare.com/app/proxy"
+url = "https://coupled-novels-father-xi.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 

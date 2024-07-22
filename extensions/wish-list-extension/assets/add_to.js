@@ -55,17 +55,6 @@ buttonAdd?.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => { 
         if(data.successMessage.resource.wishList){
-            /* const containerStyle = 'padding: 20px; background-color: #ffffff; border-radius: 5px; width: 300px; margin: 0 auto; border: 1px solid #ccc;';
-            const h1Style = 'background-color: #f8f9fa '  
-            const textStyle = 'font-size: 18px; color: #333; text-align: center;';
-            insert.innerHTML = `
-                <div style="${containerStyle}">
-                    <h1 style="${h1Style}"> P </h1>
-                    <p style="${textStyle}">${title} has been added to your wish list</p>
-                    <img src="${productImage}" alt="${title}" width="63" height="150">
-                </div>
-            ` */
-
             let successPopup = document.getElementById('popup-container-success');
             successPopup.style.display = "block";
         } else {

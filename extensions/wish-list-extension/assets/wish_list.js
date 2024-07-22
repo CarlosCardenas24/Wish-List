@@ -1,4 +1,5 @@
 let buttonList = document.querySelector('.wish-list-button');
+let deleteButton = document.querySelector('.delete-button');
 let insert = document.getElementById('insert');
 
 
@@ -45,30 +46,20 @@ buttonList?.addEventListener('click', () => {
                             <div class="list-buttons-flex">
                                 <div class="form-container">
                                     <form method="post" action="/cart/add" class="list-form">
+                                        <input type="hidden" class="user-item" value="${item.variantId}">
                                         <input type="hidden" name="id" value="${item.variantId}" />
                                         <input type="hidden" id="quantity" name="quantity" value="1"/>
-                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary add--to--cart" />
+                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary add--to--cart delete-button" />
                                     </form>
                                 </div>
 
-                                <div class="delete-from-list">
-                                    <button> X </button>
-                                </div>
+                                <input type="hidden" class="user-item" value="${item.variantId}">
+                                <button class="delete-button delete-button-css"> X </button>
+                                
                             </div>
                             
                         </li> `
             });
-            /* 
-            <div class="list-buttons-flex">
-                                <button class="delete-from-list> X </button>
-                            </div>
-            
-            <form method="post" action="/cart/add" class="list-form>
-                                        <input type="hidden" name="id" value="${item.variantId}" />
-                                        <input type="hidden" id="quantity" name="quantity" value="1"/>
-                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary" />
-                                    </form> */
-
             insert.innerHTML = `
                     <ul class="list-ul">${renderedWishlist.join('')}</ul>
             `;
@@ -78,3 +69,23 @@ buttonList?.addEventListener('click', () => {
     })
     .catch(error => console.error(error));
 });
+
+// <input type="hidden" class="user-item" value="${item.variantId}"> <button class="delete-button"> X </button> <input class="delete-button delete-button-css" type="button" value="X" />
+
+deleteButton?.addEventListener('click', () => { 
+    const PORT = 3000;
+
+    const userId = document.querySelector('.customer-id-list').value;
+    const userItem = document.querySelector('.user-item').value;
+
+    console.log(userId)
+    console.log(userItem)
+
+    /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId })
+    }) */
+})

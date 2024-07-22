@@ -118,7 +118,7 @@ export async function action({ request }) {
     const { title } = body;
 
 
-    if (request.method == 'POST') {
+    //if (request.method == 'POST') {
         if (!title){
             try {
                 let headers = new Headers(accessOptions);
@@ -187,7 +187,7 @@ export async function action({ request }) {
                 return json({ message: "Hello, the request to the API has failed!" });
             }
         }
-    }
+    //} else if (request.method == '')
     
     
     /* try {
