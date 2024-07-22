@@ -43,11 +43,11 @@ buttonList?.addEventListener('click', () => {
                             </div>
 
                             <div class="list-buttons-flex">
-                                <div>
+                                <div class="form-container">
                                     <form method="post" action="/cart/add" class="list-form">
                                         <input type="hidden" name="id" value="${item.variantId}" />
                                         <input type="hidden" id="quantity" name="quantity" value="1"/>
-                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary" />
+                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary add--to--cart" />
                                     </form>
                                 </div>
 
