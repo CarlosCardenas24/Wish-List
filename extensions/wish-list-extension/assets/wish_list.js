@@ -1,7 +1,5 @@
 let buttonList = document.querySelector('.wish-list-button');
-let deleteButton = document.querySelector('.delete-button');
 let insert = document.getElementById('insert');
-
 
 buttonList?.addEventListener('click', () => {
     const PORT = 3000;
@@ -53,9 +51,11 @@ buttonList?.addEventListener('click', () => {
                                     </form>
                                 </div>
 
-                                <input type="hidden" class="user-item" value="${item.variantId}">
-                                <button class="delete-button delete-button-css"> X </button>
-                                
+                                <div class="delete-from-list">
+                                    <input type="hidden" class="user-item" value="${item.variantId}">
+                                    <button class="delete-button delete-button-css"> X </button>
+                                </div>
+
                             </div>
                             
                         </li> `
@@ -64,7 +64,48 @@ buttonList?.addEventListener('click', () => {
                     <ul class="list-ul">${renderedWishlist.join('')}</ul>
             `;
             document.getElementById("wish-list-popup").style.display = "block";
+
+            document.querySelectorAll('.delete-button').forEach(elem => {
+                elem.addEventListener('click', () => { 
+                    const PORT = 3000;
+                    
+                    const userId = document.querySelector('.customer-id-list').value;
+                    const userItem = document.querySelector('.user-item').value;
+                
+                    console.log(userId)
+                    console.log(userItem)
+                
+                    /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ userId })
+                    }).then(response => response.json())
+                    .catch(error => console.error(error)); */
+                })
+            })
+
+            /* let deleteButton = document.querySelector('.delete-button');
+            console.log(deleteButton)
+            deleteButton?.addEventListener('click', () => { 
+                const PORT = 3000;
+                
+                const userId = document.querySelector('.customer-id-list').value;
+                const userItem = document.querySelector('.user-item').value;
             
+                console.log(userId)
+                console.log(userItem)
+            
+                fetch(`http://localhost:${PORT}/api/product/storage`, { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId })
+                }).then(response => response.json())
+                .catch(error => console.error(error));
+            }) */
         }
     })
     .catch(error => console.error(error));
@@ -72,20 +113,3 @@ buttonList?.addEventListener('click', () => {
 
 // <input type="hidden" class="user-item" value="${item.variantId}"> <button class="delete-button"> X </button> <input class="delete-button delete-button-css" type="button" value="X" />
 
-deleteButton?.addEventListener('click', () => { 
-    const PORT = 3000;
-
-    const userId = document.querySelector('.customer-id-list').value;
-    const userItem = document.querySelector('.user-item').value;
-
-    console.log(userId)
-    console.log(userItem)
-
-    /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId })
-    }) */
-})
