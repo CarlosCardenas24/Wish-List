@@ -47,13 +47,13 @@ buttonList?.addEventListener('click', () => {
                                         <input type="hidden" class="user-item" value="${item.variantId}">
                                         <input type="hidden" name="id" value="${item.variantId}" />
                                         <input type="hidden" id="quantity" name="quantity" value="1"/>
-                                        <input type="submit" value="Add to cart" class="button button--full-width button--secondary add--to--cart delete-button" />
+                                        <input type="submit" value="Add to cart" onclick="deleteButton('${item.variantId}')" class="button button--full-width button--secondary add--to--cart delete-button" />
                                     </form>
                                 </div>
 
                                 <div class="delete-from-list">
                                     <input type="hidden" class="user-item" value="${item.variantId}">
-                                    <button class="delete-button delete-button-css"> X </button>
+                                    <button onclick="deleteButton('${item.variantId}')" class="delete-button delete-button-css"> X </button>
                                 </div>
 
                             </div>
@@ -65,7 +65,7 @@ buttonList?.addEventListener('click', () => {
             `;
             document.getElementById("wish-list-popup").style.display = "block";
 
-            document.querySelectorAll('.delete-button').forEach(elem => {
+            /* document.querySelectorAll('.delete-button').forEach(elem => {
                 elem.addEventListener('click', () => { 
                     const PORT = 3000;
                     
@@ -75,16 +75,16 @@ buttonList?.addEventListener('click', () => {
                     console.log(userId)
                     console.log(userItem)
                 
-                    /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
+                    fetch(`http://localhost:${PORT}/api/product/storage`, { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({ userId })
                     }).then(response => response.json())
-                    .catch(error => console.error(error)); */
+                    .catch(error => console.error(error));
                 })
-            })
+            }) */
 
             /* let deleteButton = document.querySelector('.delete-button');
             console.log(deleteButton)
@@ -113,3 +113,21 @@ buttonList?.addEventListener('click', () => {
 
 // <input type="hidden" class="user-item" value="${item.variantId}"> <button class="delete-button"> X </button> <input class="delete-button delete-button-css" type="button" value="X" />
 
+function deleteButton(item) {
+            const PORT = 3000;
+            
+            const userId = document.querySelector('.customer-id-list').value;
+            const userItem = item
+        
+            console.log(userId)
+            console.log(userItem)
+        
+            /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId })
+            }).then(response => response.json())
+            .catch(error => console.error(error)); */
+}
