@@ -22,6 +22,7 @@ model Product {
   id          String   
   name        String
   shopId      String
+  shopName    String
   variantId   String   @id
   variantName String
   price       Float

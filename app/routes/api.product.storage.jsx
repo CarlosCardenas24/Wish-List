@@ -32,13 +32,14 @@ async function updateProduct(record, variantId) {
 }
 
 async function addProduct(body) {
-    const { productId, title, shopId, variantId, variantTitle, price, image } = body;
+    const { productId, title, shopId, shopName, variantId, variantTitle, price, image } = body;
 
     const _product = {
         data : {
             id: productId,
             name: title,
             shopId: shopId,
+            shopName: shopName,
             variantId: variantId,
             variantName: variantTitle,
             price: price,
@@ -120,7 +121,6 @@ export async function action({ request }) {
     let body = await request.json();
     const { title } = body;
     let method = request.method;
-    console.log(method)
 
     if (method === 'DELETE') {
         try {

@@ -39,14 +39,14 @@ buttonAdd?.addEventListener('click', () => {
     if(variantTitle === 'Default Title') {
         variantTitle = ''
 
-        const values = [userId, productId, title, shopId, variantId, price];
+        const values = [userId, productId, title, shopId, shopName, variantId, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
             return null;
         }
     } else {
-        const values = [userId, productId, title, shopId, variantId, variantTitle, price];
+        const values = [userId, productId, title, shopId, shopName, variantId, variantTitle, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
@@ -59,7 +59,7 @@ buttonAdd?.addEventListener('click', () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId, productId, title, shopId, variantId, variantTitle, price, image})
+        body: JSON.stringify({ userId, productId, title, shopId, shopName, variantId, variantTitle, price, image})
     })
     .then(response => response.json())
     .then(data => { 

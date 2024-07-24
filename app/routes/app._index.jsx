@@ -48,6 +48,7 @@ export default function Index() {
   const revalidator = useRevalidator()
 
   console.log(shop)
+  console.log(initialProducts)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -144,6 +145,7 @@ export default function Index() {
         return 0;
     });
 }
+
 
 const rowMarkup = sortProducts(initialProducts, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
