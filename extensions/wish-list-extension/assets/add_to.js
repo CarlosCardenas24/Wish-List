@@ -54,7 +54,6 @@ buttonAdd?.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(data => { 
-        console.log(data.successMessage.resource)
         if(data.successMessage.resource === "Already Exists"){
             let alreadyPopup = document.getElementById('popup-container-already');
             alreadyPopup.style.display = "block";
