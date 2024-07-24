@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://directory-enable-cir-semiconductor.trycloudflare.com"
+application_url = "https://rand-entire-optimize-comparisons.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://directory-enable-cir-semiconductor.trycloudflare.com/auth/callback",
-  "https://directory-enable-cir-semiconductor.trycloudflare.com/auth/shopify/callback",
-  "https://directory-enable-cir-semiconductor.trycloudflare.com/api/auth/callback"
+  "https://rand-entire-optimize-comparisons.trycloudflare.com/auth/callback",
+  "https://rand-entire-optimize-comparisons.trycloudflare.com/auth/shopify/callback",
+  "https://rand-entire-optimize-comparisons.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://directory-enable-cir-semiconductor.trycloudflare.com/app/proxy"
+url = "https://rand-entire-optimize-comparisons.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 

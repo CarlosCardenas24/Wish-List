@@ -1,4 +1,11 @@
 let buttonAdd = document.querySelector('.add-to-list-button');
+let imageExists = document.querySelector('.image').value;
+console.log(imageExists)
+
+if (!imageExists) {
+    let addContainer = document.querySelector('.add-to-container');
+    addContainer.style.justifyContent = "center";
+}
 
 function variant_change_listener(callback){
     const selector = 'input[name="id"]';
