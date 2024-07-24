@@ -100,7 +100,7 @@ async function createWishList(body) {
 
     const create = prisma.user.create(_newList);
 
-    successMessage.resource = create;
+    successMessage.resource = "Newly created";
 
     return create;
 }
@@ -176,7 +176,7 @@ export async function action({ request }) {
                     successMessage.resource.push(productList)
                     }
             } else {
-                successMessage.resource = "Error"
+                successMessage.resource = "No Data"
             }
     
             return json({ successMessage }, { headers });

@@ -18,7 +18,10 @@ buttonList?.addEventListener('click', () => {
         let wishlist = null;
         let renderedWishlist = null;
         
-        if(data.successMessage.resource){
+        if(data.successMessage.resource === "No Data" || data.successMessage.resource.length === 0) {
+            console.log(data.successMessage.resource)
+        }
+        if(data.successMessage.resource && data.successMessage.resource.length != 0){
             document.getElementById("user-wishList").style.display = "none";
             wishlist = data.successMessage.resource;
             renderedWishlist = wishlist.map(item => {

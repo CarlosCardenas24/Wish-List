@@ -61,7 +61,7 @@ buttonAdd?.addEventListener('click', () => {
 
             let alreadyFlex = document.getElementById('flex-already');
             alreadyFlex.style.justifyContent = "center";
-        } else if(data.successMessage.resource.wishList){
+        } else if(data.successMessage.resource.wishList || data.successMessage.resource === "Newly created"){
             let successPopup = document.getElementById('popup-container-success');
             successPopup.style.display = "block";
         } else {
