@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://wrestling-ok-lodge-plastic.trycloudflare.com"
+application_url = "https://technique-blacks-paraguay-participants.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://wrestling-ok-lodge-plastic.trycloudflare.com/auth/callback",
-  "https://wrestling-ok-lodge-plastic.trycloudflare.com/auth/shopify/callback",
-  "https://wrestling-ok-lodge-plastic.trycloudflare.com/api/auth/callback"
+  "https://technique-blacks-paraguay-participants.trycloudflare.com/auth/callback",
+  "https://technique-blacks-paraguay-participants.trycloudflare.com/auth/shopify/callback",
+  "https://technique-blacks-paraguay-participants.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://wrestling-ok-lodge-plastic.trycloudflare.com/app/proxy"
+url = "https://technique-blacks-paraguay-participants.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 

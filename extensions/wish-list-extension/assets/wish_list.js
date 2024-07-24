@@ -19,7 +19,11 @@ buttonList?.addEventListener('click', () => {
         let renderedWishlist = null;
         
         if(data.successMessage.resource === "No Data" || data.successMessage.resource.length === 0) {
-            console.log(data.successMessage.resource)
+            document.getElementById("user-wishList").style.display = "none";
+            insert.innerHTML = `
+                    <ul class="list-ul">Your Wish List Is Empty</ul>
+            `;
+            document.getElementById("wish-list-popup").style.display = "block";
         }
         if(data.successMessage.resource && data.successMessage.resource.length != 0){
             document.getElementById("user-wishList").style.display = "none";
