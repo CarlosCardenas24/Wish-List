@@ -1,7 +1,6 @@
 let buttonList = document.querySelector('.wish-list-button');
 let insert = document.getElementById('insert');
 
-
 function viewList() {
     const PORT = 3000;
     

@@ -1,3 +1,4 @@
+{% if customer %}
 <div class="wish-list-container" >
   <div id="wish-list-popup" class="wish-list-popup">
         <div class="close-wish-list">
@@ -17,6 +18,13 @@
     Wish List
   </button>
 </div>
+{% else %}
+<div class="wish-list-container" >
+  <button disabled title="Must be logged in" id="user-wishList" class="wish-list-button button button--full-width button--secondary">
+    Wish List
+  </button>
+</div>
+{% endif %}
 
 <script async id='myScript' src={{ "wish_list.js" | asset_url }} defer></script>
 <script src={{ "popup.js" | asset_url }} defer></script>
