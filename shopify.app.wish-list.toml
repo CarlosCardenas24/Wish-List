@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://bomb-strong-proxy-injured.trycloudflare.com"
+application_url = "https://valuable-tribe-version-biotechnology.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://bomb-strong-proxy-injured.trycloudflare.com/auth/callback",
-  "https://bomb-strong-proxy-injured.trycloudflare.com/auth/shopify/callback",
-  "https://bomb-strong-proxy-injured.trycloudflare.com/api/auth/callback"
+  "https://valuable-tribe-version-biotechnology.trycloudflare.com/auth/callback",
+  "https://valuable-tribe-version-biotechnology.trycloudflare.com/auth/shopify/callback",
+  "https://valuable-tribe-version-biotechnology.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://bomb-strong-proxy-injured.trycloudflare.com/app/proxy"
+url = "https://valuable-tribe-version-biotechnology.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 

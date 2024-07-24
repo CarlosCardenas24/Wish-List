@@ -47,9 +47,6 @@ export default function Index() {
   const submit = useSubmit();
   const revalidator = useRevalidator()
 
-  console.log(shop)
-  console.log(initialProducts)
-
   useEffect(() => {
     const interval = setInterval(() => {
       revalidator.revalidate();
@@ -146,8 +143,14 @@ export default function Index() {
     });
 }
 
+const newProductList = initialProducts.map(({ shopName, variantId, image, variantName, name, quantity, price }) => {
+  if (shopName.toLowerCase() == shop) {
+    return ({variantId, image, variantName, name, quantity, price})
+  }
+})
 
-const rowMarkup = sortProducts(initialProducts, sortSelected).map(
+//initialProducts
+const rowMarkup = sortProducts(newProductList, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
       <IndexTable.Cell>
