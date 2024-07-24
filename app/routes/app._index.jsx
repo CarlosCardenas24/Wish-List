@@ -34,18 +34,20 @@ export const loader = async ({ request }) => {
 };
 
 export default function Index() {
-  useEffect(() => {
+  /* useEffect(() => {
     console.log("Component mounted or updated");
     return () => {
       console.log("Component will unmount");
     };
-  });
+  }); */
 
   const nav = useNavigation();
   const { shop, products: initialProducts } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
+
+  console.log(shop)
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -1,6 +1,5 @@
 let buttonAdd = document.querySelector('.add-to-list-button');
 let imageExists = document.querySelector('.image').value;
-console.log(imageExists)
 
 if (!imageExists) {
     let addContainer = document.querySelector('.add-to-container');
@@ -24,15 +23,18 @@ buttonAdd?.addEventListener('click', () => {
     const productId = document.querySelector('.product-id').value;
     const title = document.querySelector('.title').value;
     const shopId = document.querySelector('.shop-id').value;
+    const shopName = document.querySelector('.shop-name').value;
     const variantId = document.querySelector('.variant-id').value;
     let variantTitle = document.querySelector('.variant-title').value;
     const priceString = document.getElementById('price').value;
-    const price = parseFloat(priceString); 
+    const priceFixed = parseFloat(priceString).toFixed(2);
+    const price = parseFloat(priceFixed);
     let image = document.querySelector('.image').value;
     if (!image) {
         image = ''
     }
     let productImage = image;
+    console.log(price)
 
     if(variantTitle === 'Default Title') {
         variantTitle = ''

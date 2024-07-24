@@ -161,9 +161,6 @@ function deleteButton(item) {
             const userId = document.querySelector('.customer-id-list').value;
             const variantId = item;
         
-            console.log(userId)
-            console.log(variantId)
-        
             fetch(`http://localhost:${PORT}/api/product/storage`, { 
                 method: 'DELETE',
                 headers: {
@@ -172,6 +169,9 @@ function deleteButton(item) {
                 body: JSON.stringify({ userId, variantId })
             }).then(response => response.json())
             .catch(error => console.error(error));
+
+            closeWishList()
+            viewList()
 }
 
 
