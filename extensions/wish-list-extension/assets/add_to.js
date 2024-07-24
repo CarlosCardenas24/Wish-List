@@ -54,12 +54,22 @@ buttonAdd?.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(data => { 
-        if(data.successMessage.resource.wishList){
+        console.log(data.successMessage.resource)
+        if(data.successMessage.resource === "Already Exists"){
+            let alreadyPopup = document.getElementById('popup-container-already');
+            alreadyPopup.style.display = "block";
+
+            let alreadyText = document.getElementById('text-already');
+            alreadyText.style.justifyContent = "center";
+        } else if(data.successMessage.resource.wishList){
             let successPopup = document.getElementById('popup-container-success');
             successPopup.style.display = "block";
         } else {
             let errorPopup = document.getElementById('popup-container-error');
             errorPopup.style.display = "block";
+
+            let errorText = document.getElementById('text-error');
+            errorText.style.justifyContent = "center";
         }
     })
     .catch(error => console.error(error));

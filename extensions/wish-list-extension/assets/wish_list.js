@@ -117,17 +117,17 @@ function deleteButton(item) {
             const PORT = 3000;
             
             const userId = document.querySelector('.customer-id-list').value;
-            const userItem = item
+            const variantId = item;
         
             console.log(userId)
-            console.log(userItem)
+            console.log(variantId)
         
-            /* fetch(`http://localhost:${PORT}/api/product/storage`, { 
-                method: 'POST',
+            fetch(`http://localhost:${PORT}/api/product/storage`, { 
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ userId })
+                body: JSON.stringify({ userId, variantId })
             }).then(response => response.json())
-            .catch(error => console.error(error)); */
+            .catch(error => console.error(error));
 }

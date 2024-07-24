@@ -98,7 +98,11 @@ async function createWishList(body) {
         }
     }
 
-    return prisma.user.create(_newList);
+    const create = prisma.user.create(_newList);
+
+    successMessage.resource = create;
+
+    return create;
 }
 
 export async function loader({ request }) {
@@ -113,81 +117,127 @@ export async function loader({ request }) {
 
 export async function action({ request }) {
     //console.log('request from action(): ', request)
-    console.log(request.method)
     let body = await request.json();
     const { title } = body;
+    let method = request.method;
+    console.log(method)
 
+    if (method === 'DELETE') {
+        try {
+            let headers = new Headers(accessOptions)
+            const { userId, variantId } = body;
 
-    //if (request.method == 'POST') {
-        if (!title){
-            try {
-                let headers = new Headers(accessOptions);
-                const { userId } = body;
-    
-                const userExists = await prisma.user.findUnique({
-                    where: {userId: userId},
-                    include: {wishList: true}
-                })
-                
-                /* userExists ? successMessage.resource = userExists : successMessage.resource = "" */
-                if (userExists) {
-                    successMessage.resource = []
-                    for (let i = 0; i < userExists?.wishList.length; i++) {
-                        const productList = await prisma.product.findUnique({
-                            where: {variantId: userExists?.wishList[i].variantId},
-                            select: {
-                                name: true,
-                                variantId: true,
-                                variantName: true,
-                                price: true,
-                                image: true,
-                            }
-                        })
-                        successMessage.resource.push(productList)
-                    }
-                } else {
-                    successMessage.resource = ""
-                }
-    
-                return json({ successMessage }, { headers });
-    
-            }catch (error) {
+            const deleteUserList = await prisma.WishList.delete({
+                where: {
+                    variantId_uId: {variantId: variantId, uId: userId}
+                },
+            })
+
+            const deleteProductList = await prisma.Product.update({
+                where: {
+                    variantId: variantId,
+                },
+                data: {
+                    quantity: { decrement: 1 },
+                },
+            });
+
+            return json({ successMessage }, { headers });
+        }catch (error) {
             console.log(error);
             return json({ message: "Hello, the request to the API has failed!" });
         }
-        } else {
-            try {
-                let headers = new Headers(accessOptions);
-                const { userId, variantId } = body;
-        
-                //query for a product with matching variantId
-                const _variantId = {
-                    where: {
-                        variantId: variantId
-                    }
-                }
+    }
+
+    if (!title){
+        try {
+            let headers = new Headers(accessOptions);
+            const { userId } = body;
+    
+            const userExists = await prisma.user.findUnique({
+                where: {userId: userId},
+                include: {wishList: true}
+            })
                 
-                //query for a user with matching userId
-                const _userId = {
-                    where: {
-                        userId: userId
+            /* userExists ? successMessage.resource = userExists : successMessage.resource = "" */
+            if (userExists) {
+                successMessage.resource = []
+                for (let i = 0; i < userExists?.wishList.length; i++) {
+                    const productList = await prisma.product.findUnique({
+                        where: {variantId: userExists?.wishList[i].variantId},
+                        select: {
+                            name: true,
+                            variantId: true,
+                            variantName: true,
+                            price: true,
+                            image: true,
+                        }
+                    })
+                    successMessage.resource.push(productList)
                     }
-                }
+            } else {
+                successMessage.resource = "Error"
+            }
+    
+            return json({ successMessage }, { headers });
+    
+        }catch (error) {
+            console.log(error);
+            return json({ message: "Hello, the request to the API has failed!" });
+        }
+    } else {
+        try {
+            let headers = new Headers(accessOptions);
+            const { userId, variantId } = body;
         
-                const recordExists = await prisma.product.findUnique(_variantId);
+            //query for a product with matching variantId
+            const _variantId = {
+                where: {
+                    variantId: variantId
+                }
+            }
+                
+            //query for a user with matching userId
+            const _userId = {
+                where: {
+                    userId: userId
+                }
+            }
+        
+            // Searches to see if a user already has a specific product in their list
+            const productExists = await prisma.wishList.findUnique({
+                where: {
+                    variantId_uId: {variantId: variantId, uId: userId}
+                }
+            })
+
+            // If a user already has a product in their list then it will return "already exists" to make a popup appear stating that its already in their list
+            if(productExists) {
+                successMessage.resource = "Already Exists"
+                return json({ successMessage }, { headers })
+            } else { // If a user doesn't have it in their list then it will add it
                 const userExists = await prisma.user.findUnique(_userId)
+                const recordExists = await prisma.product.findUnique(_variantId);
                 const record = recordExists;
                 recordExists ? await updateProduct(record, variantId) : await addProduct(body);
                 userExists ? await updateUserWishList(body) : await createWishList(body);
         
                 return json({ successMessage }, { headers });
-        
-            } catch (error) {
-                console.log(error);
-                return json({ message: "Hello, the request to the API has failed!" });
             }
+
+           /*  const userExists = await prisma.user.findUnique(_userId)
+            const recordExists = await prisma.product.findUnique(_variantId);
+            const record = recordExists;
+            recordExists ? await updateProduct(record, variantId) : await addProduct(body);
+            userExists ? await updateUserWishList(body) : await createWishList(body);
+        
+            return json({ successMessage }, { headers }); */
+        
+        } catch (error) {
+            console.log(error);
+            return json({ message: "Hello, the request to the API has failed!" });
         }
-    //} else if (request.method == '')
+    }
     
     
     /* try {
