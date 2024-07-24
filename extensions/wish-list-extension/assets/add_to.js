@@ -59,8 +59,8 @@ buttonAdd?.addEventListener('click', () => {
             let alreadyPopup = document.getElementById('popup-container-already');
             alreadyPopup.style.display = "block";
 
-            let alreadyText = document.getElementById('text-already');
-            alreadyText.style.justifyContent = "center";
+            let alreadyFlex = document.getElementById('flex-already');
+            alreadyFlex.style.justifyContent = "center";
         } else if(data.successMessage.resource.wishList){
             let successPopup = document.getElementById('popup-container-success');
             successPopup.style.display = "block";
@@ -68,8 +68,8 @@ buttonAdd?.addEventListener('click', () => {
             let errorPopup = document.getElementById('popup-container-error');
             errorPopup.style.display = "block";
 
-            let errorText = document.getElementById('text-error');
-            errorText.style.justifyContent = "center";
+            let errorFlex = document.getElementById('flex-error');
+            errorFlex.style.justifyContent = "center";
         }
     })
     .catch(error => console.error(error));
