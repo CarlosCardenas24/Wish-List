@@ -60,7 +60,7 @@ function viewList() {
 
                                 <div class="delete-from-list">
                                     <input type="hidden" class="user-item" value="${item.variantId}">
-                                    <button onclick="deleteButton('${item.variantId}')" class="delete-button delete-button-css"> X </button>
+                                    <button onclick="deleteButton('${item.variantId}')" class="delete-button delete-button-css"> <i class="fa-solid fa-trash"></i> </button>
                                 </div>
 
                             </div>
