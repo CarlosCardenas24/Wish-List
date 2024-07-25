@@ -34,13 +34,6 @@ export const loader = async ({ request }) => {
 };
 
 export default function Index() {
-  /* useEffect(() => {
-    console.log("Component mounted or updated");
-    return () => {
-      console.log("Component will unmount");
-    };
-  }); */
-
   const nav = useNavigation();
   const { shop, products: initialProducts } = useLoaderData();
   const actionData = useActionData();
