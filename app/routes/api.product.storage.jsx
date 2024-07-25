@@ -32,14 +32,14 @@ async function updateProduct(record, variantId) {
 }
 
 async function addProduct(body) {
-    const { productId, title, shopId, shopName, variantId, variantTitle, price, image } = body;
+    const { productId, title, shopId, shopUrl, variantId, variantTitle, price, image } = body;
 
     const _product = {
         data : {
             id: productId,
             name: title,
             shopId: shopId,
-            shopName: shopName,
+            shopUrl: shopUrl,
             variantId: variantId,
             variantName: variantTitle,
             price: price,

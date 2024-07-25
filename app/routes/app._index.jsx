@@ -25,20 +25,27 @@ import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
   const { session, admin } = await authenticate.admin(request);
+  const storeUrl = session.shop;
 
   const prisma = new PrismaClient();
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
   
-  return json({ shop: session.shop.replace(".myshopify.com", ""), products });
+  return json({ shop: session.shop.replace(".myshopify.com", ""), products, storeUrl });
 };
 
 export default function Index() {
   const nav = useNavigation();
-  const { shop, products: initialProducts } = useLoaderData();
+  const { shop, products: initialProducts, storeUrl } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
+ /*  const shopUrl = 'https://testingwishlist.myshopify.com'
+  
+  if (storeUrl == shopUrl.replace("https://", "")){
+    console.log('they are the dame')
+    console.log(storeUrl, shopUrl.replace("https://", ""))
+  } */
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -136,8 +143,9 @@ export default function Index() {
     });
 }
 
-const newProductList = initialProducts.map(({ shopName, variantId, image, variantName, name, quantity, price }) => {
-  if (shopName.toLowerCase() == shop) {
+const newProductList = initialProducts.map(({ shopUrl, variantId, image, variantName, name, quantity, price }) => {
+  if (shopUrl.replace("https://", "") == storeUrl) {
+    console.log(shopUrl.replace("https://", ""), storeUrl)
     return ({variantId, image, variantName, name, quantity, price})
   }
 })
@@ -186,7 +194,7 @@ const rowMarkup = sortProducts(newProductList, sortSelected).map(
         <IndexTable
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}
-          itemCount={initialProducts.length}
+          itemCount={newProductList.length}
           emptyState={emptyStateMarkup}
           headings={[
             {title: 'Image'},
