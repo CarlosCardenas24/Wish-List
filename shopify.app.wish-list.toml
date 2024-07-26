@@ -3,7 +3,7 @@
 client_id = "de8957f5fec848a1995a9e50f177ced2"
 name = "wish-list"
 handle = "wish-list-26"
-application_url = "https://exclusion-pas-mike-mattress.trycloudflare.com"
+application_url = "https://mailman-framework-roy-tend.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,16 +17,16 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://exclusion-pas-mike-mattress.trycloudflare.com/auth/callback",
-  "https://exclusion-pas-mike-mattress.trycloudflare.com/auth/shopify/callback",
-  "https://exclusion-pas-mike-mattress.trycloudflare.com/api/auth/callback"
+  "https://mailman-framework-roy-tend.trycloudflare.com/auth/callback",
+  "https://mailman-framework-roy-tend.trycloudflare.com/auth/shopify/callback",
+  "https://mailman-framework-roy-tend.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
 api_version = "2024-01"
 
 [app_proxy]
-url = "https://exclusion-pas-mike-mattress.trycloudflare.com/app/proxy"
+url = "https://mailman-framework-roy-tend.trycloudflare.com/app/proxy"
 subpath = "proxytest"
 prefix = "apps"
 

@@ -40,12 +40,6 @@ export default function Index() {
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
- /*  const shopUrl = 'https://testingwishlist.myshopify.com'
-  
-  if (storeUrl == shopUrl.replace("https://", "")){
-    console.log('they are the dame')
-    console.log(storeUrl, shopUrl.replace("https://", ""))
-  } */
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -143,12 +137,13 @@ export default function Index() {
     });
 }
 
-const newProductList = initialProducts.map(({ shopUrl, variantId, image, variantName, name, quantity, price }) => {
+const newProductList = initialProducts.filter(({ shopUrl, variantId, image, variantName, name, quantity, price }) => {
   if (shopUrl.replace("https://", "") == storeUrl) {
     console.log(shopUrl.replace("https://", ""), storeUrl)
     return ({variantId, image, variantName, name, quantity, price})
   }
 })
+console.log(newProductList)
 
 //initialProducts
 const rowMarkup = sortProducts(newProductList, sortSelected).map(
@@ -206,7 +201,7 @@ const rowMarkup = sortProducts(newProductList, sortSelected).map(
           ]}
           selectable={false}
         >
-          {rowMarkup}
+          { rowMarkup }
         </IndexTable> 
       </LegacyCard>
     </Page>

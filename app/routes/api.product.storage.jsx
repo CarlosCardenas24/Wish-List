@@ -224,52 +224,11 @@ export async function action({ request }) {
         
                 return json({ successMessage }, { headers });
             }
-
-           /*  const userExists = await prisma.user.findUnique(_userId)
-            const recordExists = await prisma.product.findUnique(_variantId);
-            const record = recordExists;
-            recordExists ? await updateProduct(record, variantId) : await addProduct(body);
-            userExists ? await updateUserWishList(body) : await createWishList(body);
-        
-            return json({ successMessage }, { headers }); */
         
         } catch (error) {
             console.log(error);
             return json({ message: "Hello, the request to the API has failed!" });
         }
     }
-    
-    
-    /* try {
-        let headers = new Headers(accessOptions);
-        let body = await request.json();
-        const { userId, variantId } = body;
-
-        //query for a product with matching variantId
-        const _variantId = {
-            where: {
-                variantId: variantId
-            }
-        }
-        
-        //query for a user with matching userId
-        const _userId = {
-            where: {
-                userId: userId
-            }
-        }
-
-        const recordExists = await prisma.product.findUnique(_variantId);
-        const userExists = await prisma.user.findUnique(_userId)
-        const record = recordExists;
-        recordExists ? await updateProduct(record, variantId) : await addProduct(body);
-        userExists ? await updateUserWishList(body) : await createWishList(body);
-
-        return json({ successMessage }, { headers });
-
-    } catch (error) {
-        console.log(error);
-        return json({ message: "Hello, the request to the API has failed!" });
-    } */
 
 }
