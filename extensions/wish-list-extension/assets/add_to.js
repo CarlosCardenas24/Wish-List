@@ -34,7 +34,6 @@ buttonAdd?.addEventListener('click', () => {
         image = ''
     }
     let productImage = image;
-    console.log(shopUrl)
 
     if(variantTitle === 'Default Title') {
         variantTitle = ''
@@ -43,6 +42,12 @@ buttonAdd?.addEventListener('click', () => {
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
+
+            let errorPopup = document.getElementById('popup-container-error');
+            errorPopup.style.display = "block";
+
+            let errorFlex = document.getElementById('flex-error');
+            errorFlex.style.justifyContent = "center";
             return null;
         }
     } else {
@@ -50,6 +55,12 @@ buttonAdd?.addEventListener('click', () => {
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
+
+            let errorPopup = document.getElementById('popup-container-error');
+            errorPopup.style.display = "block";
+
+            let errorFlex = document.getElementById('flex-error');
+            errorFlex.style.justifyContent = "center";
             return null;
         }
     }

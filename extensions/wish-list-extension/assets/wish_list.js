@@ -41,7 +41,12 @@ function viewList() {
 
                             <div class="list-flex">
                                 <div class="list-name">
-                                    ${item.name} ${item.variantName} 
+                                    <div class="list-product">
+                                        ${item.name}
+                                    </div>
+                                    <div class="list-product">
+                                        ${item.variantName}
+                                    </div>
                                 </div>
                                 <div class="list-price">
                                     $${item.price} USD
