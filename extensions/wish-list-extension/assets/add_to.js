@@ -22,7 +22,6 @@ buttonAdd?.addEventListener('click', () => {
     const userId = document.querySelector('.customer-id').value;
     const productId = document.querySelector('.product-id').value;
     const title = document.querySelector('.title').value;
-    const shopId = document.querySelector('.shop-id').value;
     const shopUrl = document.querySelector('.shop-url').value;
     const variantId = document.querySelector('.variant-id').value;
     let variantTitle = document.querySelector('.variant-title').value;
@@ -38,7 +37,7 @@ buttonAdd?.addEventListener('click', () => {
     if(variantTitle === 'Default Title') {
         variantTitle = ''
 
-        const values = [userId, productId, title, shopId, shopUrl, variantId, price];
+        const values = [userId, productId, title, shopUrl, variantId, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
@@ -51,7 +50,7 @@ buttonAdd?.addEventListener('click', () => {
             return null;
         }
     } else {
-        const values = [userId, productId, title, shopId, shopUrl, variantId, variantTitle, price];
+        const values = [userId, productId, title, shopUrl, variantId, variantTitle, price];
 
         if(values.some(value => !value)){
             console.log('Please fill out all fields');
@@ -70,7 +69,7 @@ buttonAdd?.addEventListener('click', () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId, productId, title, shopId, shopUrl, variantId, variantTitle, price, image})
+        body: JSON.stringify({ userId, productId, title, shopUrl, variantId, variantTitle, price, image})
     })
     .then(response => response.json())
     .then(data => { 
