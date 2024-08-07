@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "de8957f5fec848a1995a9e50f177ced2"
-name = "wish-list"
-handle = "wish-list-26"
-application_url = "https://grow-attributes-season-busy.trycloudflare.com"
+client_id = "648015b8ba04d0a04710875cb32a41be"
+name = "Wish List"
+handle = "wish-list-34"
+application_url = "https://indian-pts-john-actress.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,22 +13,17 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products"
+scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://grow-attributes-season-busy.trycloudflare.com/auth/callback",
-  "https://grow-attributes-season-busy.trycloudflare.com/auth/shopify/callback",
-  "https://grow-attributes-season-busy.trycloudflare.com/api/auth/callback"
+  "https://indian-pts-john-actress.trycloudflare.com/auth/callback",
+  "https://indian-pts-john-actress.trycloudflare.com/auth/shopify/callback",
+  "https://indian-pts-john-actress.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
-api_version = "2024-01"
-
-[app_proxy]
-url = "https://grow-attributes-season-busy.trycloudflare.com/app/proxy"
-subpath = "proxytest"
-prefix = "apps"
+api_version = "2024-07"
 
 [pos]
 embedded = false
