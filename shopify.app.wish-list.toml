@@ -3,7 +3,7 @@
 client_id = "648015b8ba04d0a04710875cb32a41be"
 name = "Wish List"
 handle = "wish-list-34"
-application_url = "https://indian-pts-john-actress.trycloudflare.com"
+application_url = "https://wish-list-shopify-bc95606b6963.herokuapp.com/"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://indian-pts-john-actress.trycloudflare.com/auth/callback",
-  "https://indian-pts-john-actress.trycloudflare.com/auth/shopify/callback",
-  "https://indian-pts-john-actress.trycloudflare.com/api/auth/callback"
+  "https://wish-list-shopify-bc95606b6963.herokuapp.com/auth/callback",
+  "https://wish-list-shopify-bc95606b6963.herokuapp.com/auth/shopify/callback",
+  "https://wish-list-shopify-bc95606b6963.herokuapp.com/api/auth/callback"
 ]
 
 [webhooks]
