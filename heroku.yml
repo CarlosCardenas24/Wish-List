@@ -3,4 +3,5 @@ build:
     web: Dockerfile
 
 run:
+  web: npm run prisma migrate dev
   web: npm run dev
