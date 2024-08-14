@@ -9,6 +9,6 @@ RUN npm run build
 
 # You'll probably want to remove this in production, it's here to make it easier to test things!
 # RUN rm prisma/dev.sqlite
-RUN npx prisma migrate dev --name init
+RUN npx prisma migrate deploy --name WishList
 
 CMD ["npm", "run", "start"]
