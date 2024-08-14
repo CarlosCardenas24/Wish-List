@@ -64,7 +64,7 @@ buttonAdd?.addEventListener('click', () => {
         }
     }
     
-    fetch(`http://localhost:${PORT}/api/product/storage`, {
+    fetch(`https://wish-list-shopify-bc95606b6963.herokuapp.com/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
