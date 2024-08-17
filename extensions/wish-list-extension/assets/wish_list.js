@@ -2,8 +2,6 @@ let buttonList = document.querySelector('.wish-list-button');
 let insert = document.getElementById('insert');
 
 function viewList() {
-    const PORT = 3000;
-    
     const userId = document.querySelector('.customer-id-list').value;
 
     fetch(`https://wish-list-shopify-bc95606b6963.herokuapp.com/api/product/storage`, {
@@ -83,9 +81,7 @@ function viewList() {
     .catch(error => console.error(error));
 }
 
-function deleteButton(item) {
-            const PORT = 3000;
-            
+function deleteButton(item) { 
             const userId = document.querySelector('.customer-id-list').value;
             const variantId = item;
         

@@ -17,8 +17,6 @@ function variant_change_listener(callback){
 variant_change_listener();
 
 buttonAdd?.addEventListener('click', () => {
-    const PORT = 3000;
-
     const userId = document.querySelector('.customer-id').value;
     const productId = document.querySelector('.product-id').value;
     const title = document.querySelector('.title').value;
