@@ -5,4 +5,4 @@ build:
     SHOPIFY_API_KEY: 648015b8ba04d0a04710875cb32a41be
 
 run:
-  web: npm run start:prod
+  web: npm run start
