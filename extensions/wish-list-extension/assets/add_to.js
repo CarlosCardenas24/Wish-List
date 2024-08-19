@@ -62,7 +62,7 @@ buttonAdd?.addEventListener('click', () => {
         }
     }
     
-    fetch(`https://wish-list-shopify-bc95606b6963.herokuapp.com/api/product/storage`, {
+    fetch(`https://wish-list-shopify-ade6a9b90d78.herokuapp.com/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
