@@ -152,7 +152,7 @@ const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
     <IndexTable.Row id={variantId} key={variantId} position={index}>
       <div style={{width: '100%', display: 'flex'}}>
         <Thumbnail source={image} alt="No Image" size="small"/>
-        <div style={{padding: '12px 16px'}}>
+        <div style={{padding: '12px 16px', width: '100%'}}>
           <BlockStack gap='100'>
             <Text as="span" variant="bodyMD" alignment="end">
               Quantity: {quantity}
@@ -161,7 +161,7 @@ const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
               <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
                 {name}
               </Text>
-              <Text as="span" variant="bodyMd">
+              <Text as="span" variant="bodyMd" alignment="end">
                 Unit Price: ${price}
               </Text>
             </InlineStack>
@@ -169,7 +169,7 @@ const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
               <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
                 {variantName}
               </Text>
-              <Text>
+              <Text as="span" variant="bodyMd" alignment="end">
                 Total Price: ${quantity * price}
               </Text>
             </InlineStack>
