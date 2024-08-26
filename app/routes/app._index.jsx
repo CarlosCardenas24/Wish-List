@@ -42,8 +42,8 @@ export default function Index() {
   const submit = useSubmit();
   const revalidator = useRevalidator()
 
-  const isScreenBig = useMediaQuery({ query: '(min-width: 1080px)'})
-  const isMobile = useMediaQuery({ query: '(max-width: 1079px)'})
+  const isScreenBig = useMediaQuery('(min-width: 1080px)')
+  const isMobile = useMediaQuery('(max-width: 1079px)')
 
   if (isScreenBig) {
     console.log('Big Screen')
