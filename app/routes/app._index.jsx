@@ -43,7 +43,7 @@ export default function Index() {
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
-  const isMobile = useMediaQuery('(max-width: 500px)')
+  const isMobile = useMediaQuery('(max-width: 505px)')
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -150,32 +150,32 @@ const newProductList = initialProducts.filter(({ shopUrl, variantId, image, vari
 const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
-      <IndexTable.Cell>
+      <div style={{width: '100%', display: 'flex', flex-direction: 'row'}}>
         <Thumbnail source={image} alt="No Image" size="small"/>
-      </IndexTable.Cell>
-      <div style={{padding: '12px 16px', width: '100%'}}>
-        <BlockStack gap='100'>
-          <Text as="span" variant="bodyMD" alignment="end">
-            Quantity: {quantity}
-          </Text>
-          <InlineStack>
-            <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
-              {name}
+        <div style={{padding: '12px 16px'}}>
+          <BlockStack gap='100'>
+            <Text as="span" variant="bodyMD" alignment="end">
+              Quantity: {quantity}
             </Text>
-            <Text as="span" variant="bodyMd">
-              Unit Price: ${price}
-            </Text>
-          </InlineStack>
-          <InlineStack>
-            <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
-              {variantName}
-            </Text>
-            <Text>
-              Total Price: ${quantity * price}
-            </Text>
-          </InlineStack>
-        </BlockStack>
-      </div>
+            <InlineStack>
+              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+                {name}
+              </Text>
+              <Text as="span" variant="bodyMd">
+                Unit Price: ${price}
+              </Text>
+            </InlineStack>
+            <InlineStack>
+              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+                {variantName}
+              </Text>
+              <Text>
+                Total Price: ${quantity * price}
+              </Text>
+            </InlineStack>
+          </BlockStack>
+        </div>
+        </div>
     </IndexTable.Row>
   )
 );
