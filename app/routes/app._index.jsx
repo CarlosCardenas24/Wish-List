@@ -157,7 +157,7 @@ const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
             <Text as="span" variant="bodyMD" alignment="end">
               Quantity: {quantity}
             </Text>
-            <InlineStack style={{justifyContent: 'space-between'}}>
+            <InlineStack align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
                 {name}
               </Text>
@@ -165,7 +165,7 @@ const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
                 Unit Price: ${price}
               </Text>
             </InlineStack>
-            <InlineStack style={{justifyContent: 'space-between'}}>
+            <InlineStack  align="space-between">
               <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
                 {variantName}
               </Text>
