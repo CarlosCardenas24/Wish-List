@@ -20,6 +20,7 @@ import {
   IndexFilters,
   useSetIndexFiltersMode,
 } from "@shopify/polaris"; 
+import { useMediaQuery } from "@shopify/polaris";
 import {NoteIcon} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
@@ -40,6 +41,17 @@ export default function Index() {
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
+
+  const isScreenBig = useMediaQuery({ query: '(min-width: 1080px)'})
+  const isMobile = useMediaQuery({ query: '(max-width: 1079px)'})
+
+  if (isScreenBig) {
+    console.log('Big Screen')
+  } else if (isMobile) {
+    console.log('Mobile Screen')
+  } else (
+    console.log('Something is wrong')
+  )
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -139,11 +151,9 @@ export default function Index() {
 
 const newProductList = initialProducts.filter(({ shopUrl, variantId, image, variantName, name, quantity, price }) => {
   if (shopUrl.replace("https://", "") == storeUrl) {
-    console.log(shopUrl.replace("https://", ""), storeUrl)
     return ({variantId, image, variantName, name, quantity, price})
   }
 })
-console.log(newProductList)
 
 //initialProducts
 const rowMarkup = sortProducts(newProductList, sortSelected).map(

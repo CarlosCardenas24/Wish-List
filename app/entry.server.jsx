@@ -2,6 +2,7 @@ import { PassThrough } from "stream";
 import { renderToPipeableStream } from "react-dom/server";
 import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
+// remove {} from isbot if running local dev, add back the {} when deploying on a host
 import { isbot } from "isbot";
 
 import { addDocumentResponseHeaders } from "./shopify.server";
