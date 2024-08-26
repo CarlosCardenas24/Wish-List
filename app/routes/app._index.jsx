@@ -147,40 +147,39 @@ const newProductList = initialProducts.filter(({ shopUrl, variantId, image, vari
   }
 })
 
-if (isMobile) {
-  const rowMarkup = sortProducts(newProductList, sortSelected).map(
-    ({ variantId, image, variantName, name, quantity, price }, index) => (
-      <IndexTable.Row id={variantId} key={variantId} position={index}>
-        <IndexTable.Cell>
-          <Thumbnail source={image} alt="No Image" size="small"/>
-        </IndexTable.Cell>
-        <div style={{padding: '12px 16px', width: '100%'}}>
-          <BlockStack gap='100'>
-            <Text as="span" variant="bodyMD" alignment="end">
-              Quantity: {quantity}
+const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
+  ({ variantId, image, variantName, name, quantity, price }, index) => (
+    <IndexTable.Row id={variantId} key={variantId} position={index}>
+      <IndexTable.Cell>
+        <Thumbnail source={image} alt="No Image" size="small"/>
+      </IndexTable.Cell>
+      <div style={{padding: '12px 16px', width: '100%'}}>
+        <BlockStack gap='100'>
+          <Text as="span" variant="bodyMD" alignment="end">
+            Quantity: {quantity}
+          </Text>
+          <InlineStack>
+            <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+              {name}
             </Text>
-            <InlineStack>
-              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
-                {name}
-              </Text>
-              <Text as="span" variant="bodyMd">
-                Unit Price: ${price}
-              </Text>
-            </InlineStack>
-            <InlineStack>
-              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
-                {variantName}
-              </Text>
-              <Text>
-                Total Price: ${quantity * price}
-              </Text>
-            </InlineStack>
-          </BlockStack>
-        </div>
-      </IndexTable.Row>
-    )
-  );
-} else {
+            <Text as="span" variant="bodyMd">
+              Unit Price: ${price}
+            </Text>
+          </InlineStack>
+          <InlineStack>
+            <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+              {variantName}
+            </Text>
+            <Text>
+              Total Price: ${quantity * price}
+            </Text>
+          </InlineStack>
+        </BlockStack>
+      </div>
+    </IndexTable.Row>
+  )
+);
+
 const rowMarkup = sortProducts(newProductList, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
@@ -202,7 +201,7 @@ const rowMarkup = sortProducts(newProductList, sortSelected).map(
       </IndexTable.Cell>
     </IndexTable.Row>
   )
-); }
+); 
 
   return (
     <Page fullWidth>
@@ -236,7 +235,7 @@ const rowMarkup = sortProducts(newProductList, sortSelected).map(
           ]}
           selectable={false}
         >
-          { rowMarkup }
+          { isMobile ? mobileRowMarkup : rowMarkup }
         </IndexTable> 
       </LegacyCard>
     </Page>
