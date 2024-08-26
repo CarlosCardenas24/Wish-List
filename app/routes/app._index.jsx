@@ -150,7 +150,7 @@ const newProductList = initialProducts.filter(({ shopUrl, variantId, image, vari
 const mobileRowMarkup = sortProducts(newProductList, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
-      <div style={{width: '100%', display: 'flex', flex-direction: 'row'}}>
+      <div style={{width: '100%', display: 'flex'}}>
         <Thumbnail source={image} alt="No Image" size="small"/>
         <div style={{padding: '12px 16px'}}>
           <BlockStack gap='100'>
