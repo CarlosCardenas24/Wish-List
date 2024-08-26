@@ -19,6 +19,8 @@ import {
   EmptySearchResult,
   IndexFilters,
   useSetIndexFiltersMode,
+  BlockStack,
+  InlineStack,
 } from "@shopify/polaris"; 
 import { useMediaQuery } from "@shopify/polaris";
 import {NoteIcon} from '@shopify/polaris-icons';
@@ -41,17 +43,7 @@ export default function Index() {
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator()
-
-  const isScreenBig = useMediaQuery('(min-width: 1080px)')
-  const isMobile = useMediaQuery('(max-width: 1079px)')
-
-  if (isScreenBig) {
-    console.log('Big Screen')
-  } else if (isMobile) {
-    console.log('Mobile Screen')
-  } else (
-    console.log('Something is wrong')
-  )
+  const isMobile = useMediaQuery('(max-width: 500px)')
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -155,29 +147,62 @@ const newProductList = initialProducts.filter(({ shopUrl, variantId, image, vari
   }
 })
 
-//initialProducts
+if (isMobile) {
+  const rowMarkup = sortProducts(newProductList, sortSelected).map(
+    ({ variantId, image, variantName, name, quantity, price }, index) => (
+      <IndexTable.Row id={variantId} key={variantId} position={index}>
+        <IndexTable.Cell>
+          <Thumbnail source={image} alt="No Image" size="small"/>
+        </IndexTable.Cell>
+        <div style={{padding: '12px 16px', width: '100%'}}>
+          <BlockStack gap='100'>
+            <Text as="span" variant="bodyMD" alignment="end">
+              Quantity: {quantity}
+            </Text>
+            <InlineStack>
+              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+                {name}
+              </Text>
+              <Text as="span" variant="bodyMd">
+                Unit Price: ${price}
+              </Text>
+            </InlineStack>
+            <InlineStack>
+              <Text as="span" variant="bodyMd" fontWeight="semibold" style='text-overflow: ellipsis'>
+                {variantName}
+              </Text>
+              <Text>
+                Total Price: ${quantity * price}
+              </Text>
+            </InlineStack>
+          </BlockStack>
+        </div>
+      </IndexTable.Row>
+    )
+  );
+} else {
 const rowMarkup = sortProducts(newProductList, sortSelected).map(
   ({ variantId, image, variantName, name, quantity, price }, index) => (
     <IndexTable.Row id={variantId} key={variantId} position={index}>
       <IndexTable.Cell>
         <Thumbnail source={image} alt="No Image" size="small"/>
       </IndexTable.Cell>
-      <IndexTable.Cell>{name}</IndexTable.Cell>
-      <IndexTable.Cell>{variantName}</IndexTable.Cell>
+      <IndexTable.Cell style='text-overflow: ellipsis'>{name}</IndexTable.Cell>
+      <IndexTable.Cell style='text-overflow: ellipsis'>{variantName}</IndexTable.Cell>
       <IndexTable.Cell>{quantity}</IndexTable.Cell>
       <IndexTable.Cell>
         <Text as="span" alignment="end" numeric>
-          {price}
+          ${price}
         </Text>
       </IndexTable.Cell>
       <IndexTable.Cell>
         <Text as="span" alignment="end" numeric>
-          {price * quantity}
+          ${price * quantity}
         </Text>
       </IndexTable.Cell>
     </IndexTable.Row>
   )
-);
+); }
 
   return (
     <Page fullWidth>
