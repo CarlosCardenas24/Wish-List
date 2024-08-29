@@ -61,7 +61,7 @@ buttonAdd?.addEventListener('click', () => {
             return null;
         }
     }
-    
+    //
     fetch(`https://vital-wish-list-c86fce13cbd9.herokuapp.com/api/product/storage`, {
         method: 'POST',
         headers: {
