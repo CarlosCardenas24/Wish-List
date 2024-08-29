@@ -4,7 +4,7 @@ let insert = document.getElementById('insert');
 function viewList() {
     const userId = document.querySelector('.customer-id-list').value;
 
-    fetch(`https://wish-list-shopify-ade6a9b90d78.herokuapp.com/api/product/storage`, {
+    fetch(`https://vital-wish-list-c86fce13cbd9.herokuapp.com/api/product/storage`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ function deleteButton(item) {
             const userId = document.querySelector('.customer-id-list').value;
             const variantId = item;
         
-            fetch(`https://wish-list-shopify-ade6a9b90d78.herokuapp.com/api/product/storage`, { 
+            fetch(`https://vital-wish-list-c86fce13cbd9.herokuapp.com/api/product/storage`, { 
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
