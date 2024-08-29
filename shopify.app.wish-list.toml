@@ -3,7 +3,7 @@
 client_id = "648015b8ba04d0a04710875cb32a41be"
 name = "Wish List"
 handle = "wish-list-34"
-application_url = "https://wish-list-shopify-ade6a9b90d78.herokuapp.com/"
+application_url = "https://vital-wish-list-c86fce13cbd9.herokuapp.com/"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://wish-list-shopify-ade6a9b90d78.herokuapp.com/auth/callback",
-  "https://wish-list-shopify-ade6a9b90d78.herokuapp.com/auth/shopify/callback",
-  "https://wish-list-shopify-ade6a9b90d78.herokuapp.com/api/auth/callback"
+  "https://vital-wish-list-c86fce13cbd9.herokuapp.com/auth/callback",
+  "https://vital-wish-list-c86fce13cbd9.herokuapp.com/auth/shopify/callback",
+  "https://vital-wish-list-c86fce13cbd9.herokuapp.com/api/auth/callback"
 ]
 
 [webhooks]
