@@ -27,25 +27,25 @@ import {NoteIcon} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
-  const { session, admin } = await authenticate.admin(request);
+  const { session, admin, shop } = await authenticate.admin(request);
   const storeUrl = session.shop;
+  const storeId = shop.id
 
 
   const prisma = new PrismaClient();
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
   
-  return json({ shop: session.shop.replace(".myshopify.com", ""), products, storeUrl });
+  return json({ shop: session.shop.replace(".myshopify.com", ""), products, storeUrl, storeId });
 };
 
 export default function Index() {
   const nav = useNavigation();
-  const { shop, products: initialProducts, storeUrl } = useLoaderData();
+  const { shop, products: initialProducts, storeUrl, storeId } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
   const revalidator = useRevalidator();
   const isMobile = useMediaQuery('(max-width: 505px)');
-  const storeId = storeUrl.id;
   console.log(storeId)
 
   useEffect(() => {
