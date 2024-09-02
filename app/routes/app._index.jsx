@@ -27,9 +27,9 @@ import {NoteIcon} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }) => {
-  const { session, admin, shop } = await authenticate.admin(request);
+  const { session, admin } = await authenticate.admin(request);
   const storeUrl = session.shop;
-  const storeId = shop
+  const storeId = session.id
 
 
   const prisma = new PrismaClient();
