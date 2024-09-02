@@ -32,12 +32,13 @@ async function updateProduct(record, variantId) {
 }
 
 async function addProduct(body) {
-    const { productId, title, shopUrl, variantId, variantTitle, price, image } = body;
+    const { productId, title, shopId, shopUrl, variantId, variantTitle, price, image } = body;
 
     const _product = {
         data : {
             id: productId,
             name: title,
+            shopId: shopId,
             shopUrl: shopUrl,
             variantId: variantId,
             variantName: variantTitle,
@@ -51,7 +52,7 @@ async function addProduct(body) {
 }
 
 async function updateUserWishList(body) {
-    const { userId, variantId } = body;
+    const { userId, shopId, variantId } = body;
 
     const existingList = {
         wishList: {
@@ -71,7 +72,7 @@ async function updateUserWishList(body) {
     }
 
     const _wishList = {
-        where: { userId: userId },
+        where: { userId_shopId: {userId: userId, shopId: shopId} },
         data: existingList,
         include: { wishList: true }
     }
@@ -84,11 +85,12 @@ async function updateUserWishList(body) {
 }
 
 async function createWishList(body) {
-    const { userId, variantId } = body;
+    const { userId, shopId, variantId } = body;
 
     const _newList = {
         data: {
             userId: userId,
+            shopId: shopId,
             wishList: {
                 create: {
                     quantity: 1,
@@ -121,6 +123,7 @@ export async function action({ request }) {
     const { title } = body;
     let method = request.method;
 
+    // This is when a user deletes and item from their wish list
     if (method === 'DELETE') {
         try {
             let headers = new Headers(accessOptions)
@@ -148,13 +151,14 @@ export async function action({ request }) {
         }
     }
 
+    // This is when a user clicks on their wish list
     if (!title){
         try {
             let headers = new Headers(accessOptions);
-            const { userId } = body;
+            const { userId, shopId } = body;
     
             const userExists = await prisma.user.findUnique({
-                where: {userId: userId},
+                where: {userId_shopId: {userId: userId, shopId: shopId}},
                 include: {wishList: true}
             })
                 
@@ -184,10 +188,11 @@ export async function action({ request }) {
             console.log(error);
             return json({ message: "Hello, the request to the API has failed!" });
         }
+    // This is when a user adds something to their list
     } else {
         try {
             let headers = new Headers(accessOptions);
-            const { userId, variantId } = body;
+            const { userId, shopId, variantId } = body;
         
             //query for a product with matching variantId
             const _variantId = {
@@ -199,7 +204,7 @@ export async function action({ request }) {
             //query for a user with matching userId
             const _userId = {
                 where: {
-                    userId: userId
+                    userId_shopId: {userId: userId, shopId: shopId}
                 }
             }
         

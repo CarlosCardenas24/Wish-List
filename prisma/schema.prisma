@@ -21,6 +21,7 @@ model Session {
 model Product {
   id          String   
   name        String
+  shopId      String
   shopUrl     String
   variantId   String   @id
   variantName String
@@ -34,7 +35,10 @@ model Product {
 
 model User {
   userId    String @id
+  shopId    String
   wishList  WishList[]
+
+  @@unique([userId, shopId])
 }
 
 model WishList {
