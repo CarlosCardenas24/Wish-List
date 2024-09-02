@@ -29,7 +29,7 @@ import { authenticate } from "../shopify.server";
 export const loader = async ({ request }) => {
   const { session, admin, shop } = await authenticate.admin(request);
   const storeUrl = session.shop;
-  const storeId = shop.id
+  const storeId = shop
 
 
   const prisma = new PrismaClient();
