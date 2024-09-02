@@ -10,9 +10,9 @@ export const action = async ({ request }) => {
         await prisma.session.deleteMany({ where: { shop } });
       }
       break;
-    case "CUSTOMERS_DATA_REQUEST":
-    case "CUSTOMERS_REDACT":
-    case "SHOP_REDACT":
+    //case "CUSTOMERS_DATA_REQUEST":
+    //case "CUSTOMERS_REDACT":
+    //case "SHOP_REDACT":
     default:
       throw new Response("Unhandled webhook topic", { status: 404 });
   }

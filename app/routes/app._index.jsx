@@ -30,6 +30,7 @@ export const loader = async ({ request }) => {
   const { session, admin } = await authenticate.admin(request);
   const storeUrl = session.shop;
 
+
   const prisma = new PrismaClient();
   prisma ? console.timeStamp() : console.error({ message: "Prisma ORM failed to initialize"});
   const products = await prisma.product.findMany();
@@ -42,8 +43,10 @@ export default function Index() {
   const { shop, products: initialProducts, storeUrl } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
-  const revalidator = useRevalidator()
-  const isMobile = useMediaQuery('(max-width: 505px)')
+  const revalidator = useRevalidator();
+  const isMobile = useMediaQuery('(max-width: 505px)');
+  const storeId = storeUrl.id;
+  console.log(storeId)
 
   useEffect(() => {
     const interval = setInterval(() => {
