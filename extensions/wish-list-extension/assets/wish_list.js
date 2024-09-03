@@ -2,6 +2,7 @@ let buttonList = document.querySelector('.wish-list-button');
 let insert = document.getElementById('insert');
 
 function viewList() {
+    const shopId = document.querySelector('.shop-id').value;
     const userId = document.querySelector('.customer-id-list').value;
 
     fetch(`https://vital-wish-list-c86fce13cbd9.herokuapp.com/api/product/storage`, {
@@ -9,7 +10,7 @@ function viewList() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId })
+        body: JSON.stringify({ shopId, userId })
     })
     .then(response => response.json())
     .then(data => {
