@@ -15,8 +15,8 @@ export const action = async ({ request }) => {
       //break;
     case "CUSTOMERS_REDACT":
         const customer = payload.customer;
-        const customerId = customer.id
-        await prisma.user.delete({where : { userId_shopId: {userId: customerId, shopId: payload.shop_id} }})
+        const customerId = customer.id;
+        await prisma.user.delete({where : { userId_shopId: {userId: customerId, shopId: payload.shop_id} }});
     break;
     //case "SHOP_REDACT":
     default:
