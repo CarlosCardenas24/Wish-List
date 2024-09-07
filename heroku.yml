@@ -1,6 +1,4 @@
 build:
-  config:
-    DATABASE_URL: $DATABASE_URL
   docker:
     web: Dockerfile
 
