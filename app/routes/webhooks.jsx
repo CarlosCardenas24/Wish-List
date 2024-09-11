@@ -15,15 +15,15 @@ export const action = async ({ request }) => {
       break;
     case "CUSTOMERS_REDACT":
       const {customer} = payload;
-      const {shop_id} = payload;
-      if (customer && shop_id ) {
-        await prisma.user.delete({where : { userId_shopId: {userId: customer.id, shopId: payload.shop_id} }});
+      const shopId = payload.shop_id;
+      if (customer && shopId ) {
+        await prisma.user.delete({where : { userId_shopId: {userId: customer.id, shopId: shopId} }});
       }
     break;
     case "SHOP_REDACT":
-      const {shop_id} = payload;
-      await prisma.product.deleteMany({ where: { shopId: {shop_id} } })
-      await prisma.product.deleteMany({ where: { shopId: {shop_id} } })
+      const shopId = payload.shop_id;
+      await prisma.product.deleteMany({ where: { shopId: {shopId} } })
+      await prisma.product.deleteMany({ where: { shopId: {shopId} } })
     break;
     default:
       throw new Response("Unhandled webhook topic", { status: 404 });
