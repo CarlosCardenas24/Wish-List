@@ -26,8 +26,8 @@ redirect_urls = [
 api_version = "2024-07"
 
   [[webhooks.subscriptions]]
-  uri = "https://vital-wish-list-c86fce13cbd9.herokuapp.com/webhooks"
   compliance_topics = [ "customers/redact", "customers/data_request", "shop/redact" ]
+  uri = "https://vital-wish-list-c86fce13cbd9.herokuapp.com/webhooks"
 
 [pos]
 embedded = false
