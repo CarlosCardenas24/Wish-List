@@ -26,6 +26,13 @@ import { useMediaQuery } from "@shopify/polaris";
 import {NoteIcon} from '@shopify/polaris-icons';
 import { authenticate } from "../shopify.server";
 
+
+require('dotenv').congif()
+const dbUrl = proncess.env.DATABSE_URL;
+const prisma = new PrismaClient({
+  datasourceUrl: dbUrl,
+})
+
 export const loader = async ({ request }) => {
   const { session, admin } = await authenticate.admin(request);
   const storeUrl = session.shop;
