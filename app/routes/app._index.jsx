@@ -30,7 +30,11 @@ import { authenticate } from "../shopify.server";
 require('dotenv').congif()
 const dbUrl = proncess.env.DATABSE_URL;
 const prisma = new PrismaClient({
-  datasourceUrl: dbUrl,
+  datasources: {
+    db: {
+      url: dbUrl,
+    },
+  },
 })
 
 export const loader = async ({ request }) => {
