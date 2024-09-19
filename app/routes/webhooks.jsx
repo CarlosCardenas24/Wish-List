@@ -2,6 +2,7 @@ import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 
 export const action = async ({ request }) => {
+  console.log(request)
   const { topic, shop, session, payload } = await authenticate.webhook(request);
 
   switch (topic) {
