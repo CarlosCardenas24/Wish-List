@@ -4,7 +4,7 @@ import prisma from "../db.server";
 export const action = async ({ request }) => {
   console.log(request)
   const { topic, shop, session, payload } = await authenticate.webhook(request);
-  console.log(topic, shop, session, payload)
+  console.log(payload)
 
   switch (topic) {
     case "APP_UNINSTALLED":
