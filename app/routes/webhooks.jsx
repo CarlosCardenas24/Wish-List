@@ -20,6 +20,8 @@ export const action = async ({ request }) => {
       const idShop = payload.shop_id;
       if (customer && idShop ) {
         await prisma.user.delete({where : { userId_shopId: {userId: customer.id, shopId: idShop} }});
+      } else {
+        throw new Response("CUSTOMERS_REDACT without payload", { status: 404 });
       }
     break;
     case "SHOP_REDACT":
