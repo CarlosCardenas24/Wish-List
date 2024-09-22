@@ -2,9 +2,9 @@ import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 
 export const action = async ({ request }) => {
-  console.log(request)
+  //console.log(request)
   const { topic, shop, session, payload } = await authenticate.webhook(request);
-  console.log(payload)
+  //console.log(payload)
 
   switch (topic) {
     case "APP_UNINSTALLED":
@@ -18,8 +18,12 @@ export const action = async ({ request }) => {
     case "CUSTOMERS_REDACT":
       const {customer} = payload;
       const idShop = payload.shop_id;
-      if (customer && idShop ) {
-        await prisma.user.delete({where : { userId_shopId: {userId: customer.id, shopId: idShop} }});
+      const customerString = '' + customer.id
+      const idShopString = '' + idShop
+      if (customerString && idShopString ) {
+        console.log("id: ", customerString)
+        console.log("shop: ", idShopString)
+        await prisma.user.delete({where : { userId_shopId: {userId: customerString, shopId: idShopString} }});
       } else {
         throw new Response("CUSTOMERS_REDACT without payload", { status: 404 });
       }
