@@ -24,7 +24,7 @@ export const action = async ({ request }) => {
       console.log("Id: ", customerString)
       console.log("Shop: ", shopString)
 
-      userExists = await prisma.user.findUniqueOrThrow({where : { userId_shopId: {userId: customerString, shopId: shopString} }})
+      userExists = await prisma.user.findUnique({where : { userId_shopId: {userId: customerString, shopId: shopString} }})
       if ( userExists ) {
         await prisma.user.delete({where : { userId_shopId: {userId: customerString, shopId: shopString} }});
       }
