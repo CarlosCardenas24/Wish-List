@@ -2,9 +2,9 @@ import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 
 export const action = async ({ request }) => {
-  //console.log(request)
+  console.log(request)
   const { topic, shop, session, payload } = await authenticate.webhook(request);
-  //console.log(payload)
+  console.log("Payload: ", payload)
 
   switch (topic) {
     case "APP_UNINSTALLED":
