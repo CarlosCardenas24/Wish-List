@@ -20,12 +20,12 @@ export const action = async ({ request }) => {
       const idShop = payload.shop_id;
       const customerString = '' + customer.id
       const idShopString = '' + idShop
-      if (customerString && idShopString ) {
+
+      const userExists = await prisma.user.findUniqueOrThrow({where : { userId_shopId: {userId: customerString, shopId: idShopString} }})
+      if (userExists ) {
         console.log("id: ", customerString)
         console.log("shop: ", idShopString)
         await prisma.user.delete({where : { userId_shopId: {userId: customerString, shopId: idShopString} }});
-      } else {
-        throw new Response("CUSTOMERS_REDACT without payload", { status: 404 });
       }
     break;
     case "SHOP_REDACT":
