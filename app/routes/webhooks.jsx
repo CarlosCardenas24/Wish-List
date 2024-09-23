@@ -32,6 +32,7 @@ export const action = async ({ request }) => {
     case "SHOP_REDACT":
       const shopId = payload.shop_id;
       const idShopString = '' + shopId
+      console.log("shop: ", idShopString)
 
       shopExists = await prisma.user.findUniqueOrThrow({where : { shopId: idShopString } })
       userExists = await prisma.user.findUniqueOrThrow({where : { shopId: idShopString }})
