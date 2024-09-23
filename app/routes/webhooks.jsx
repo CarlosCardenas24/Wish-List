@@ -34,7 +34,7 @@ export const action = async ({ request }) => {
       const idShopString = '' + shopId
       console.log("shop: ", idShopString)
 
-      shopExists = await prisma.user.findUniqueOrThrow({where : { shopId: idShopString } })
+      shopExists = await prisma.product.findUniqueOrThrow({where : { shopId: idShopString } })
       userExists = await prisma.user.findUniqueOrThrow({where : { shopId: idShopString }})
 
       if ( shopExists && userExists ) {
