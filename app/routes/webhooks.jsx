@@ -34,8 +34,8 @@ export const action = async ({ request }) => {
       const idShopString = '' + shopId
       console.log("shop: ", idShopString)
 
-      shopExists = await prisma.product.findUniqueOrThrow({where : { shopId: idShopString } })
-      userExists = await prisma.user.findUniqueOrThrow({where : { shopId: idShopString }})
+      shopExists = await prisma.product.findMany({where : { shopId: idShopString } })
+      userExists = await prisma.user.findMany({where : { shopId: idShopString }})
 
       if ( shopExists && userExists ) {
         await prisma.product.deleteMany({ where: { shopId: idShopString } })
