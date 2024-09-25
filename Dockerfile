@@ -7,6 +7,6 @@ COPY . .
 #ENV DATABASE_URL=${DATABASE_URL}
 RUN npm install
 RUN npm run build
-RUN npm run prisma validate
+#RUN npm run prisma validate
 
 CMD ["npx prisma migrate deploy", "npm", "run", "start"]
