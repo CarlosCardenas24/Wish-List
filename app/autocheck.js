@@ -1,11 +1,6 @@
 const cron = require('node-cron');
 const prisma = require('./db.server');
 
-//just to test and see if cron.schedule works
-cron.schedule('*/30 * * * * *', () => {
-    console.log('cron working every 30 seconds');
-  });
-
 cron.schedule('0 0 * * *', async () => {
   console.log('Running daily cleanup job');
 
@@ -21,7 +16,12 @@ cron.schedule('0 0 * * *', async () => {
       },
     });
 
-    console.log(`${result.count} users deleted.`);
+    if(result){
+        console.log(`${result.count} users deleted.`);
+    } else {
+        console.log('No users to delete')
+    }
+    
   } catch (error) {
     console.error('Error deleting old users:', error);
   }
