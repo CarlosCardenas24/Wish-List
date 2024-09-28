@@ -39,6 +39,8 @@ model User {
   userId    String @id
   shopId    String
   wishList  WishList[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@unique([userId, shopId])
 }

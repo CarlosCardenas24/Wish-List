@@ -3,7 +3,6 @@ import prisma from "../db.server";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, payload } = await authenticate.webhook(request);
-  console.log("Payload: ", payload)
 
   let userExists;
   let shopExists;
@@ -21,8 +20,6 @@ export const action = async ({ request }) => {
       const {customer, shop_id} = payload;
       const customerString = '' + customer.id
       const shopString = '' + shop_id
-      console.log("Id: ", customerString)
-      console.log("Shop: ", shopString)
 
       userExists = await prisma.user.findUnique({where : { userId_shopId: {userId: customerString, shopId: shopString} }})
       if ( userExists ) {
@@ -32,7 +29,6 @@ export const action = async ({ request }) => {
     case "SHOP_REDACT":
       const shopId = payload.shop_id;
       const idShopString = '' + shopId
-      console.log("shop: ", idShopString)
 
       shopExists = await prisma.product.findMany({where : { shopId: idShopString } })
       userExists = await prisma.user.findMany({where : { shopId: idShopString }})
