@@ -8,4 +8,6 @@ if (process.env.NODE_ENV !== "production") {
   }
 }
 
+require('./autocheck');
+
 export default prisma;

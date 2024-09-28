@@ -1,5 +1,10 @@
-/* const cron = require('node-cron');
+const cron = require('node-cron');
 const prisma = require('./db.server');
+
+//just to test and see if cron.schedule works
+cron.schedule('*/30 * * * * *', () => {
+    console.log('cron working every 30 seconds');
+  });
 
 cron.schedule('0 0 * * *', async () => {
   console.log('Running daily cleanup job');
@@ -8,7 +13,6 @@ cron.schedule('0 0 * * *', async () => {
   threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
 
   try {
-    // Delete users where updatedAt is older than 3 months
     const result = await prisma.user.deleteMany({
       where: {
         updatedAt: {
@@ -21,4 +25,4 @@ cron.schedule('0 0 * * *', async () => {
   } catch (error) {
     console.error('Error deleting old users:', error);
   }
-}); */
+});
