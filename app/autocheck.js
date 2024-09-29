@@ -1,5 +1,5 @@
+import prisma from "./db.server";
 const cron = require('node-cron');
-const prisma = require('./db.server');
 
 cron.schedule('0 0 * * *', async () => {
   console.log('Running daily cleanup job');
