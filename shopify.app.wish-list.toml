@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "648015b8ba04d0a04710875cb32a41be"
-name = "Wish List"
-handle = "wish-list-34"
+name = "Wishify"
+handle = "wishifylist"
 application_url = "https://vital-wish-list-c86fce13cbd9.herokuapp.com/"
 embedded = true
 
