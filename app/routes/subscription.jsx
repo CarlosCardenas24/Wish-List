@@ -1,4 +1,4 @@
-const { session, admin } = await authenticate.admin(request);
+/* const { session, admin } = await authenticate.admin(request);
 
 const shop = session.shop.replace(".myshopify.com", "");
 const appHandle = "wishifylist"
@@ -39,4 +39,4 @@ const response = await admin.graphql(
   },
 );
 
-const data = await response.json();
+const data = await response.json(); */
