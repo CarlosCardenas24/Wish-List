@@ -1,8 +1,8 @@
-/* const { session, admin } = await authenticate.admin(request);
+const { session, admin } = await authenticate.admin(request);
 
 const shop = session.shop.replace(".myshopify.com", "");
 const appHandle = "wishifylist"
-const returnUrl = `https://admin.shopify.com/store/${shop}/apps/${appHandle}/charge_approval`;
+const returnUrl = `https://vital-wish-list-c86fce13cbd9.herokuapp.com/charge_approval`;
 
 const response = await admin.graphql(
   `#graphql
@@ -39,4 +39,4 @@ const response = await admin.graphql(
   },
 );
 
-const data = await response.json(); */
+const data = await response.json();
