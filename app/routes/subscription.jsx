@@ -1,6 +1,6 @@
 import { authenticate } from "../shopify.server";
 
-async function subscription() {
+async function subscription({request}) {
     const { admin } =  await authenticate.admin(request);
 
     const returnUrl = `https://vital-wish-list-c86fce13cbd9.herokuapp.com/charge_approval`;
