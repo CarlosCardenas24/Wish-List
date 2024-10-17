@@ -1,7 +1,7 @@
-/* import { authenticate } from "../shopify.server";
+import { authenticate } from "../shopify.server";
 
 async function subscription() {
-    const { session, admin } = await authenticate.admin(request);
+    const { admin } =  await authenticate.admin(request);
 
     const returnUrl = `https://vital-wish-list-c86fce13cbd9.herokuapp.com/charge_approval`;
 
@@ -39,9 +39,11 @@ async function subscription() {
         },
     },
     );
+    console.log("R", response)
 
     const data = await response.json();
+    console.log("D", data)
     return data
 }
 
-subscription() */
+subscription()
