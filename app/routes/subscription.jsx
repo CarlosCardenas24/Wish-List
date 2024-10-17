@@ -1,8 +1,6 @@
 async function subscription() {
     const { session, admin } = await authenticate.admin(request);
 
-    const shop = session.shop.replace(".myshopify.com", "");
-    const appHandle = "wishifylist"
     const returnUrl = `https://vital-wish-list-c86fce13cbd9.herokuapp.com/charge_approval`;
 
     const response = await admin.graphql(
@@ -44,4 +42,4 @@ async function subscription() {
     return data
 }
 
-handleSubscription()
+subscription()
