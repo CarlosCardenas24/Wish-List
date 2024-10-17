@@ -1,3 +1,5 @@
+import { authenticate } from "../shopify.server";
+
 async function subscription() {
     const { session, admin } = await authenticate.admin(request);
 
