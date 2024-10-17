@@ -1,4 +1,4 @@
-import { authenticate } from "../shopify.server";
+/* import { authenticate } from "../shopify.server";
 
 async function subscription() {
     const { session, admin } = await authenticate.admin(request);
@@ -44,4 +44,4 @@ async function subscription() {
     return data
 }
 
-subscription()
+subscription() */
