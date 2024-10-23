@@ -20,7 +20,8 @@ async function subscriptionMetaField(graphql) {
   `)
 
   const appInstallIDResponse = await appInstallIDRequest
-  console.log(appInstallIDResponse)
+  const appInstallID = appInstallIDResponse.data
+  console.log(appInstallID)
 }
 
 export async function loader({ request }) {
