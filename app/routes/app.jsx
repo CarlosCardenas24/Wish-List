@@ -3,13 +3,16 @@ import { Link, Outlet, useLoaderData, useRouteError } from "@remix-run/react";
 import polarisStyles from "@shopify/polaris/build/esm/styles.css";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
-
 import { authenticate } from "../shopify.server";
+import { getSubscriptionStatus } from "../models/Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export async function loader({ request }) {
-  await authenticate.admin(request);
+  const {admin, billing, session} = await authenticate.admin(request);
+
+  const subscription = await getSubscriptionStatus(admin.graphql)
+  console.log(subscription)
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY });
 }

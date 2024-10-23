@@ -1,4 +1,4 @@
-import { authenticate } from "../shopify.server";
+/* import { authenticate } from "../shopify.server";
 
 async function subscription({request}) {
     const { admin } =  await authenticate.admin(request);
@@ -46,4 +46,4 @@ async function subscription({request}) {
     return data
 }
 
-subscription()
+export subscription() */

@@ -4,11 +4,13 @@ import {
   DeliveryMethod,
   shopifyApp,
   LATEST_API_VERSION,
+  BillingInterval
 } from "@shopify/shopify-app-remix/server";
 import { PrismaSessionStorage } from "@shopify/shopify-app-session-storage-prisma";
 import { restResources } from "@shopify/shopify-api/rest/admin/2023-07";
-
 import prisma from "./db.server";
+
+export const MONTHLY_PLAN = "Monthly subscription"
 
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY,
@@ -20,6 +22,14 @@ const shopify = shopifyApp({
   sessionStorage: new PrismaSessionStorage(prisma),
   distribution: AppDistribution.AppStore,
   restResources,
+  billing: {
+    [MONTHLY_PLAN]: {
+      amount: 5,
+      currencyCode: "USD",
+      interval: BillingInterval.Every30Days,
+      trialDays: 0,
+    }
+  },
   webhooks: {
     APP_UNINSTALLED: {
       deliveryMethod: DeliveryMethod.Http,
