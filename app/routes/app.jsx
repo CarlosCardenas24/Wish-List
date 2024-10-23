@@ -11,8 +11,9 @@ export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
 
-  const subscription = await getSubscriptionStatus(admin.graphql)
-  console.log(subscription)
+  const subscriptions = await getSubscriptionStatus(admin.graphql)
+  const {activeSubscriptions} = subscriptions.data.app.installation
+  console.log(activeSubscriptions)
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY });
 }
