@@ -3,17 +3,30 @@ import { Link, Outlet, useLoaderData, useRouteError } from "@remix-run/react";
 import polarisStyles from "@shopify/polaris/build/esm/styles.css";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
-import { authenticate } from "../shopify.server";
+import { authenticate, MONTHLY_PLAN } from "../shopify.server";
 import { getSubscriptionStatus } from "../models/Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
+  const {shop} = session;
 
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   const {activeSubscriptions} = subscriptions.data.app.installation
-  console.log(activeSubscriptions)
+ 
+  if (activeSubscriptions.length < 1) {
+    await billing.require({
+      plans: [MONTHLY_PLAN],
+      isTest: true,
+      onFailure: async () =>
+        billing.request({
+          plan: MONTHLY_PLAN,
+          isTest: true,
+        }),
+        returnUrl: `https://${shop}/admin/apps/wishifylist/app`
+    })
+  }
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY });
 }
