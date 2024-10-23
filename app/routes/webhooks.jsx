@@ -7,11 +7,26 @@ export const action = async ({ request }) => {
   let userExists;
   let shopExists;
 
+  /* async function subscriptionMetaField(graphql) {
+    `
+    #graphql
+      query {
+        currentAppInstallation {
+          id
+        }
+      }
+    `
+  } */
+
   switch (topic) {
     case "APP_UNINSTALLED":
       if (session) {
         await prisma.session.deleteMany({ where: { shop } });
       }
+      break;
+    case "APP_SUBSCRIPTIONS_UPDATE":
+      const status = payload.app_subscription.status
+
       break;
     case "CUSTOMERS_DATA_REQUEST":
       

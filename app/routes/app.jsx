@@ -8,12 +8,28 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
+async function subscriptionMetaField(graphql) {
+  const appInstallIDRequest = await graphql(
+  `
+  #graphql
+    query {
+      currentAppInstallation {
+        id
+      }
+    }
+  `)
+
+  const appInstallIDResponse = await appInstallIDRequest
+  console.log(appInstallIDResponse)
+}
+
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
   const {shop} = session;
 
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   const {activeSubscriptions} = subscriptions.data.app.installation
+  subscriptionMetaField(admin.graphql)
  
   if (activeSubscriptions.length < 1) {
     await billing.require({
