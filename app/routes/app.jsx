@@ -8,7 +8,7 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
-async function subscriptionMetaField(graphql) {
+async function subscriptionMetaField(graphql, value) {
   const appInstallIDRequest = await graphql(
   `
     #graphql
@@ -21,8 +21,41 @@ async function subscriptionMetaField(graphql) {
 
   const appInstallIDResponse = await appInstallIDRequest.json()
   console.log("First", appInstallIDResponse)
-  const appInstallID = appInstallIDResponse.data
+  const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
   console.log("Second", appInstallID)
+
+  const appMetafield = await graphql(`
+    #graphql
+    mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
+      metafieldsSet(metafields: $metafieldsSetInput) {
+        metafields {
+          id
+          namespace
+          key
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+    `, {
+      variables: {
+        "metafieldsSetInput": [
+          {
+            "namespace": "wishify",
+            "key": "hasPaid",
+            "type": "boolean",
+            "value": value,
+            "ownerId": appInstallID,
+          }
+        ]
+      }
+    })
+
+    const metafieldResponse = await appMetafield.json()
+    console.log("Third", metafieldResponse)
+    return;
 }
 
 export async function loader({ request }) {
