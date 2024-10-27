@@ -1,22 +1,13 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
+import { subscriptionMetaField } from "~/models/Subscription.server";
 
 export const action = async ({ request }) => {
-  const { topic, shop, session, payload } = await authenticate.webhook(request);
+  const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
 
   let userExists;
   let shopExists;
 
-  /* async function subscriptionMetaField(graphql) {
-    `
-    #graphql
-      query {
-        currentAppInstallation {
-          id
-        }
-      }
-    `
-  } */
 
   switch (topic) {
     case "APP_UNINSTALLED":
@@ -26,6 +17,12 @@ export const action = async ({ request }) => {
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
       const status = payload.app_subscription.status
+
+      if(status == 'ACTIVE') {
+        subscriptionMetaField(admin.graphql, "true")
+      } else {
+        subscriptionMetaField(admin.graphql, "false")
+      }
 
       break;
     case "CUSTOMERS_DATA_REQUEST":

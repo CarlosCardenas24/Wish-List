@@ -8,63 +8,12 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
-async function subscriptionMetaField(graphql, value) {
-  const appInstallIDRequest = await graphql(
-  `
-    #graphql
-    query {
-      currentAppInstallation {
-        id
-      }
-    }
-  `)
-
-  const appInstallIDResponse = await appInstallIDRequest.json()
-  console.log("First", appInstallIDResponse)
-  const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
-  console.log("Second", appInstallID)
-
-  const appMetafield = await graphql(`
-    #graphql
-    mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
-      metafieldsSet(metafields: $metafieldsSetInput) {
-        metafields {
-          id
-          namespace
-          key
-        }
-        userErrors {
-          field
-          message
-        }
-      }
-    }
-    `, {
-      variables: {
-        "metafieldsSetInput": [
-          {
-            "namespace": "wishify",
-            "key": "hasPaid",
-            "type": "boolean",
-            "value": value,
-            "ownerId": appInstallID,
-          }
-        ]
-      }
-    })
-
-    const metafieldResponse = await appMetafield.json()
-    console.log("Third", metafieldResponse)
-    return;
-}
-
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
   const {shop} = session;
 
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   const {activeSubscriptions} = subscriptions.data.app.installation
-  subscriptionMetaField(admin.graphql)
  
   if (activeSubscriptions.length < 1) {
     await billing.require({
