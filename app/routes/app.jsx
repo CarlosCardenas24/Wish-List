@@ -11,7 +11,7 @@ export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 async function subscriptionMetaField(graphql) {
   const appInstallIDRequest = await graphql(
   `
-  #graphql
+    #graphql
     query {
       currentAppInstallation {
         id
@@ -19,9 +19,10 @@ async function subscriptionMetaField(graphql) {
     }
   `)
 
-  const appInstallIDResponse = await appInstallIDRequest
+  const appInstallIDResponse = await appInstallIDRequest.json()
+  console.log("First", appInstallIDResponse)
   const appInstallID = appInstallIDResponse.data
-  console.log(appInstallID)
+  console.log("Second", appInstallID)
 }
 
 export async function loader({ request }) {
