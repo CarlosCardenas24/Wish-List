@@ -71,13 +71,13 @@ export async function subscriptionMetaField(graphql, value) {
           }
           `, {
             variables: {
-              "metafieldsSetInput": [
+              metafieldsSetInput: [
                 {
-                  "namespace": "wishify",
-                  "key": "hasPaid",
-                  "type": "boolean",
-                  "value": value,
-                  "ownerId": appInstallID,
+                  namespace: "wishify",
+                  key: "hasPaid",
+                  type: "boolean",
+                  value: value,
+                  ownerId: appInstallID,
                 }
               ]
             }
