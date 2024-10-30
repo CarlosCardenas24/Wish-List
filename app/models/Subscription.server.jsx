@@ -27,8 +27,71 @@ export async function getSubscriptionStatus(graphql) {
     return response
 }
 
-export async function subscriptionMetaField({graphql, value}) {
+export async function subscriptionMetaField(graphql, value) {
+   try {
+
     const appInstallIDRequest = await graphql(
+        `
+          #graphql
+          query {
+            currentAppInstallation {
+              id
+            }
+          }
+        `)
+      
+        const appInstallIDResponse = await appInstallIDRequest.json()
+            
+        /* if(!appInstallIDResponse || appInstallIDRequest) {
+            console.log("Error: appInstallIDResponse or appInstallIDRequest is undefined")
+            return;
+        } */
+    
+        const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
+    
+        /* if(!appInstallID) {
+            console.log("Error: appInstallID is undefined")
+            return;
+        } */
+    
+        const appMetafield = await graphql(`
+          #graphql
+          mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
+            metafieldsSet(metafields: $metafieldsSetInput) {
+              metafields {
+                id
+                namespace
+                key
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }
+          `, {
+            variables: {
+              "metafieldsSetInput": [
+                {
+                  "namespace": "wishify",
+                  "key": "hasPaid",
+                  "type": "boolean",
+                  "value": value,
+                  "ownerId": appInstallID,
+                }
+              ]
+            }
+          })
+      
+          const metafieldResponse = await appMetafield.json()
+          console.log("Field of Meta", metafieldResponse)
+          return;
+
+   } catch {
+
+   }
+   
+    /* const appInstallIDRequest = await graphql(
     `
       #graphql
       query {
@@ -40,14 +103,14 @@ export async function subscriptionMetaField({graphql, value}) {
   
     const appInstallIDResponse = await appInstallIDRequest.json()
         
-    if(!appInstallIDResponse || appInstallIDRequest) {
+     if(!appInstallIDResponse || appInstallIDRequest) {
         console.log("Error: appInstallIDResponse or appInstallIDRequest is undefined")
         return;
     }
 
     const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
 
-    if(!appInstallID) {
+     if(!appInstallID) {
         console.log("Error: appInstallID is undefined")
         return;
     }
@@ -83,5 +146,5 @@ export async function subscriptionMetaField({graphql, value}) {
   
       const metafieldResponse = await appMetafield.json()
       console.log("Field of Meta", metafieldResponse)
-      return;
+      return; */
   }
