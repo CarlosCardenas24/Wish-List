@@ -28,6 +28,12 @@ export async function getSubscriptionStatus(graphql) {
 }
 
 export async function subscriptionMetaField(graphql, value) {
+    
+    if (typeof graphql !== 'function') {
+        console.error("Error: graphql is not a function");
+        return;
+      }
+
     const appInstallIDRequest = await graphql(
     `
       #graphql
