@@ -39,6 +39,12 @@ export async function subscriptionMetaField(graphql, value) {
     `)
   
     const appInstallIDResponse = await appInstallIDRequest.json()
+        
+    if(!appInstallIDResponse || appInstallIDRequest) {
+        console.log("Error: appInstallIDResponse or appInstallIDRequest is undefined")
+        return;
+    }
+
     const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
 
     if(!appInstallID) {
