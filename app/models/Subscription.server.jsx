@@ -56,8 +56,8 @@ export async function subscriptionMetaField(graphql, value) {
     
         const appMetafield = await graphql(`
           #graphql
-          mutation CreateAppDataMetafield($metafields: [Metafields!]!) {
-            metafieldsSet(metafields: $metafields) {
+          mutation CreateAppDataMetafield($metafieldsSetInput: [metafieldsSetInput!]!) {
+            metafieldsSet(metafields: $metafieldsSetInput) {
               metafields {
                 id
                 namespace
@@ -71,12 +71,12 @@ export async function subscriptionMetaField(graphql, value) {
           }
           `, {
             variables: {
-              metafields: {
-                  namespace: "wishify",
-                  key: "hasPaid",
-                  type: "boolean",
-                  value: value,
-                  ownerId: appInstallID,
+                "metafieldsSetInput": {
+                  "namespace": "wishify",
+                  "key": "hasPaid",
+                  "type": "boolean",
+                  "value": value,
+                  "ownerId": appInstallID,
                 },
             },
           },)
