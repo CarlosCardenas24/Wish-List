@@ -88,7 +88,7 @@ export async function subscriptionMetaField(graphql, value) {
           return;
 
    } catch {
-
+        console.log("Error on Subscription page")
    }
    
     /* const appInstallIDRequest = await graphql(
