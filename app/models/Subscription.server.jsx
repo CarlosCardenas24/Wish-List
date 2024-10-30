@@ -28,12 +28,6 @@ export async function getSubscriptionStatus(graphql) {
 }
 
 export async function subscriptionMetaField(graphql, value) {
-    
-    if (typeof graphql !== 'function') {
-        console.error("Error: graphql is not a function");
-        return;
-      }
-
     const appInstallIDRequest = await graphql(
     `
       #graphql
@@ -46,6 +40,11 @@ export async function subscriptionMetaField(graphql, value) {
   
     const appInstallIDResponse = await appInstallIDRequest.json()
     const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
+
+    if(!appInstallID) {
+        console.log("Error: appInstallID is undefined")
+        return;
+    }
 
     const appMetafield = await graphql(`
       #graphql
