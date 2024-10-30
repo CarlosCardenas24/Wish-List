@@ -31,6 +31,7 @@
 {
   "name": "Add to Wish List",
   "target": "section",
+  "available_if": "{{ app.metafields.wishify.wishify.hasPaid }}",
   "settings": [
     {
       "id" : "Product",
