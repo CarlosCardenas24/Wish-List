@@ -71,17 +71,15 @@ export async function subscriptionMetaField(graphql, value) {
           }
           `, {
             variables: {
-              metafieldsSetInput: [
-                {
+              metafields: {
                   namespace: "wishify",
                   key: "hasPaid",
                   type: "boolean",
                   value: value,
                   ownerId: appInstallID,
-                }
-              ]
-            }
-          })
+                },
+            },
+          },)
       
           const metafieldResponse = await appMetafield.json()
           console.log("Field of Meta", metafieldResponse)
