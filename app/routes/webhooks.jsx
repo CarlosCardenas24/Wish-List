@@ -19,8 +19,10 @@ export const action = async ({ request }) => {
       const status = payload.app_subscription.status
 
       if(status == 'ACTIVE') {
+        console.log("hasPaid is True")
         subscriptionMetaField(admin.graphql, "true")
       } else {
+        console.log("hasPaid is False")
         subscriptionMetaField(admin.graphql, "false")
       }
 
