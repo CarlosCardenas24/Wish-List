@@ -42,6 +42,7 @@ export async function subscriptionMetaField(graphql, value) {
       
         const appInstallIDResponse = await appInstallIDRequest.json()
         const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
+        console.log("AppinstallID",appInstallID)
     
         const appMetafield = await graphql(`
           #graphql

@@ -18,6 +18,7 @@ export const action = async ({ request }) => {
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
       const status = payload.app_subscription.status
+      console.log("Sub Payload", payload)
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
