@@ -4,6 +4,7 @@ import { subscriptionMetaField } from "~/models/Subscription.server";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
+  console.log("Payload!", payload)
 
   let userExists;
   let shopExists;
