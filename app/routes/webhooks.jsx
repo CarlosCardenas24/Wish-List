@@ -4,7 +4,6 @@ import { subscriptionMetaField } from "~/models/Subscription.server";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
-  console.log("Payload!", payload)
 
   let userExists;
   let shopExists;
@@ -18,7 +17,6 @@ export const action = async ({ request }) => {
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
       const status = payload.app_subscription.status
-      console.log("Sub Payload", payload)
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
