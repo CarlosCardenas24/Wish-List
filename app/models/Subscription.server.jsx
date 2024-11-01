@@ -24,10 +24,10 @@ export async function getSubscriptionStatus(graphql) {
     )
 
     const response = await request.json()
-    return response
+    return 
 }
 
-export async function subscriptionMetaField({graphql, value}) {
+/* export async function subscriptionMetaField({graphql, value}) {
     const appInstallIDRequest = await graphql(
         `
           #graphql
@@ -73,4 +73,4 @@ export async function subscriptionMetaField({graphql, value}) {
           const metafieldResponse = await appMetafield.json()
           console.log("Field of Meta", metafieldResponse)
           return;
-  }
+  } */
