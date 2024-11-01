@@ -65,7 +65,7 @@ export async function loader({ request }) {
   //const subscriptions = await getSubscriptionStatus(admin.graphql)
   //const {activeSubscriptions} = subscriptions.data.app.installation
  
-  if (activeSubscriptions.length < 1) {
+ /*  if (activeSubscriptions.length < 1) {
     await billing.require({
       plans: [MONTHLY_PLAN],
       isTest: true,
@@ -76,7 +76,7 @@ export async function loader({ request }) {
         }),
         returnUrl: `https://${shop}/admin/apps/wishifylist/app`
     })
-  }
+  } */
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY });
 }
