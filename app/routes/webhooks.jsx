@@ -1,7 +1,7 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 //import { subscriptionMetaField } from "~/models/Subscription.server";
-import { subscriptionMetaField } from "./app";
+//import { subscriptionMetaField } from "./app";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
@@ -21,10 +21,10 @@ export const action = async ({ request }) => {
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        subscriptionMetaField(admin.graphql, "true")
+        //subscriptionMetaField(admin.graphql, "true")
       } else {
         console.log("hasPaid is False")
-        subscriptionMetaField(admin.graphql, "false")
+        //subscriptionMetaField(admin.graphql, "false")
       }
 
       break;
