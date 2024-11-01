@@ -8,7 +8,7 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 import { Suspense } from "react";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
-async function subscriptionMetaField({graphql, value}) {
+export async function subscriptionMetaField(graphql, value) {
   const appInstallIDRequest = await graphql(
       `
         #graphql
@@ -56,8 +56,6 @@ async function subscriptionMetaField({graphql, value}) {
         console.log("Field of Meta", metafieldResponse)
         return; */
 }
-
-export subscriptionMetaField()
 
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
