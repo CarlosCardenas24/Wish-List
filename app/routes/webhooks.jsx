@@ -11,8 +11,7 @@ export const action = async ({ request }) => {
 
   const callAdminAPI = async (query, variables = {}) => {
     const response = await admin.graphql({
-      data: query,
-      variables,
+      data: JSON.stringify({ query }),
     });
     return await response.json();
   };  
