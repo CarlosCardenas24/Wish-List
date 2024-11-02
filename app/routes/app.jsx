@@ -7,7 +7,7 @@ import { authenticate, MONTHLY_PLAN } from "../shopify.server";
 import { getSubscriptionStatus } from "./Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
-export async function subscriptionMetaField(graphql) {
+export async function subscriptionMetaField(graphql, value) {
   const appInstallIDRequest = await graphql(
       `
         #graphql
@@ -21,7 +21,7 @@ export async function subscriptionMetaField(graphql) {
       const appInstallIDResponse = await appInstallIDRequest.json()
       const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
   
-      /* const appMetafield = await graphql(`
+      const appMetafield = await graphql(`
         #graphql
         mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
@@ -51,7 +51,7 @@ export async function subscriptionMetaField(graphql) {
     
         const metafieldResponse = await appMetafield.json()
         console.log("Field of Meta", metafieldResponse)
-        return; */
+        return;
 }
 
 export async function loader({ request }) {

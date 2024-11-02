@@ -9,6 +9,10 @@ export const action = async ({ request }) => {
   let userExists;
   let shopExists;
 
+  if (admin) {
+    let graph = admin.graphql
+  }
+
 
   switch (topic) {
     case "APP_UNINSTALLED":
@@ -21,10 +25,10 @@ export const action = async ({ request }) => {
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        subscriptionMetaField(admin.graphql, "true")
+        subscriptionMetaField(graph, "true")
       } else {
         console.log("hasPaid is False")
-        subscriptionMetaField(admin.graphql, "false")
+        subscriptionMetaField(graph, "false")
       }
 
       break;
