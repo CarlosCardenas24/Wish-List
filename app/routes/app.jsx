@@ -8,8 +8,7 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 import { Suspense } from "react";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
-export async function subscriptionMetaField(graphql, value) {
-  console.log("value inside function", value)
+export async function subscriptionMetaField(graphql) {
   const appInstallIDRequest = await graphql(
       `
         #graphql
@@ -21,9 +20,10 @@ export async function subscriptionMetaField(graphql, value) {
       `)
     
       const appInstallIDResponse = await appInstallIDRequest.json()
-      const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
+      console.log(appInstallIDRequest)
+      //const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
   
-      const appMetafield = await graphql(`
+      /* const appMetafield = await graphql(`
         #graphql
         mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
@@ -53,7 +53,7 @@ export async function subscriptionMetaField(graphql, value) {
     
         const metafieldResponse = await appMetafield.json()
         console.log("Field of Meta", metafieldResponse)
-        return;
+        return; */
 }
 
 export async function loader({ request }) {
@@ -62,6 +62,7 @@ export async function loader({ request }) {
 
   subscriptionMetaField(admin.graphql)
   const subscriptions = await getSubscriptionStatus(admin.graphql)
+  console.log("Sub", subscriptions)
   const {activeSubscriptions} = subscriptions.data.app.installation
  
   if (activeSubscriptions.length < 1) {
