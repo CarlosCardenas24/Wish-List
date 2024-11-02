@@ -17,7 +17,7 @@ export const action = async ({ request }) => {
       }
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
-      console.log("sub update admin", admin)
+      console.log("sub update admin", admin.graphql)
       const status = payload.app_subscription.status
 
       if(status == 'ACTIVE') {

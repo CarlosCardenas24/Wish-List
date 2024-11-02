@@ -57,6 +57,7 @@ export async function subscriptionMetaField(graphql, value) {
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
   const {shop} = session;
+  console.log("app admin", admin.graphql)
 
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   const {activeSubscriptions} = subscriptions.data.app.installation
