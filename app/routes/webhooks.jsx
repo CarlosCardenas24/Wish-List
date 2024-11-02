@@ -17,15 +17,15 @@ export const action = async ({ request }) => {
       }
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
-      console.log("sub update admin", admin.graphql)
+      console.log("sub update admin", admin.graphql.GraphqlClient)
       const status = payload.app_subscription.status
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        subscriptionMetaField(admin?.graphql, "true")
+        subscriptionMetaField(admin.graphql.GraphqlClient, "true")
       } else {
         console.log("hasPaid is False")
-        subscriptionMetaField(admin?.graphql, "false")
+        subscriptionMetaField(admin.graphql.GraphqlClient, "false")
       }
 
       break;
