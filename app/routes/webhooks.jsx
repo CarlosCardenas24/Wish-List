@@ -2,7 +2,7 @@ import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
 //import { subscriptionMetaField } from "~/models/Subscription.server";
 import { subscriptionMetaField } from "./app";
-import { shopify } from "../shopify.server"
+import shopify from "../shopify.server"
 
 export const action = async ({ request }) => {
   const { topic, shop, session, payload } = await authenticate.webhook(request);
