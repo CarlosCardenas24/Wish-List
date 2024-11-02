@@ -43,6 +43,7 @@ export const action = async ({ request }) => {
       try {
         // Step 1: Check if `hasPaid` metafield exists
         const metafieldQuery = `
+          #graphql
           query {
             currentAppInstallation {
               metafields(namespace: "wishify", first: 1) {
@@ -57,12 +58,14 @@ export const action = async ({ request }) => {
           }
         `;
         const metafieldResponse = await callAdminAPI(metafieldQuery);
+        const appInstallID = metafieldResponse.data.currentAppInstallation.id
         const hasPaidMetafield = metafieldResponse.currentAppInstallation.metafields.edges.find(edge => edge.node.key === "hasPaid");
 
         // Step 2: Set or update the `hasPaid` metafield based on subscription status
         if (!hasPaidMetafield) {
           console.log("Initializing hasPaid metafield as it does not exist.");
           await callAdminAPI(`
+            #graphql
             mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
               metafieldsSet(metafields: $metafieldsSetInput) {
                 metafields {
@@ -83,13 +86,14 @@ export const action = async ({ request }) => {
                 "key": "hasPaid",
                 "type": "boolean",
                 "value": hasPaidValue,
-                "ownerId": metafieldResponse.currentAppInstallation.id,
+                "ownerId": appInstallID,
               }
             ]
           });
         } else if (hasPaidMetafield.node.value !== hasPaidValue) {
           console.log(`Updating hasPaid metafield to ${hasPaidValue}`);
           await callAdminAPI(`
+            #graphql
             mutation UpdateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
               metafieldsSet(metafields: $metafieldsSetInput) {
                 metafields {

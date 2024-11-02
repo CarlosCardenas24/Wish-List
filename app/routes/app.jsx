@@ -4,7 +4,7 @@ import polarisStyles from "@shopify/polaris/build/esm/styles.css";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
 import { authenticate, MONTHLY_PLAN } from "../shopify.server";
-import { getSubscriptionStatus } from "./Subscription.server"
+import { getSubscriptionStatus } from "~/models/Subscription.server";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 export async function subscriptionMetaField(graphql, value) {
@@ -23,8 +23,8 @@ export async function subscriptionMetaField(graphql, value) {
   
       const appMetafield = await graphql(`
         #graphql
-        mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
-          metafieldsSet(metafields: $metafields) {
+        mutation CreateAppDataMetafield($metafieldsSetInput: [metafieldsSetInput!]!) {
+          metafieldsSet(metafields: $metafieldsSetInput) {
             metafields {
               id
               namespace
@@ -38,12 +38,12 @@ export async function subscriptionMetaField(graphql, value) {
         }
         `, {
           variables: {
-              metafields: {
-                namespace: "wishify",
-                key: "hasPaid",
-                type: "boolean",
-                value: value,
-                ownerId: appInstallID,
+              "metafieldsSetInput": {
+                "namespace": "wishify",
+                "key": "hasPaid",
+                "type": "boolean",
+                "value": value,
+                "ownerId": appInstallID,
               },
           },
       },
