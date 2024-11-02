@@ -62,7 +62,8 @@ export async function loader({ request }) {
   const {shop} = session;
 
   //subscriptionMetaField(admin.graphql)
-  //const subscriptions = await getSubscriptionStatus(admin.graphql)
+  const subscriptions = await getSubscriptionStatus(admin.graphql)
+  console.log(subscriptions)
   //const {activeSubscriptions} = subscriptions.data.app.installation
  
  /*  if (activeSubscriptions.length < 1) {
