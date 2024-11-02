@@ -4,7 +4,27 @@ import prisma from "../db.server";
 import { subscriptionMetaField } from "./app";
 
 export const action = async ({ request }) => {
-  const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
+  const { topic, shop, session, payload } = await authenticate.webhook(request);
+
+  const callAdminAPI = async (query, variables = {}) => {
+    const adminAPIToken = process.env.SHOPIFY_ADMIN_API_ACCESS_TOKEN;
+    if (!adminAPIToken) {
+      throw new Error("Missing Shopify Admin API Access Token");
+    }
+    const response = await fetch(`https://${shop}/admin/api/2023-10/graphql.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": adminAPIToken,
+      },
+      body: JSON.stringify({ query, variables }),
+    });
+    const responseBody = await response.json();
+    if (!response.ok) {
+      throw new Error(`Admin API Error: ${responseBody.errors?.[0]?.message || response.statusText}`);
+    }
+    return responseBody.data;
+  };
 
   let userExists;
   let shopExists;
@@ -17,16 +37,97 @@ export const action = async ({ request }) => {
       }
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
-      console.log("sub update admin", admin.graphql.GraphqlClient)
       const status = payload.app_subscription.status
+      const hadPiadValue = status === 'ACTIVE' ? "true" : "false"
 
-      if(status == 'ACTIVE') {
+      try {
+        // Step 1: Check if `hasPaid` metafield exists
+        const metafieldQuery = `
+          query {
+            currentAppInstallation {
+              metafields(namespace: "wishify", first: 1) {
+                edges {
+                  node {
+                    key
+                    value
+                  }
+                }
+              }
+            }
+          }
+        `;
+        const metafieldResponse = await callAdminAPI(metafieldQuery);
+        const hasPaidMetafield = metafieldResponse.currentAppInstallation.metafields.edges.find(edge => edge.node.key === "hasPaid");
+
+        // Step 2: Set or update the `hasPaid` metafield based on subscription status
+        if (!hasPaidMetafield) {
+          console.log("Initializing hasPaid metafield as it does not exist.");
+          await callAdminAPI(`
+            mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
+              metafieldsSet(metafields: $metafieldsSetInput) {
+                metafields {
+                  id
+                  namespace
+                  key
+                }
+                userErrors {
+                  field
+                  message
+                }
+              }
+            }
+          `, {
+            "metafieldsSetInput": [
+              {
+                "namespace": "wishify",
+                "key": "hasPaid",
+                "type": "boolean",
+                "value": hasPaidValue,
+                "ownerId": metafieldResponse.currentAppInstallation.id,
+              }
+            ]
+          });
+        } else if (hasPaidMetafield.node.value !== hasPaidValue) {
+          console.log(`Updating hasPaid metafield to ${hasPaidValue}`);
+          await callAdminAPI(`
+            mutation UpdateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
+              metafieldsSet(metafields: $metafieldsSetInput) {
+                metafields {
+                  id
+                  namespace
+                  key
+                }
+                userErrors {
+                  field
+                  message
+                }
+              }
+            }
+          `, {
+            "metafieldsSetInput": [
+              {
+                "namespace": "wishify",
+                "key": "hasPaid",
+                "type": "boolean",
+                "value": hasPaidValue,
+                "ownerId": metafieldResponse.currentAppInstallation.id,
+              }
+            ]
+          });
+        } else {
+          console.log("No update needed for hasPaid metafield; value is already correct.");
+        }
+      } catch (error) {
+        console.error("Error handling APP_SUBSCRIPTIONS_UPDATE webhook:", error);
+      }
+
+     /*  if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        subscriptionMetaField(admin.graphql.GraphqlClient, "true")
+        subscriptionMetaField(admin.graphql, "true")
       } else {
         console.log("hasPaid is False")
-        subscriptionMetaField(admin.graphql.GraphqlClient, "false")
-      }
+        subscriptionMetaField(admin.graphql, "false")
+      } */
 
       break;
     case "CUSTOMERS_DATA_REQUEST":
