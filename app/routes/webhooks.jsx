@@ -5,7 +5,9 @@ import { subscriptionMetaField } from "./app";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
-  console.log('webhook admin', admin)
+  //console.log('webhook admin', admin)
+  console.log('graphql admin with ?', admin?.graphql)
+  console.log('graphql admin', admin.graphql)
 
   let userExists;
   let shopExists;
