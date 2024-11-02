@@ -5,9 +5,6 @@ import { subscriptionMetaField } from "./app";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
-  //console.log('webhook admin', admin)
-  console.log('graphql admin with ?', admin?.graphql)
-  console.log('graphql admin', admin.graphql)
 
   let userExists;
   let shopExists;
@@ -20,6 +17,7 @@ export const action = async ({ request }) => {
       }
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
+      console.log("sub update admin", admin)
       const status = payload.app_subscription.status
 
       if(status == 'ACTIVE') {
