@@ -20,7 +20,7 @@ async function subscriptionMetaField(graphql) {
       `)
     
       const appInstallIDResponse = await appInstallIDRequest.json()
-      console.log("AppInstallIDResponse"appInstallIDResponse)
+      console.log("AppInstallIDResponse", appInstallIDResponse)
       const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
       console.log("AppinstallID",appInstallID)
   
