@@ -5,16 +5,20 @@ import { subscriptionMetaField } from "./app";
 import shopify from "../shopify.server"
 
 export const action = async ({ request }) => {
-  const { topic, shop, session, payload } = await authenticate.webhook(request);
+  const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
 
-  const { admin } = await shopify.unauthenticated.admin(shop);
+  if(!admin) {
+    throw new Response();
+  }
 
-  const callAdminAPI = async (query, variables = {}) => {
+  //const { admin } = await shopify.unauthenticated.admin(shop);
+
+  /* const callAdminAPI = async (query, variables = {}) => {
     const response = await admin.graphql({
       data: JSON.stringify({ query }),
     });
     return await response.json();
-  };  
+  };   */
 
   let userExists;
   let shopExists;
@@ -28,7 +32,7 @@ export const action = async ({ request }) => {
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
       const status = payload.app_subscription.status
-      const hadPiadValue = status === 'ACTIVE' ? "true" : "false"
+      /* const hadPiadValue = status === 'ACTIVE' ? "true" : "false"
 
       try {
         const metafieldQuery = `
@@ -112,15 +116,15 @@ export const action = async ({ request }) => {
         }
       } catch (error) {
         console.error("Error handling APP_SUBSCRIPTIONS_UPDATE webhook:", error);
-      }
+      } */
 
-     /*  if(status == 'ACTIVE') {
+      if(status == 'ACTIVE') {
         console.log("hasPaid is True")
         subscriptionMetaField(admin.graphql, "true")
       } else {
         console.log("hasPaid is False")
         subscriptionMetaField(admin.graphql, "false")
-      } */
+      }
 
       break;
     case "CUSTOMERS_DATA_REQUEST":
