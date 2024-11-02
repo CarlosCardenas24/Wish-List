@@ -4,8 +4,7 @@ import polarisStyles from "@shopify/polaris/build/esm/styles.css";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
 import { authenticate, MONTHLY_PLAN } from "../shopify.server";
-import { getSubscriptionStatus } from "../models/Subscription.server"
-import { Suspense } from "react";
+import { getSubscriptionStatus } from "./Subscription.server"
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 export async function subscriptionMetaField(graphql) {
@@ -20,9 +19,9 @@ export async function subscriptionMetaField(graphql) {
       `)
     
       const appInstallIDResponse = await appInstallIDRequest.json()
-      //const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
+      const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
   
-      /* const appMetafield = await graphql(`
+      const appMetafield = await graphql(`
         #graphql
         mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
@@ -52,17 +51,15 @@ export async function subscriptionMetaField(graphql) {
     
         const metafieldResponse = await appMetafield.json()
         console.log("Field of Meta", metafieldResponse)
-        return; */
+        return;
 }
 
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
   const {shop} = session;
 
-  //subscriptionMetaField(admin.graphql)
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   const {activeSubscriptions} = subscriptions.data.app.installation
-  console.log("Active Sub", activeSubscriptions)
  
   if (activeSubscriptions.length < 1) {
     await billing.require({
