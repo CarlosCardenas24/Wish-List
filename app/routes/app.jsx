@@ -20,7 +20,6 @@ export async function subscriptionMetaField(graphql) {
       `)
     
       const appInstallIDResponse = await appInstallIDRequest.json()
-      console.log(appInstallIDRequest)
       //const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
   
       /* const appMetafield = await graphql(`
@@ -60,10 +59,10 @@ export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
   const {shop} = session;
 
-  subscriptionMetaField(admin.graphql)
+  //subscriptionMetaField(admin.graphql)
   const subscriptions = await getSubscriptionStatus(admin.graphql)
-  console.log("Sub", subscriptions)
   const {activeSubscriptions} = subscriptions.data.app.installation
+  console.log("Active Sub", activeSubscriptions)
  
   if (activeSubscriptions.length < 1) {
     await billing.require({
