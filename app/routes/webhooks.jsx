@@ -6,25 +6,15 @@ import { subscriptionMetaField } from "./app";
 export const action = async ({ request }) => {
   const { topic, shop, session, payload } = await authenticate.webhook(request);
 
+  const { admin } = await shopify.unauthenticated.admin(shop);
+
   const callAdminAPI = async (query, variables = {}) => {
-    const adminAPIToken = process.env.SHOPIFY_ADMIN_API_ACCESS_TOKEN;
-    if (!adminAPIToken) {
-      throw new Error("Missing Shopify Admin API Access Token");
-    }
-    const response = await fetch(`https://${shop}/admin/api/2023-10/graphql.json`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Access-Token": adminAPIToken,
-      },
-      body: JSON.stringify({ query, variables }),
+    const response = await admin.graphql({
+      data: query,
+      variables,
     });
-    const responseBody = await response.json();
-    if (!response.ok) {
-      throw new Error(`Admin API Error: ${responseBody.errors?.[0]?.message || response.statusText}`);
-    }
-    return responseBody.data;
-  };
+    return await response.json();
+  };  
 
   let userExists;
   let shopExists;
@@ -41,11 +31,11 @@ export const action = async ({ request }) => {
       const hadPiadValue = status === 'ACTIVE' ? "true" : "false"
 
       try {
-        // Step 1: Check if `hasPaid` metafield exists
         const metafieldQuery = `
           #graphql
           query {
             currentAppInstallation {
+              id
               metafields(namespace: "wishify", first: 1) {
                 edges {
                   node {
@@ -58,10 +48,12 @@ export const action = async ({ request }) => {
           }
         `;
         const metafieldResponse = await callAdminAPI(metafieldQuery);
-        const appInstallID = metafieldResponse.data.currentAppInstallation.id
-        const hasPaidMetafield = metafieldResponse.currentAppInstallation.metafields.edges.find(edge => edge.node.key === "hasPaid");
+        const appInstallID = metafieldResponse.data.currentAppInstallation.id;
+        
+        const hasPaidMetafield = metafieldResponse.data.currentAppInstallation.metafields.edges.find(
+          edge => edge.node.key === "hasPaid"
+        );
 
-        // Step 2: Set or update the `hasPaid` metafield based on subscription status
         if (!hasPaidMetafield) {
           console.log("Initializing hasPaid metafield as it does not exist.");
           await callAdminAPI(`
@@ -114,7 +106,7 @@ export const action = async ({ request }) => {
                 "key": "hasPaid",
                 "type": "boolean",
                 "value": hasPaidValue,
-                "ownerId": metafieldResponse.currentAppInstallation.id,
+                "ownerId": appInstallID,
               }
             ]
           });
