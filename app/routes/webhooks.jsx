@@ -22,10 +22,10 @@ export const action = async ({ request }) => {
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        //subscriptionMetaField(graph, "true")
+        subscriptionMetaField(admin?.graphql, "true")
       } else {
         console.log("hasPaid is False")
-        //subscriptionMetaField(graph, "false")
+        subscriptionMetaField(admin?.graphql, "false")
       }
 
       break;
