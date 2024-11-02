@@ -33,7 +33,6 @@ export const action = async ({ request }) => {
 
       try {
         const metafieldQuery = `
-          #graphql
           query {
             currentAppInstallation {
               id
@@ -58,7 +57,6 @@ export const action = async ({ request }) => {
         if (!hasPaidMetafield) {
           console.log("Initializing hasPaid metafield as it does not exist.");
           await callAdminAPI(`
-            #graphql
             mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
               metafieldsSet(metafields: $metafieldsSetInput) {
                 metafields {
@@ -86,7 +84,6 @@ export const action = async ({ request }) => {
         } else if (hasPaidMetafield.node.value !== hasPaidValue) {
           console.log(`Updating hasPaid metafield to ${hasPaidValue}`);
           await callAdminAPI(`
-            #graphql
             mutation UpdateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
               metafieldsSet(metafields: $metafieldsSetInput) {
                 metafields {
