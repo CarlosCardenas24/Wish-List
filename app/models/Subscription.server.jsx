@@ -24,7 +24,7 @@ export async function getSubscriptionStatus(graphql) {
     )
 
     const response = await request.json()
-    return 
+    return response
 }
 
 /* export async function subscriptionMetaField({graphql, value}) {

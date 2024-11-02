@@ -8,7 +8,7 @@ import { getSubscriptionStatus } from "../models/Subscription.server"
 import { Suspense } from "react";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
-/* async function subscriptionMetaField(graphql) {
+async function subscriptionMetaField(graphql) {
   const appInstallIDRequest = await graphql(
       `
         #graphql
@@ -20,11 +20,11 @@ export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
       `)
     
       const appInstallIDResponse = await appInstallIDRequest.json()
-      console.log(appInstallIDResponse)
+      console.log("AppInstallIDResponse"appInstallIDResponse)
       const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
       console.log("AppinstallID",appInstallID)
   
-      const appMetafield = await graphql(`
+      /* const appMetafield = await graphql(`
         #graphql
         mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
@@ -54,8 +54,8 @@ export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
     
         const metafieldResponse = await appMetafield.json()
         console.log("Field of Meta", metafieldResponse)
-        return;
-} */
+        return; */
+}
 
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);
@@ -64,9 +64,9 @@ export async function loader({ request }) {
   //subscriptionMetaField(admin.graphql)
   const subscriptions = await getSubscriptionStatus(admin.graphql)
   console.log(subscriptions)
-  //const {activeSubscriptions} = subscriptions.data.app.installation
+  const {activeSubscriptions} = subscriptions.data.app.installation
  
- /*  if (activeSubscriptions.length < 1) {
+  if (activeSubscriptions.length < 1) {
     await billing.require({
       plans: [MONTHLY_PLAN],
       isTest: true,
@@ -77,7 +77,7 @@ export async function loader({ request }) {
         }),
         returnUrl: `https://${shop}/admin/apps/wishifylist/app`
     })
-  } */
+  }
 
   return json({ apiKey: process.env.SHOPIFY_API_KEY });
 }
