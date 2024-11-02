@@ -5,13 +5,10 @@ import { subscriptionMetaField } from "./app";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
+  console.log('webhook admin', admin)
 
   let userExists;
   let shopExists;
-
-  if (admin) {
-    let graph = admin.graphql
-  }
 
 
   switch (topic) {
@@ -25,10 +22,10 @@ export const action = async ({ request }) => {
 
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
-        subscriptionMetaField(graph, "true")
+        //subscriptionMetaField(graph, "true")
       } else {
         console.log("hasPaid is False")
-        subscriptionMetaField(graph, "false")
+        //subscriptionMetaField(graph, "false")
       }
 
       break;
