@@ -22,6 +22,9 @@ const shopify = shopifyApp({
   sessionStorage: new PrismaSessionStorage(prisma),
   distribution: AppDistribution.AppStore,
   restResources,
+  future: {
+    v3_webhookAdminContext: true,
+  },
   billing: {
     [MONTHLY_PLAN]: {
       amount: 5,
