@@ -70,6 +70,6 @@ export async function subscriptionMetaField(graphql, value) {
         )
       
           const metafieldResponse = await appMetafield.json()
-          console.log("Field of Meta", metafieldResponse)
+          console.log("Field of Meta", metafieldResponse.data.metafieldsSet.metafields)
           return;
   }
