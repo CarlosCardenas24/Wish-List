@@ -1,15 +1,9 @@
 import { authenticate } from "../shopify.server";
 import prisma from "../db.server";
-//import { subscriptionMetaField } from "~/models/Subscription.server";
-import { subscriptionMetaField } from "./app";
-import shopify from "../shopify.server"
+import { subscriptionMetaField } from "~/models/Subscription.server";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin, payload } = await authenticate.webhook(request);
-
-  const data = await admin.graphql.query({
-    data: `{ shop { name } }`
-  });
 
   let userExists;
   let shopExists;
@@ -23,39 +17,14 @@ export const action = async ({ request }) => {
       break;
     case "APP_SUBSCRIPTIONS_UPDATE":
       const status = payload.app_subscription.status
-
-      const hasPaidValue = status === "ACTIVE" ? "true" : "false";
-
-      const metafieldQuery = `
-        query {
-          currentAppInstallation {
-            id
-            metafields(namespace: "wishify", first: 1) {
-              edges {
-                node {
-                  key
-                  value
-                }
-              }
-            }
-          }
-        }
-      `;
-
-      const metafieldResponse = await admin.graphql.query({
-        data: metafieldQuery,
-      });
-
-      console.log("Metafield Response:", metafieldResponse.body.data);
-
       
-      /* if(status == 'ACTIVE') {
+      if(status == 'ACTIVE') {
         console.log("hasPaid is True")
         subscriptionMetaField(admin.graphql, "true")
       } else {
         console.log("hasPaid is False")
         subscriptionMetaField(admin.graphql, "false")
-      } */
+      }
 
       break;
     case "CUSTOMERS_DATA_REQUEST":

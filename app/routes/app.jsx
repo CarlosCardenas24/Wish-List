@@ -7,52 +7,6 @@ import { authenticate, MONTHLY_PLAN } from "../shopify.server";
 import { getSubscriptionStatus } from "~/models/Subscription.server";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
-export async function subscriptionMetaField(graphql, value) {
-  const appInstallIDRequest = await graphql(
-      `
-        #graphql
-        query {
-          currentAppInstallation {
-            id
-          }
-        }
-      `)
-    
-      const appInstallIDResponse = await appInstallIDRequest.json()
-      const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
-  
-      const appMetafield = await graphql(`
-        #graphql
-        mutation CreateAppDataMetafield($metafieldsSetInput: [metafieldsSetInput!]!) {
-          metafieldsSet(metafields: $metafieldsSetInput) {
-            metafields {
-              id
-              namespace
-              key
-            }
-            userErrors {
-              field
-              message
-            }
-          }
-        }
-        `, {
-          variables: {
-              "metafieldsSetInput": {
-                "namespace": "wishify",
-                "key": "hasPaid",
-                "type": "boolean",
-                "value": value,
-                "ownerId": appInstallID,
-              },
-          },
-      },
-      )
-    
-        const metafieldResponse = await appMetafield.json()
-        console.log("Field of Meta", metafieldResponse)
-        return;
-}
 
 export async function loader({ request }) {
   const {admin, billing, session} = await authenticate.admin(request);

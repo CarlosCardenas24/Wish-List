@@ -27,7 +27,7 @@ export async function getSubscriptionStatus(graphql) {
     return response
 }
 
-/* export async function subscriptionMetaField({graphql, value}) {
+export async function subscriptionMetaField(graphql, value) {
     const appInstallIDRequest = await graphql(
         `
           #graphql
@@ -40,12 +40,11 @@ export async function getSubscriptionStatus(graphql) {
       
         const appInstallIDResponse = await appInstallIDRequest.json()
         const appInstallID = appInstallIDResponse.data.currentAppInstallation.id
-        console.log("AppinstallID",appInstallID)
     
         const appMetafield = await graphql(`
           #graphql
-          mutation CreateAppDataMetafield($metafields: [metafieldsSetInput!]!) {
-            metafieldsSet(metafields: $metafields) {
+          mutation CreateAppDataMetafield($metafieldsSetInput: [metafieldsSetInput!]!) {
+            metafieldsSet(metafields: $metafieldsSetInput) {
               metafields {
                 id
                 namespace
@@ -59,12 +58,12 @@ export async function getSubscriptionStatus(graphql) {
           }
           `, {
             variables: {
-                metafields: {
-                  namespace: "wishify",
-                  key: "hasPaid",
-                  type: "boolean",
-                  value: value,
-                  ownerId: appInstallID,
+                "metafieldsSetInput": {
+                  "namespace": "wishify",
+                  "key": "hasPaid",
+                  "type": "boolean",
+                  "value": value,
+                  "ownerId": appInstallID,
                 },
             },
         },
@@ -73,4 +72,4 @@ export async function getSubscriptionStatus(graphql) {
           const metafieldResponse = await appMetafield.json()
           console.log("Field of Meta", metafieldResponse)
           return;
-  } */
+  }
