@@ -4,7 +4,7 @@ import polarisStyles from "@shopify/polaris/build/esm/styles.css";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
 import { authenticate, MONTHLY_PLAN } from "../shopify.server";
-import { getSubscriptionStatus } from "~/models/Subscription.server";
+import { getSubscriptionStatus, subscriptionMetaField } from "~/models/Subscription.server";
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
@@ -16,6 +16,7 @@ export async function loader({ request }) {
   const {activeSubscriptions} = subscriptions.data.app.installation
  
   if (activeSubscriptions.length < 1) {
+    subscriptionMetaField(admin.graphql, "false")
     await billing.require({
       plans: [MONTHLY_PLAN],
       isTest: true,
