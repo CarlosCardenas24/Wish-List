@@ -43,7 +43,7 @@ export async function subscriptionMetaField(graphql, value) {
     
         const appMetafield = await graphql(`
           #graphql
-          mutation CreateAppDataMetafield($metafieldsSetInput: [metafieldsSetInput!]!) {
+          mutation CreateAppDataMetafield($metafieldsSetInput: [MetafieldsSetInput!]!) {
             metafieldsSet(metafields: $metafieldsSetInput) {
               metafields {
                 id
