@@ -1,2 +1,8 @@
 name = "wish-list-extension"
 type = "theme"
+
+[[metafields]]
+  namespace = "wishify"
+  key = "hasPaid"
+  type = "boolean"
+  description = "Indicates if the merchant has an active subscription"
