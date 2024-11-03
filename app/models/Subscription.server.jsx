@@ -28,6 +28,7 @@ export async function getSubscriptionStatus(graphql) {
 }
 
 export async function subscriptionMetaField(graphql, value) {
+    console.log(value)
     const appInstallIDRequest = await graphql(
         `
           #graphql
