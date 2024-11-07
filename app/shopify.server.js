@@ -24,8 +24,6 @@ const shopify = shopifyApp({
   restResources,
   future: {
     v3_webhookAdminContext: true,
-    /* v3_authenticatePublic: true,
-    unstable_newEmbeddedAuthStrategy: true, */
   },
   billing: {
     [MONTHLY_PLAN]: {
