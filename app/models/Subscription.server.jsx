@@ -50,6 +50,7 @@ export async function subscriptionMetaField(graphql, value) {
                 id
                 namespace
                 key
+                value
               }
               userErrors {
                 field

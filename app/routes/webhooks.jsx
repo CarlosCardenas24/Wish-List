@@ -21,23 +21,6 @@ export const action = async ({ request }) => {
       if(status == 'ACTIVE') {
         console.log("hasPaid is True")
         subscriptionMetaField(admin.graphql, "true")
-        const checkMetafieldQuery = `
-          query {
-            currentAppInstallation {
-              metafields(namespace: "wishify", first: 1) {
-                edges {
-                  node {
-                    key
-                    value
-                  }
-                }
-              }
-            }
-          }
-        `;
-
-        const checkMetafieldResponse = await graphql.query({ data: checkMetafieldQuery });
-        console.log("Current hasPaid Metafield Value:", checkMetafieldResponse.body.data.currentAppInstallation.metafields.edges);
       } else {
         console.log("hasPaid is False")
         subscriptionMetaField(admin.graphql, "false")
