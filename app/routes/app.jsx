@@ -16,7 +16,7 @@ export async function loader({ request }) {
   const {activeSubscriptions} = subscriptions.data.app.installation
  
   if (activeSubscriptions.length < 1) {
-    subscriptionMetaField(admin.graphql, "false")
+    //subscriptionMetaField(admin.graphql, "false")
     await billing.require({
       plans: [MONTHLY_PLAN],
       isTest: true,
