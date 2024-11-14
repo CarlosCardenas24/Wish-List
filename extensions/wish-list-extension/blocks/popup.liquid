@@ -21,7 +21,9 @@
             {% if product.has_only_default_variant %}
             {{ product.title }} 
             {% else %}
+            <span style="text-overflow: ellipsis">
             {{ product.selected_or_first_available_variant.title }} {{ product.title }}
+            </span>
             {% endif %}
             <br/>
             ${{ product.selected_or_first_available_variant.price | money_without_currency }}
