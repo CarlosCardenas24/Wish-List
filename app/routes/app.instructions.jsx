@@ -12,11 +12,12 @@ import {
 import {useState, useCallback} from 'react'; 
 
 export default function InstructionsPage() {
-const [selected, setSelected] = useState('2.0 Theme')
+const [selected, setSelected] = useState('selectone')
 
 const handleSelectChange = useCallback((value) => setSelected(value), []);
 
 const options = [
+    {label: 'Select one', value: 'selectone'},
     {label: '2.0 Theme', value: 'twopointzerotheme'},
     {label: 'Vintage', value: 'vintage'},
 ];
@@ -43,7 +44,7 @@ return (
                                     These are the instructions for the app blocks
                                 </Text>
                             )}
-                            {selected === 'twopointzerotheme' && (
+                            {selected === 'vintage' && (
                                 <Text as="p" variant="bodyMd">
                                     unfortunately these app blocks are only available on Shopify's Online Store 2.0 themes.
                                 </Text>
