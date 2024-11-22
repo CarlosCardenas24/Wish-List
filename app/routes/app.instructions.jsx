@@ -6,6 +6,7 @@ import {
     BlockStack,
     InlineStack,
     Layout,
+    Card,
     Select
   } from "@shopify/polaris"; 
 import {useState, useCallback} from 'react'; 
