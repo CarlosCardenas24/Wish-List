@@ -5,7 +5,7 @@ import {
     useBreakpoints,
     BlockStack,
     InlineStack,
-    layout,
+    Layout,
     Select
   } from "@shopify/polaris"; 
 import {useState, useCallback} from 'react'; 
