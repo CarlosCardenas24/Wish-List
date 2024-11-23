@@ -10,6 +10,7 @@ import {
     Select
   } from "@shopify/polaris"; 
 import {useState, useCallback} from 'react'; 
+import { useNavigate } from "@remix-run/react"
 
 export default function InstructionsPage() {
 const [selected, setSelected] = useState('selectone')
@@ -22,9 +23,13 @@ const options = [
     {label: 'Vintage', value: 'vintage'},
 ];
 
+const navigate = useNavigate()
+
 return (
     <Page>
-        <ui-title-bar title="Instructions page" />
+        <ui-title-bar title="Instructions page" >
+        <button onClick={() => navigate('/app')}>Go to Dashboard</button>
+        </ui-title-bar>
             <Layout>
             <Layout.Section>
                 <Card>
