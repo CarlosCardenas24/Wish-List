@@ -78,7 +78,7 @@ return (
                         </div>
                         
                     </BlockStack>
-                    <BlockStack gap="600">
+                    <BlockStack gap="300">
                             <Text  variant="headingXl" as="h4">
                                 App Embedded Blocks
                             </Text>
