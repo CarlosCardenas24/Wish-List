@@ -28,7 +28,6 @@ return (
             <Layout>
             <Layout.Section>
                 <Card>
-                    <BlockStack spacing="loose">
                     <BlockStack gap="300">
                         <Text variant="headingXl" as="h4">
                             App Blocks
@@ -39,7 +38,7 @@ return (
                         onChange={handleSelectChange}
                         value={selected}
                         />
-                        <div style={{marginTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <div style={{marginTop: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             {selected === 'twopointzerotheme' && (
                             <>
                                 <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
@@ -47,9 +46,10 @@ return (
                                 </Text>
                                 <div style={{position: 'relative',
                                 paddingBottom: '56.25%', // 16:9 aspect ratio
-                                height: '315',
+                                height: 0,
                                 width: '100%',
                                 maxWidth: '560px',
+                                maxHeight: '315px',
                                 }}>
                                     <iframe
                                     style={{
@@ -77,7 +77,7 @@ return (
                         </div>
                     </BlockStack>
                     <BlockStack gap="300">
-                            <Text  variant="headingXl" as="h4" style={{ marginTop: '20px' }}>
+                            <Text  variant="headingXl" as="h4">
                                 App Embedded Blocks
                             </Text>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -87,9 +87,10 @@ return (
                                     </Text>
                                     <div style={{position: 'relative',
                                     paddingBottom: '56.25%', // 16:9 aspect ratio
-                                    height: '315',
+                                    height: 0,
                                     width: '100%',
                                     maxWidth: '560px',
+                                    maxHeight: '315px',
                                     }}>
                                         <iframe
                                         style={{
@@ -109,7 +110,6 @@ return (
                                     </div>
                                 </>
                             </div>
-                    </BlockStack>
                     </BlockStack>
                 </Card>
             </Layout.Section>
