@@ -48,8 +48,7 @@ return (
                                 marginTop: '20px',
                                 position: 'relative',
                                 aspectRatio: '16 / 9',
-                                paddingBottom: '56.25%', // 16:9 aspect ratio
-                                height: 0,
+                                height: '100%',
                                 width: '100%',
                                 maxWidth: '560px',
                                 maxHeight: '315px',
@@ -92,11 +91,12 @@ return (
                                     <div style={{
                                     marginTop: '20px',
                                     position: 'relative',
-                                    paddingBottom: '56.25%', // 16:9 aspect ratio
-                                    height: 0,
+                                    aspectRatio: '16 / 9',
+                                    height: '100%',
                                     width: '100%',
                                     maxWidth: '560px',
                                     maxHeight: '315px',
+                                    margin: '0 auto',
                                     }}>
                                         <iframe
                                         style={{
