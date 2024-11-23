@@ -38,10 +38,10 @@ return (
                         onChange={handleSelectChange}
                         value={selected}
                         />
-                        <div style={{marginTop: '20px', display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+                        <div style={{marginTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             {selected === 'twopointzerotheme' && (
                             <>
-                                <Text as="p" variant="bodyMd">
+                                <Text as="p" variant="bodyMd" style={{ textAlign: 'center', marginBottom: '20px' }}>
                                     The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
                                 <div style={{position: 'relative',
@@ -75,8 +75,8 @@ return (
                             )}
                         </div>
                     </BlockStack>
-                    <BlockStack gap="600">
-                            <Text  variant="headingXl" as="h4">
+                    <BlockStack gap="300">
+                            <Text  variant="headingXl" as="h4" style={{ marginTop: '20px' }}>
                                 App Embedded Blocks
                             </Text>
                             <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
