@@ -45,14 +45,13 @@ return (
                                     The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
                                 <div style={{
-                                marginTop: '20px',
+                                marginTop: '15px',
                                 position: 'relative',
                                 aspectRatio: '16 / 9',
                                 height: '100%',
                                 width: '100%',
                                 maxWidth: '560px',
                                 maxHeight: '315px',
-                                margin: '0 auto',
                                 }}>
                                     <iframe
                                     style={{
@@ -74,7 +73,7 @@ return (
                             )}
                             {selected === 'vintage' && (
                                 <Text as="p" variant="bodyMd">
-                                    unfortunately these app blocks are only available on Shopify's Online Store 2.0 themes.
+                                    Unfortunately these app blocks are only available on Shopify's Online Store 2.0 themes.
                                 </Text>
                             )}
                         </div>
@@ -89,14 +88,13 @@ return (
                                         While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
                                     </Text>
                                     <div style={{
-                                    marginTop: '20px',
+                                    marginTop: '15px',
                                     position: 'relative',
                                     aspectRatio: '16 / 9',
                                     height: '100%',
                                     width: '100%',
                                     maxWidth: '560px',
                                     maxHeight: '315px',
-                                    margin: '0 auto',
                                     }}>
                                         <iframe
                                         style={{
