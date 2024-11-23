@@ -38,7 +38,7 @@ return (
                         onChange={handleSelectChange}
                         value={selected}
                         />
-                        <div style={{marginTop: '20px', display: 'flex', justifyContent: 'center'}}>
+                        <div style={{marginTop: '20px', display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
                             {selected === 'twopointzerotheme' && (
                             <>
                                 <Text as="p" variant="bodyMd">
@@ -74,13 +74,12 @@ return (
                                 </Text>
                             )}
                         </div>
-                        
                     </BlockStack>
-                    <BlockStack gap="300">
+                    <BlockStack gap="600">
                             <Text  variant="headingXl" as="h4">
                                 App Embedded Blocks
                             </Text>
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                                 <>
                                     <Text as="p" variant="bodyMd">
                                         While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
