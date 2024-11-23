@@ -28,6 +28,7 @@ return (
             <Layout>
             <Layout.Section>
                 <Card>
+                    <BlockStack spacing="loose">
                     <BlockStack gap="300">
                         <Text variant="headingXl" as="h4">
                             App Blocks
@@ -41,12 +42,12 @@ return (
                         <div style={{marginTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             {selected === 'twopointzerotheme' && (
                             <>
-                                <Text as="p" variant="bodyMd" style={{ textAlign: 'center', marginBottom: '20px' }}>
+                                <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
                                     The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
                                 <div style={{position: 'relative',
                                 paddingBottom: '56.25%', // 16:9 aspect ratio
-                                height: 0,
+                                height: '315',
                                 width: '100%',
                                 maxWidth: '560px',
                                 }}>
@@ -79,14 +80,14 @@ return (
                             <Text  variant="headingXl" as="h4" style={{ marginTop: '20px' }}>
                                 App Embedded Blocks
                             </Text>
-                            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                 <>
-                                    <Text as="p" variant="bodyMd">
+                                    <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
                                         While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
                                     </Text>
                                     <div style={{position: 'relative',
                                     paddingBottom: '56.25%', // 16:9 aspect ratio
-                                    height: 0,
+                                    height: '315',
                                     width: '100%',
                                     maxWidth: '560px',
                                     }}>
@@ -108,6 +109,7 @@ return (
                                     </div>
                                 </>
                             </div>
+                    </BlockStack>
                     </BlockStack>
                 </Card>
             </Layout.Section>
