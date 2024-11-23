@@ -41,8 +41,18 @@ return (
                         <div style={{marginTop: '20px'}}>
                             {selected === 'twopointzerotheme' && (
                                 <Text as="p" variant="bodyMd">
-                                    These are the instructions for the app blocks
+                                    The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
+                                <iframe 
+                                    width="560" 
+                                    height="315" 
+                                    src="https://www.youtube.com/embed/rbeSYHIIwzE?si=SBZpi94jWD5zJaW5" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
                             )}
                             {selected === 'vintage' && (
                                 <Text as="p" variant="bodyMd">
@@ -53,8 +63,11 @@ return (
                         
                     </BlockStack>
                     <BlockStack gap="300">
+                        <Text variant="headingXl" as="h4">
+                            App Embedded Blocks
+                        </Text>
                         <Text as="p" variant="bodyMd">
-                            
+                            While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
                         </Text>
                     </BlockStack>
                 </Card>
