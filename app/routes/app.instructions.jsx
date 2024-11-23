@@ -40,6 +40,7 @@ return (
                         />
                         <div style={{marginTop: '20px'}}>
                             {selected === 'twopointzerotheme' && (
+                            <>
                                 <Text as="p" variant="bodyMd">
                                     The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
@@ -53,6 +54,7 @@ return (
                                 referrerPolicy="strict-origin-when-cross-origin"
                                 allowFullScreen
                                 ></iframe>
+                            </>
                             )}
                             {selected === 'vintage' && (
                                 <Text as="p" variant="bodyMd">
