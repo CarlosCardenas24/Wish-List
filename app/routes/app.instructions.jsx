@@ -43,12 +43,14 @@ return (
                         onChange={handleSelectChange}
                         value={selected}
                         />
-                        <div style={{marginTop: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <div style={{marginTop: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
                             {selected === 'twopointzerotheme' && (
                             <>
-                                <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
-                                    The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
-                                </Text>
+                                <div style={{alignItems: 'left'}}>
+                                    <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
+                                        The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
+                                    </Text>
+                                </div>
                                 <div style={{
                                 marginTop: '15px',
                                 position: 'relative',
@@ -87,9 +89,9 @@ return (
                             <Text  variant="headingXl" as="h4">
                                 App Embedded Blocks
                             </Text>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
                                 <>
-                                    <Text as="p" variant="bodyLg" style={{ textAlign: 'center', marginBottom: '20px' }}>
+                                    <Text as="p" variant="bodyLg">
                                         While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
                                     </Text>
                                     <div style={{
