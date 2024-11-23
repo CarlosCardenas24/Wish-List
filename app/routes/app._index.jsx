@@ -206,6 +206,7 @@ const rowMarkup = sortProducts(newProductList, sortSelected).map(
   return (
     <Page fullWidth>
       <ui-title-bar title="Wish List">
+        <button onClick={() => navigate('/instructions')}>Go to Instructions</button>
       </ui-title-bar>
 
       <LegacyCard>
