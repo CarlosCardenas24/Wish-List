@@ -47,7 +47,7 @@ return (
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <div style={{position: 'relative',
                                     paddingBottom: '56.25%', // 16:9 aspect ratio
-                                    height: '315',
+                                    height: 0,
                                     width: '100%',
                                     maxWidth: '560px',
                                     }}>
@@ -90,7 +90,7 @@ return (
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                                         <div style={{position: 'relative',
                                         paddingBottom: '56.25%', // 16:9 aspect ratio
-                                        height: '315',
+                                        height: 0,
                                         width: '100%',
                                         maxWidth: '560px',
                                         }}>
