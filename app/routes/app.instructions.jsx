@@ -43,16 +43,16 @@ return (
                                 <Text as="p" variant="bodyMd">
                                     The app blocks should work on all Online Store 2.0 Themes. Here is a video on how to set it up.
                                 </Text>
-                                <iframe 
-                                    width="560" 
-                                    height="315" 
-                                    src="https://www.youtube.com/embed/rbeSYHIIwzE?si=SBZpi94jWD5zJaW5" 
-                                    title="YouTube video player" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    referrerpolicy="strict-origin-when-cross-origin" 
-                                    allowfullscreen>
-                                </iframe>
+                                <iframe
+                                width="560"
+                                height="315"
+                                src="https://www.youtube.com/embed/rbeSYHIIwzE?si=SBZpi94jWD5zJaW5"
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                                ></iframe>
                             )}
                             {selected === 'vintage' && (
                                 <Text as="p" variant="bodyMd">
@@ -69,6 +69,16 @@ return (
                         <Text as="p" variant="bodyMd">
                             While these embedded blocks should work on any theme, you will need the Online Store 2.0 themes for the app blocks. Here is a video on how to turn them on
                         </Text>
+                        <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/20fVsSS2aWU?si=nSb6rx2mwDY-WT5V"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        ></iframe>
                     </BlockStack>
                 </Card>
             </Layout.Section>
