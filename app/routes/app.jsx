@@ -19,11 +19,11 @@ export async function loader({ request }) {
     subscriptionMetaField(admin.graphql, "false")
     await billing.require({
       plans: [MONTHLY_PLAN],
-      isTest: true,
+      isTest: null,
       onFailure: async () =>
         billing.request({
           plan: MONTHLY_PLAN,
-          isTest: true,
+          isTest: null,
         }),
         returnUrl: `https://${shop}/admin/apps/wishifylist/app`
     })
